@@ -1,58 +1,66 @@
-<!DOCTYPE html>
+<!<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Медвежки Dashboard</title>
 
 <style>
 :root{
---bg:#f4f6fb;
+--bg:#f5f7fb;
 --card:#ffffff;
 --text:#101828;
 --muted:#667085;
---blue:#2458ff;
---line:#e8edf5;
---green:#1ea672;
---red:#ff4d4f;
---orange:#ff9f1a;
---shadow:0 12px 35px rgba(20,20,43,.08);
+--line:#e4e7ec;
+--blue:#2563eb;
+--green:#16a34a;
+--orange:#f97316;
+--red:#dc2626;
+--shadow:0 10px 30px rgba(15,23,42,.08);
 --radius:24px;
 }
 
-*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
 
 body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-background:linear-gradient(180deg,#f7f8fc,#eef3fa);
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+background:linear-gradient(180deg,#f8fafc,#eef2ff);
 color:var(--text);
 padding-bottom:120px;
 }
 
-.hide{display:none!important}
-
 .wrap{
-max-width:900px;
-margin:auto;
+max-width:980px;
+margin:0 auto;
 padding:18px;
+}
+
+.hide{
+display:none!important;
 }
 
 .top{
 display:flex;
-justify-content:space-between;
 align-items:center;
+justify-content:space-between;
 margin-bottom:18px;
 }
 
 .brand{
 font-size:28px;
 font-weight:800;
+letter-spacing:-1px;
 }
 
 .sub{
 color:var(--muted);
 font-size:14px;
+margin-top:4px;
 }
 
 .card{
@@ -63,28 +71,50 @@ box-shadow:var(--shadow);
 margin-bottom:16px;
 }
 
-.row{
-display:flex;
-gap:12px;
+.grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:14px;
 }
 
-.row>*{
-flex:1;
+.kpi{
+padding:18px;
+border-radius:22px;
+background:#fff;
+box-shadow:var(--shadow);
 }
 
-input,select,textarea{
+.kpiTitle{
+font-size:13px;
+color:var(--muted);
+margin-bottom:10px;
+}
+
+.kpiValue{
+font-size:28px;
+font-weight:800;
+}
+
+.bigInput{
 width:100%;
+padding:18px;
 border:none;
-background:#f3f6fb;
-padding:16px;
 border-radius:18px;
-font-size:16px;
+background:#f3f6fb;
+font-size:17px;
+margin-top:12px;
 outline:none;
 }
 
-textarea{
-min-height:90px;
-resize:none;
+.select{
+width:100%;
+padding:16px;
+border:none;
+border-radius:18px;
+background:#f3f6fb;
+font-size:16px;
+margin-top:12px;
+outline:none;
 }
 
 .btn{
@@ -101,10 +131,22 @@ background:var(--blue);
 color:#fff;
 }
 
-.sectionTitle{
-font-size:22px;
-font-weight:800;
-margin-bottom:16px;
+.btnGhost{
+background:#eef2ff;
+color:#1e3a8a;
+}
+
+.row{
+display:flex;
+gap:10px;
+align-items:center;
+}
+
+.rowBetween{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
 }
 
 .bottomNav{
@@ -113,61 +155,233 @@ bottom:18px;
 left:50%;
 transform:translateX(-50%);
 width:92%;
-max-width:700px;
-background:#fff;
-border-radius:30px;
-padding:10px;
+max-width:820px;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(18px);
+padding:12px;
+border-radius:28px;
 display:flex;
-justify-content:space-between;
-box-shadow:0 15px 40px rgba(0,0,0,.12);
-z-index:100;
+justify-content:space-around;
+box-shadow:0 10px 40px rgba(15,23,42,.15);
+z-index:999;
 }
 
 .navBtn{
 flex:1;
 border:none;
-background:transparent;
-padding:12px;
-border-radius:22px;
+background:none;
+padding:10px;
+border-radius:18px;
+font-size:12px;
 font-weight:700;
 color:#667085;
-font-size:13px;
-cursor:pointer;
 }
 
 .navBtn.active{
-background:#0d1b3d;
+background:#0f172a;
 color:#fff;
+}
+
+.sectionTitle{
+font-size:22px;
+font-weight:800;
+margin-bottom:14px;
 }
 
 .expenseItem{
 padding:14px;
-border-radius:20px;
-background:#f8faff;
-margin-bottom:12px;
-border:1px solid #edf1f7;
+border-radius:18px;
+background:#f8fafc;
+margin-top:10px;
 }
 
 .expenseTop{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin-bottom:8px;
+gap:12px;
 }
 
 .expenseName{
 font-weight:700;
-font-size:17px;
+font-size:16px;
 }
 
-.badge{
-background:#eef3ff;
-color:#355cff;
-padding:6px 10px;
+.expenseMeta{
+font-size:13px;
+color:var(--muted);
+margin-top:6px;
+}
+
+.tag{
+display:inline-flex;
+align-items:center;
+gap:6px;
+padding:8px 12px;
+background:#eef2ff;
 border-radius:999px;
-font-size:12px;
+font-size:13px;
 font-weight:700;
-display:inline-block;
+margin-top:8px;
+}
+
+.house{
+padding:16px;
+border-radius:24px;
+margin-bottom:14px;
+color:#fff;
+}
+
+.house1{
+background:#556b2f;
+}
+
+.house2{
+background:#14b8a6;
+}
+
+.house3{
+background:#f97316;
+}
+
+.service{
+background:#fff;
+color:#111827;
+padding:14px;
+border-radius:18px;
+margin-top:10px;
+}
+
+.serviceTitle{
+font-weight:700;
+margin-bottom:6px;
+}
+
+.voiceWrap{
+display:flex;
+justify-content:center;
+margin-top:16px;
+}
+
+.voiceBtn{
+width:82px;
+height:82px;
+border-radius:999px;
+border:none;
+background:#2563eb;
+color:#fff;
+font-size:28px;
+position:relative;
+box-shadow:0 10px 30px rgba(37,99,235,.35);
+}
+
+.voiceBtn.recording::before{
+content:'';
+position:absolute;
+inset:-10px;
+border-radius:999px;
+border:3px solid rgba(37,99,235,.3);
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(1);
+opacity:1;
+}
+100%{
+transform:scale(1.4);
+opacity:0;
+}
+}
+
+.login{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:24px;
+}
+
+.loginBox{
+width:100%;
+max-width:420px;
+background:#fff;
+padding:26px;
+border-radius:32px;
+box-shadow:var(--shadow);
+}
+
+.users{
+display:flex;
+gap:10px;
+margin-top:14px;
+}
+
+.userBtn{
+flex:1;
+padding:14px;
+border:none;
+border-radius:18px;
+background:#eef2ff;
+font-weight:700;
+}
+
+.userBtn.active{
+background:#111827;
+color:#fff;
+}
+  .pieWrap{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+margin-top:14px;
+}
+
+.pie{
+background:#fff;
+border-radius:24px;
+padding:18px;
+box-shadow:var(--shadow);
+}
+
+.pieCircle{
+width:180px;
+height:180px;
+border-radius:50%;
+margin:18px auto;
+background:
+conic-gradient(
+#2563eb 0% 52%,
+#16a34a 52% 76%,
+#f97316 76% 100%
+);
+}
+
+.legend{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:14px;
+}
+
+.legendRow{
+display:flex;
+align-items:center;
+justify-content:space-between;
+font-size:14px;
+}
+
+.dot{
+width:12px;
+height:12px;
+border-radius:50%;
+}
+
+.settingsItem{
+padding:16px;
+border-radius:20px;
+background:#f8fafc;
+margin-top:12px;
 }
 
 .small{
@@ -175,196 +389,82 @@ font-size:13px;
 color:var(--muted);
 }
 
-.login{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.loginBox{
-width:100%;
-max-width:420px;
-background:#fff;
-padding:24px;
-border-radius:32px;
-box-shadow:var(--shadow);
-}
-
-.users{
-display:flex;
-gap:8px;
-margin-top:12px;
-}
-
-.userBtn{
-flex:1;
-padding:12px;
-border:none;
-border-radius:14px;
-background:#eef2f8;
-font-weight:700;
-cursor:pointer;
-}
-
-.userBtn.active{
-background:#0d1b3d;
-color:#fff;
-}
-
-.voiceWrap{
-display:flex;
-justify-content:center;
-margin-top:12px;
-}
-
-.voiceBtn{
-width:88px;
-height:88px;
-border-radius:50%;
-border:none;
-background:#2458ff;
-color:#fff;
-font-size:32px;
-cursor:pointer;
+.toggle{
+width:52px;
+height:30px;
+background:#dbeafe;
+border-radius:999px;
 position:relative;
-overflow:hidden;
 }
 
-.voiceBtn.recording{
-animation:pulse 1s infinite;
+.toggle::after{
+content:'';
+position:absolute;
+width:24px;
+height:24px;
+border-radius:50%;
+background:#2563eb;
+top:3px;
+right:3px;
 }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.08)}
-100%{transform:scale(1)}
-}
-
-.grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-}
-
-.metric{
-background:#fff;
-padding:18px;
-border-radius:22px;
-box-shadow:var(--shadow);
-}
-
-.metric h3{
-margin:0;
-font-size:14px;
-color:var(--muted);
-}
-
-.metric strong{
-display:block;
-margin-top:10px;
-font-size:28px;
-}
-
-.houseCard{
-padding:18px;
-border-radius:24px;
-background:#fff;
-box-shadow:var(--shadow);
-margin-bottom:16px;
-}
-
-.houseTitle{
-font-size:20px;
-font-weight:800;
-margin-bottom:12px;
-}
-
-.incomeRow{
-display:flex;
-justify-content:space-between;
-padding:12px 0;
-border-bottom:1px solid #edf1f7;
-}
-
-.settingRow{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 0;
-border-bottom:1px solid #edf1f7;
-}
-
-.toast{
-position:fixed;
-top:18px;
-left:50%;
-transform:translateX(-50%);
-background:#111827;
-color:#fff;
-padding:14px 18px;
-border-radius:18px;
-z-index:999;
-display:none;
-}
-
-.chart{
-height:220px;
-border-radius:24px;
-background:conic-gradient(
-#2458ff 0 40%,
-#1ea672 40% 68%,
-#ff9f1a 68% 85%,
-#d0d5dd 85% 100%
-);
-margin-top:14px;
-}
-
-.editBtn{
-margin-top:10px;
-background:#eef3ff;
+textarea{
+width:100%;
+min-height:100px;
+padding:16px;
 border:none;
-padding:10px 14px;
-border-radius:14px;
-font-weight:700;
-cursor:pointer;
+background:#f3f6fb;
+border-radius:18px;
+font-size:15px;
+margin-top:12px;
+resize:none;
+outline:none;
 }
+
 </style>
 </head>
 
 <body>
 
-<div id="toast" class="toast"></div>
-
 <div id="loginScreen" class="login">
+
 <div class="loginBox">
 
 <div class="brand">Медвежки Dashboard</div>
-<div class="sub">Вход выполняется один раз</div>
-
-<div style="height:20px"></div>
-
-<label>Кто входит</label>
-<div class="users">
-<button class="userBtn active" onclick="selectUser('Владислав',1111,this)">Владислав</button>
-<button class="userBtn" onclick="selectUser('Даша',2222,this)">Даша</button>
-<button class="userBtn" onclick="selectUser('Юлия',3333,this)">Юлия</button>
+<div class="sub">
+Вход выполняется один раз. Потом приложение запоминает пользователя.
 </div>
 
-<div style="height:16px"></div>
+<div style="height:18px"></div>
 
-<label>Пин-код</label>
-<input id="pinInput" placeholder="Введите пин" inputmode="numeric" />
+<label>Кто входит</label>
 
-<div style="height:16px"></div>
+<div class="users">
+<button class="userBtn active" onclick="selectUser('Владислав',this)">Влад</button>
+<button class="userBtn" onclick="selectUser('Дарья',this)">Даша</button>
+<button class="userBtn" onclick="selectUser('Юлия',this)">Юлия</button>
+</div>
 
-<button class="btn btnBlue" onclick="login()">Войти</button>
+<input
+id="pinInput"
+class="bigInput"
+placeholder="Введите пин"
+inputmode="numeric"
+/>
 
-<div style="height:12px"></div>
+<button
+class="btn btnBlue"
+style="width:100%;margin-top:14px"
+onclick="login()"
+>
+Войти
+</button>
 
-<div class="small">
-Пины: Владислав 1111 · Даша 2222 · Юлия 3333
+<div class="small" style="margin-top:12px">
+Пины:
+Владислав — 1111<br>
+Дарья — 2222<br>
+Юлия — 3333
 </div>
 
 </div>
@@ -375,133 +475,223 @@ cursor:pointer;
 <div class="wrap">
 
 <div class="top">
+
 <div>
 <div class="brand">Медвежки</div>
-<div class="sub" id="todayText"></div>
+<div class="sub" id="todayDate"></div>
 </div>
 
-<div class="badge" id="currentUser"></div>
+<div class="tag">
+👤 <span id="currentUser"></span>
+</div>
+
 </div>
 
 <!-- РАСХОДЫ -->
 
 <div id="expensesPage">
 
+<div class="sectionTitle">
+💸 Быстро записать расход
+</div>
+
 <div class="card">
 
-<div class="sectionTitle">Добавить расход</div>
+<input
+id="expenseName"
+class="bigInput"
+placeholder="Например: Интернет, закупка, реклама..."
+/>
 
-<div class="row">
-<div>
-<label>Категория</label>
+<input
+id="expenseAmount"
+class="bigInput"
+placeholder="Сумма"
+inputmode="numeric"
+/>
 
-<select id="category">
+<select id="expenseCategory" class="select">
+
 <option>🤝 Допы персоналу</option>
 <option>⚡ Коммуналка</option>
 <option>📡 Интернет</option>
 <option>🗑 Вывоз мусора</option>
 <option>📦 Закупки</option>
-<option>👷 Ремонт / обслуживание</option>
+<option>👷 Ремонт/обслуживание</option>
 <option>💲 Маркетинг</option>
 <option>💯 Комиссии площадок</option>
 <option>💵 Налоги</option>
 <option>💰 Зарплаты</option>
 <option>🏦 Ипотека</option>
 <option>📁 Прочее</option>
+
 </select>
-</div>
 
-<div>
-<label>Оплатил</label>
+<select id="paidBy" class="select">
 
-<select id="paidBy">
 <option>Владислав</option>
-<option>Даша</option>
+<option>Дарья</option>
 <option>Юлия</option>
 <option>Общий счет</option>
+
 </select>
-</div>
-</div>
 
 <div style="height:12px"></div>
 
-<label>Описание</label>
-<textarea id="expenseName" placeholder="Например: Интернет Starlink"></textarea>
-
-<div style="height:12px"></div>
-
-<label>Сумма</label>
-<input id="expenseAmount" type="number" placeholder="₽" />
+<label class="row">
+<input type="checkbox" id="improveCheck">
+<span>✅ Неотъемлемое улучшение</span>
+</label>
 
 <div class="voiceWrap">
+
 <button
 class="voiceBtn"
 id="voiceBtn"
-ontouchstart="startVoice()"
-ontouchend="stopVoice()"
-onmousedown="startVoice()"
-onmouseup="stopVoice()"
 >
-🎙
+🎤
 </button>
-</div>
-
-<div style="height:16px"></div>
-
-<button class="btn btnBlue" onclick="addExpense()">Добавить расход</button>
 
 </div>
 
-<div class="card">
+<button
+class="btn btnBlue"
+style="width:100%;margin-top:18px"
+onclick="saveExpense()"
+>
+Сохранить расход
+</button>
 
-<div class="sectionTitle">История расходов</div>
+</div>
+
+<div class="sectionTitle" style="margin-top:24px">
+🧾 История расходов
+</div>
 
 <div id="expensesList"></div>
 
 </div>
-
-</div>
-
 <!-- ДОХОДЫ -->
 
 <div id="incomePage" class="hide">
 
-<div class="houseCard">
-<div class="houseTitle">🫒 Оливковый контейнер</div>
-
-<div class="incomeRow">
-<span>🏠 Проживание</span>
-<strong>145 000 ₽</strong>
+<div class="sectionTitle">
+🏡 Доходы по домикам
 </div>
 
-<div class="incomeRow">
-<span>🛁 Баня-бочка</span>
-<strong>32 000 ₽</strong>
+<div class="house house1">
+
+<div class="rowBetween">
+<div>
+<div style="font-size:22px;font-weight:800">
+🫒 Домик 1
+</div>
+<div style="opacity:.8">
+Контейнер + баня-бочка
+</div>
 </div>
 
-<div class="incomeRow">
-<span>🔥 Баня-бочка + чан</span>
-<strong>48 000 ₽</strong>
+<div class="tag">
+Загрузка: 74%
+</div>
+</div>
+
+<div class="service">
+<div class="serviceTitle">🛏 Проживание</div>
+<input class="bigInput" placeholder="Сумма">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🪵 Баня-бочка</div>
+<input class="bigInput" value="4990">
+</div>
+
+<div class="service">
+<div class="serviceTitle">♨️ Баня-бочка + чан</div>
+<input class="bigInput" value="8990">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🛁 Чан</div>
+<input class="bigInput" value="4990">
 </div>
 
 </div>
 
-<div class="houseCard">
-<div class="houseTitle">💎 Бирюзовый A-frame</div>
+<div class="house house2">
 
-<div class="incomeRow">
-<span>🏠 Проживание</span>
-<strong>192 000 ₽</strong>
+<div class="rowBetween">
+<div>
+<div style="font-size:22px;font-weight:800">
+💚 Домик 2
+</div>
+<div style="opacity:.8">
+Сауна
+</div>
 </div>
 
-<div class="incomeRow">
-<span>🧖 Сауна</span>
-<strong>41 000 ₽</strong>
+<div class="tag">
+Загрузка: 81%
+</div>
 </div>
 
-<div class="incomeRow">
-<span>♨️ Сауна + чан</span>
-<strong>55 000 ₽</strong>
+<div class="service">
+<div class="serviceTitle">🛏 Проживание</div>
+<input class="bigInput" placeholder="Сумма">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🧖 Сауна</div>
+<input class="bigInput" value="3000">
+</div>
+
+<div class="service">
+<div class="serviceTitle">♨️ Сауна + чан</div>
+<input class="bigInput" value="7990">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🛁 Чан</div>
+<input class="bigInput" value="4990">
+</div>
+
+</div>
+
+<div class="house house3">
+
+<div class="rowBetween">
+<div>
+<div style="font-size:22px;font-weight:800">
+🧡 Домик 3
+</div>
+<div style="opacity:.8">
+Сауна
+</div>
+</div>
+
+<div class="tag">
+Загрузка: 69%
+</div>
+</div>
+
+<div class="service">
+<div class="serviceTitle">🛏 Проживание</div>
+<input class="bigInput" placeholder="Сумма">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🧖 Сауна</div>
+<input class="bigInput" value="3000">
+</div>
+
+<div class="service">
+<div class="serviceTitle">♨️ Сауна + чан</div>
+<input class="bigInput" value="7990">
+</div>
+
+<div class="service">
+<div class="serviceTitle">🛁 Чан</div>
+<input class="bigInput" value="4990">
 </div>
 
 </div>
@@ -512,54 +702,155 @@ onmouseup="stopVoice()"
 
 <div id="analyticsPage" class="hide">
 
+<div class="sectionTitle">
+📊 Аналитика
+</div>
+
 <div class="grid">
 
-<div class="metric">
-<h3>Оборот</h3>
-<strong>538 000 ₽</strong>
+<div class="kpi">
+<div class="kpiTitle">Оборот</div>
+<div class="kpiValue">₽ 487 000</div>
 </div>
 
-<div class="metric">
-<h3>Чистая прибыль</h3>
-<strong>291 000 ₽</strong>
+<div class="kpi">
+<div class="kpiTitle">Чистая прибыль</div>
+<div class="kpiValue">₽ 211 000</div>
 </div>
 
+<div class="kpi">
+<div class="kpiTitle">Средний чек</div>
+<div class="kpiValue">₽ 12 490</div>
+</div>
+
+<div class="kpi">
+<div class="kpiTitle">Средний чек с допами</div>
+<div class="kpiValue">₽ 15 920</div>
+</div>
+
+</div>
+
+<div class="pieWrap">
+
+<div class="pie">
+
+<div style="font-weight:800">
+Оборот
+</div>
+
+<div class="pieCircle"></div>
+
+<div class="legend">
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#2563eb"></div>
+<div>Проживание</div>
+</div>
+<div>52%</div>
+</div>
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#16a34a"></div>
+<div>Допы</div>
+</div>
+<div>24%</div>
+</div>
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#f97316"></div>
+<div>Прочее</div>
+</div>
+<div>24%</div>
+</div>
+
+</div>
+</div>
+
+<div class="pie">
+
+<div style="font-weight:800">
+Расходы
+</div>
+
+<div
+class="pieCircle"
+style="
+background:
+conic-gradient(
+#ef4444 0% 48%,
+#f59e0b 48% 72%,
+#22c55e 72% 100%
+);
+"
+></div>
+
+<div class="legend">
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#ef4444"></div>
+<div>Операционка</div>
+</div>
+<div>48%</div>
+</div>
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#f59e0b"></div>
+<div>Улучшения</div>
+</div>
+<div>24%</div>
+</div>
+
+<div class="legendRow">
+<div class="row">
+<div class="dot" style="background:#22c55e"></div>
+<div>Чистая прибыль</div>
+</div>
+<div>28%</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- AI -->
+
+<div id="aiPage" class="hide">
+
+<div class="sectionTitle">
+✨ AI Отчет
 </div>
 
 <div class="card">
 
-<div class="sectionTitle">Структура оборота</div>
-
-<div class="chart"></div>
+<div style="font-size:18px;font-weight:800">
+Рекомендации за месяц
+</div>
 
 <div style="height:14px"></div>
 
-<div class="small">
-🔵 Операционные расходы<br>
-🟢 Чистая прибыль<br>
-🟠 Улучшения объектов<br>
-⚪ Прочее
+<div class="expenseMeta">
+— Домик 2 показывает лучшую загрузку<br><br>
+— Расходы на маркетинг выросли на 18%<br><br>
+— Комиссии площадок занимают слишком большой процент<br><br>
+— Баня-бочка даёт лучшую окупаемость среди допов
 </div>
 
-</div>
+<textarea placeholder="AI комментарии..."></textarea>
 
-<div class="card">
-<div class="sectionTitle">Загрузка домиков</div>
-
-<div class="incomeRow">
-<span>🫒 Контейнер</span>
-<strong>78%</strong>
-</div>
-
-<div class="incomeRow">
-<span>💎 A-frame</span>
-<strong>83%</strong>
-</div>
-
-<div class="incomeRow">
-<span>🌲 Forest House</span>
-<strong>71%</strong>
-</div>
+<button
+class="btn btnBlue"
+style="width:100%;margin-top:16px"
+>
+Сгенерировать новый AI отчет
+</button>
 
 </div>
 
@@ -569,45 +860,54 @@ onmouseup="stopVoice()"
 
 <div id="settingsPage" class="hide">
 
-<div class="card">
+<div class="sectionTitle">
+⚙️ Настройки
+</div>
 
-<div class="sectionTitle">Настройки</div>
+<div class="settingsItem">
 
-<div class="settingRow">
+<div class="rowBetween">
 <div>
-<div><strong>👥 Персонал</strong></div>
-<div class="small">Управление сотрудниками</div>
+<div style="font-weight:700">
+Показывать AI аналитику
+</div>
+<div class="small">
+Автоматические советы по бизнесу
 </div>
 </div>
 
-<div class="settingRow">
+<div class="toggle"></div>
+
+</div>
+
+</div>
+
+<div class="settingsItem">
+
+<div class="rowBetween">
 <div>
-<div><strong>🤝 Партнеры</strong></div>
-<div class="small">Добавление партнеров</div>
+<div style="font-weight:700">
+Разрешить голосовой ввод
+</div>
+<div class="small">
+Запись расходов через микрофон
 </div>
 </div>
 
-<div class="settingRow">
-<div>
-<div><strong>📊 Аналитика</strong></div>
-<div class="small">Настройка графиков</div>
-</div>
+<div class="toggle"></div>
+
 </div>
 
-<div class="settingRow">
-<div>
-<div><strong>🏠 Домики</strong></div>
-<div class="small">Редактирование объектов</div>
-</div>
 </div>
 
-<div class="settingRow">
-<div>
-<div><strong>🔐 Сменить аккаунт</strong></div>
-<div class="small">Выйти из системы</div>
+<div class="settingsItem">
+
+<div style="font-weight:700">
+Партнеры / персонал
 </div>
 
-<button class="btn" onclick="logout()">Выйти</button>
+<div class="small" style="margin-top:8px">
+В будущем здесь будут сотрудники и роли
 </div>
 
 </div>
@@ -615,267 +915,212 @@ onmouseup="stopVoice()"
 </div>
 
 </div>
+
+<!-- НИЖНЕЕ МЕНЮ -->
 
 <div class="bottomNav">
 
-<button class="navBtn active" onclick="openPage('expensesPage',this)">
+<button class="navBtn active" onclick="showPage('expensesPage',this)">
 💸<br>Расход
 </button>
 
-<button class="navBtn" onclick="openPage('incomePage',this)">
+<button class="navBtn" onclick="showPage('incomePage',this)">
 💰<br>Доход
 </button>
 
-<button class="navBtn" onclick="openPage('analyticsPage',this)">
+<button class="navBtn" onclick="showPage('analyticsPage',this)">
 📊<br>Аналитика
 </button>
 
-<button class="navBtn" onclick="openPage('settingsPage',this)">
+<button class="navBtn" onclick="showPage('aiPage',this)">
+✨<br>AI
+</button>
+
+<button class="navBtn" onclick="showPage('settingsPage',this)">
 ⚙️<br>Настройки
 </button>
 
 </div>
 
-</div>
-
 <script>
 
-let selectedUser = "Владислав";
-let selectedPin = 1111;
+let selectedUser='Владислав';
 
-const expenses = [];
+const pins={
+'Владислав':'1111',
+'Дарья':'2222',
+'Юлия':'3333'
+};
 
-function selectUser(name,pin,el){
+function selectUser(name,el){
+
 selectedUser=name;
-selectedPin=pin;
 
-document.querySelectorAll(".userBtn").forEach(btn=>{
-btn.classList.remove("active");
-});
+document.querySelectorAll('.userBtn')
+.forEach(btn=>btn.classList.remove('active'));
 
-el.classList.add("active");
+el.classList.add('active');
+
 }
 
 function login(){
 
-const pin = document.getElementById("pinInput").value;
+const pin=document.getElementById('pinInput').value;
 
-if(pin == selectedPin){
+if(pin===pins[selectedUser]){
 
-localStorage.setItem("medvezhkiUser",selectedUser);
-
-document.getElementById("loginScreen").classList.add("hide");
-document.getElementById("app").classList.remove("hide");
+localStorage.setItem('medUser',selectedUser);
 
 startApp();
 
 }else{
-showToast("Неверный пин");
-}
+
+alert('Неверный пин');
 
 }
 
-function logout(){
-localStorage.removeItem("medvezhkiUser");
-location.reload();
 }
 
 function startApp(){
 
-const user = localStorage.getItem("medvezhkiUser");
+document.getElementById('loginScreen')
+.classList.add('hide');
 
-document.getElementById("currentUser").innerText=user;
+document.getElementById('app')
+.classList.remove('hide');
 
-document.getElementById("todayText").innerText=
-new Date().toLocaleDateString("ru-RU",{
-day:"numeric",
-month:"long",
-year:"numeric"
+const user=
+localStorage.getItem('medUser')||selectedUser;
+
+document.getElementById('currentUser')
+.innerText=user;
+
+document.getElementById('todayDate')
+.innerText=
+new Date().toLocaleDateString('ru-RU',{
+day:'numeric',
+month:'long',
+year:'numeric'
 });
 
-const paidBy = document.getElementById("paidBy");
+const paidSelect=
+document.getElementById('paidBy');
 
-if(user==="Владислав"){
-paidBy.value="Владислав";
+if(user==='Юлия'){
+paidSelect.value='Общий счет';
+}else{
+paidSelect.value=user;
 }
 
-if(user==="Даша"){
-paidBy.value="Даша";
 }
 
-if(user==="Юлия"){
-paidBy.value="Общий счет";
+function showPage(id,el){
+
+document.querySelectorAll(
+'#expensesPage,#incomePage,#analyticsPage,#aiPage,#settingsPage'
+).forEach(page=>page.classList.add('hide'));
+
+document.getElementById(id)
+.classList.remove('hide');
+
+document.querySelectorAll('.navBtn')
+.forEach(btn=>btn.classList.remove('active'));
+
+el.classList.add('active');
+
 }
 
-renderExpenses();
-}
+function saveExpense(){
 
-function openPage(id,btn){
+const name=
+document.getElementById('expenseName').value;
 
-document.querySelectorAll("#expensesPage,#incomePage,#analyticsPage,#settingsPage")
-.forEach(el=>el.classList.add("hide"));
+const amount=
+document.getElementById('expenseAmount').value;
 
-document.getElementById(id).classList.remove("hide");
-
-document.querySelectorAll(".navBtn")
-.forEach(el=>el.classList.remove("active"));
-
-btn.classList.add("active");
-}
-
-function addExpense(){
-
-const category=document.getElementById("category").value;
-const name=document.getElementById("expenseName").value;
-const amount=document.getElementById("expenseAmount").value;
-const paidBy=document.getElementById("paidBy").value;
-
-if(!name || !amount){
-showToast("Заполните поля");
+if(!name||!amount){
+alert('Заполните поля');
 return;
 }
 
-expenses.unshift({
-category,
-name,
-amount,
-paidBy,
-date:new Date().toLocaleString("ru-RU")
-});
+const list=
+document.getElementById('expensesList');
 
-renderExpenses();
+const div=document.createElement('div');
 
-document.getElementById("expenseName").value="";
-document.getElementById("expenseAmount").value="";
+div.className='expenseItem';
 
-showToast("Расход добавлен");
-}
-
-function renderExpenses(){
-
-const list=document.getElementById("expensesList");
-
-list.innerHTML="";
-
-expenses.forEach((item,index)=>{
-
-list.innerHTML += `
-<div class="expenseItem">
-
+div.innerHTML=`
 <div class="expenseTop">
-<div class="expenseName">${item.name}</div>
-<div><strong>${item.amount} ₽</strong></div>
+<div>
+<div class="expenseName">${name}</div>
+<div class="expenseMeta">
+${document.getElementById('expenseCategory').value}
+</div>
 </div>
 
-<div class="badge">${item.category}</div>
-
-<div style="height:8px"></div>
-
-<div class="small">
-${item.date} · Оплатил: ${item.paidBy}
+<div style="font-weight:800">
+₽ ${amount}
+</div>
 </div>
 
-<button class="editBtn" onclick="editExpense(${index})">
-✏️ Редактировать
+<div class="rowBetween" style="margin-top:10px">
+
+<div class="tag">
+👤 ${document.getElementById('paidBy').value}
+</div>
+
+<button
+class="btn btnGhost"
+onclick="editExpense(this)"
+>
+✏️
 </button>
 
 </div>
 `;
 
+list.prepend(div);
+
+document.getElementById('expenseName').value='';
+document.getElementById('expenseAmount').value='';
+
+}
+
+function editExpense(btn){
+
+const item=btn.closest('.expenseItem');
+
+const title=item.querySelector('.expenseName');
+
+const current=title.innerText;
+
+const edited=
+prompt('Редактировать расход',current);
+
+if(edited){
+title.innerText=edited;
+}
+
+}
+
+const voiceBtn=
+document.getElementById('voiceBtn');
+
+voiceBtn.addEventListener('touchstart',()=>{
+
+voiceBtn.classList.add('recording');
+
 });
 
-}
+voiceBtn.addEventListener('touchend',()=>{
 
-function editExpense(index){
+voiceBtn.classList.remove('recording');
 
-const item = expenses[index];
+});
 
-const newName = prompt("Редактировать описание",item.name);
-
-if(newName!==null){
-item.name=newName;
-renderExpenses();
-showToast("Расход обновлен");
-}
-
-}
-
-function showToast(text){
-
-const toast=document.getElementById("toast");
-
-toast.innerText=text;
-toast.style.display="block";
-
-setTimeout(()=>{
-toast.style.display="none";
-},2000);
-
-}
-
-let recognition;
-
-if('webkitSpeechRecognition' in window){
-
-recognition = new webkitSpeechRecognition();
-
-recognition.lang = 'ru-RU';
-recognition.continuous = false;
-recognition.interimResults = false;
-
-recognition.onresult = function(event){
-
-let text = event.results[0][0].transcript.toLowerCase();
-
-if(text.includes("интернет")){
-text="Оплата интернета";
-}
-
-if(text.includes("коммун")){
-text="Коммунальные услуги";
-}
-
-if(text.includes("зарплат")){
-text="Зарплата персоналу";
-}
-
-document.getElementById("expenseName").value=text;
-
-};
-
-}
-
-function startVoice(){
-
-const btn=document.getElementById("voiceBtn");
-
-btn.classList.add("recording");
-
-if(recognition){
-recognition.start();
-}
-
-}
-
-function stopVoice(){
-
-const btn=document.getElementById("voiceBtn");
-
-btn.classList.remove("recording");
-
-if(recognition){
-recognition.stop();
-}
-
-}
-
-if(localStorage.getItem("medvezhkiUser")){
-
-document.getElementById("loginScreen").classList.add("hide");
-document.getElementById("app").classList.remove("hide");
-
+if(localStorage.getItem('medUser')){
 startApp();
-
 }
 
 </script>
