@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Медвежки Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Medvezhki Dashboard</title>
 
 <style>
 
@@ -13,12 +14,10 @@
 --text:#0f172a;
 --muted:#7b8498;
 --blue:#2458ff;
---blue2:#0f1f52;
---line:#e7edf7;
 --green:#16a34a;
 --orange:#f59e0b;
 --red:#ef4444;
---radius:32px;
+--radius:30px;
 --shadow:0 18px 45px rgba(15,23,42,.06);
 }
 
@@ -29,45 +28,45 @@ box-sizing:border-box;
 
 body{
 margin:0;
-font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
 background:linear-gradient(180deg,#f7f9fd,#eef3fb);
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display",sans-serif;
 color:var(--text);
 padding-bottom:120px;
-}
-
-.wrap{
-max-width:1100px;
-margin:0 auto;
-padding:22px;
 }
 
 .hide{
 display:none!important;
 }
 
-.top{
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:22px;
+}
+
+.topbar{
 display:flex;
 justify-content:space-between;
 align-items:flex-start;
 margin-bottom:24px;
 }
 
-.brand{
-font-size:56px;
+.logo{
+font-size:54px;
 font-weight:800;
 letter-spacing:-2px;
 line-height:1;
 }
 
 .sub{
-margin-top:8px;
+margin-top:6px;
 color:var(--muted);
-font-size:18px;
+font-size:16px;
 }
 
-.user{
+.userBadge{
 background:#fff;
-padding:14px 22px;
+padding:14px 20px;
 border-radius:999px;
 font-weight:700;
 box-shadow:var(--shadow);
@@ -76,15 +75,16 @@ box-shadow:var(--shadow);
 .card{
 background:#fff;
 border-radius:var(--radius);
-padding:24px;
+padding:26px;
 box-shadow:var(--shadow);
-margin-bottom:20px;
+margin-bottom:22px;
 }
 
-.title{
-font-size:40px;
+.sectionTitle{
+font-size:34px;
 font-weight:800;
 margin-bottom:24px;
+letter-spacing:-1px;
 }
 
 .grid2{
@@ -93,15 +93,13 @@ grid-template-columns:1fr 1fr;
 gap:18px;
 }
 
-.input,
-select,
-textarea{
+input,select,textarea{
 width:100%;
 border:none;
 background:#f2f5fb;
-padding:20px;
-border-radius:22px;
-font-size:20px;
+padding:18px;
+border-radius:20px;
+font-size:18px;
 outline:none;
 }
 
@@ -114,86 +112,11 @@ resize:none;
 border:none;
 background:var(--blue);
 color:#fff;
-padding:18px 28px;
+padding:18px;
 border-radius:22px;
-font-size:20px;
+font-size:18px;
 font-weight:700;
-cursor:pointer;
-}
-
-.btnDark{
-background:var(--blue2);
-}
-
-.voiceWrap{
-display:flex;
-justify-content:center;
-margin:28px 0;
-}
-
-.voiceBtn{
-width:110px;
-height:110px;
-border-radius:50%;
-background:linear-gradient(135deg,#2b67ff,#1f46cc);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:42px;
-color:#fff;
-box-shadow:0 20px 50px rgba(37,88,255,.35);
-animation:pulse 2s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.06)}
-100%{transform:scale(1)}
-}
-
-.historyItem{
-padding:18px 0;
-border-bottom:1px solid var(--line);
-display:flex;
-justify-content:space-between;
-gap:14px;
-}
-
-.historyLeft{
-display:flex;
-flex-direction:column;
-gap:6px;
-}
-
-.historyTitle{
-font-size:22px;
-font-weight:700;
-}
-
-.historyMeta{
-font-size:16px;
-color:var(--muted);
-}
-
-.historyRight{
-display:flex;
-align-items:center;
-gap:14px;
-}
-
-.editBtn{
-border:none;
-background:#eff4ff;
-padding:10px 14px;
-border-radius:14px;
-font-size:15px;
-font-weight:700;
-color:var(--blue);
-}
-
-.money{
-font-size:24px;
-font-weight:800;
+width:100%;
 }
 
 .bottomNav{
@@ -203,10 +126,10 @@ transform:translateX(-50%);
 bottom:18px;
 width:min(920px,calc(100% - 24px));
 background:#fff;
-border-radius:34px;
-display:flex;
-justify-content:space-around;
 padding:14px;
+border-radius:32px;
+display:flex;
+gap:10px;
 box-shadow:0 20px 50px rgba(15,23,42,.12);
 z-index:999;
 }
@@ -215,15 +138,15 @@ z-index:999;
 flex:1;
 border:none;
 background:transparent;
-padding:16px 10px;
-border-radius:24px;
-font-size:18px;
+padding:16px 8px;
+border-radius:22px;
+font-size:15px;
 font-weight:700;
 color:#6c7488;
 }
 
 .navBtn.active{
-background:var(--blue2);
+background:#101828;
 color:#fff;
 }
 
@@ -234,279 +157,242 @@ gap:18px;
 margin-bottom:22px;
 }
 
-.kpiCard{
+.kpi{
 background:#fff;
-border-radius:34px;
-padding:28px;
+padding:24px;
+border-radius:30px;
 box-shadow:var(--shadow);
 }
 
+.kpiTop{
+display:flex;
+justify-content:space-between;
+margin-bottom:14px;
+}
+
 .kpiName{
-font-size:16px;
-color:#7b8498;
-margin-bottom:12px;
+font-size:14px;
+color:var(--muted);
 }
 
-.kpiValue{
-font-size:54px;
-font-weight:800;
-line-height:1;
-letter-spacing:-2px;
-}
-
-.kpiGrow{
-margin-top:14px;
-font-size:18px;
+.kpiPercent{
+font-size:14px;
 font-weight:700;
 }
 
-.green{color:#16a34a}
-.orange{color:#f59e0b}
+.kpiValue{
+font-size:42px;
+font-weight:800;
+letter-spacing:-1px;
+white-space:nowrap;
+}
+
+.green{
+color:var(--green);
+}
+
+.orange{
+color:var(--orange);
+}
+
+.red{
+color:var(--red);
+}
 
 .aiSummary{
 background:linear-gradient(135deg,#07153d,#13275d);
-border-radius:38px;
 padding:34px;
+border-radius:34px;
 color:#fff;
 margin-bottom:22px;
 }
 
-.aiSummaryTitle{
-font-size:42px;
+.aiTitle{
+font-size:36px;
 font-weight:800;
 margin-bottom:24px;
 }
 
 .aiLine{
-font-size:23px;
-margin-bottom:18px;
+font-size:18px;
+margin-bottom:16px;
 }
 
-.analyticsBlock{
+.analyticsCard{
 background:#fff;
-border-radius:38px;
-padding:32px;
-margin-bottom:22px;
+padding:30px;
+border-radius:34px;
 box-shadow:var(--shadow);
+margin-bottom:22px;
 }
 
-.blockTitle{
-font-size:38px;
+.analyticsTitle{
+font-size:30px;
 font-weight:800;
 margin-bottom:24px;
 }
 
-.lineChart{
-height:280px;
-background:#f4f7fd;
-border-radius:28px;
-overflow:hidden;
-}
-
-.lineChart svg{
-width:100%;
-height:100%;
-}
-
-.pieWrap{
+.ringWrap{
 display:flex;
 gap:40px;
 align-items:center;
+flex-wrap:wrap;
 }
 
-.pie{
-width:260px;
-height:260px;
+.ring{
+width:240px;
+height:240px;
 border-radius:50%;
 background:
 conic-gradient(
-#2458ff 0% 32%,
-#22c55e 32% 76%,
+#2458ff 0% 34%,
+#16a34a 34% 76%,
 #f59e0b 76% 94%,
 #d6dbe7 94% 100%
 );
+position:relative;
+}
+
+.ring::before{
+content:'';
+position:absolute;
+inset:30px;
+background:#fff;
+border-radius:50%;
+}
+
+.ringCenter{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:2;
+}
+
+.ringBig{
+font-size:42px;
+font-weight:800;
 }
 
 .legend{
 display:flex;
 flex-direction:column;
 gap:14px;
-font-size:21px;
+font-size:18px;
 }
 
 .legendRow{
 display:flex;
 align-items:center;
-gap:12px;
+gap:10px;
 }
 
 .dot{
-width:16px;
-height:16px;
+width:14px;
+height:14px;
 border-radius:50%;
 }
 
 .dot.blue{background:#2458ff}
-.dot.green{background:#22c55e}
+.dot.green{background:#16a34a}
 .dot.orange{background:#f59e0b}
 .dot.gray{background:#d6dbe7}
 
-.hotelRow,
-.channelRow,
-.serviceRow{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:18px 0;
-font-size:24px;
-}
-
-.progress{
-height:16px;
+.bar{
+height:14px;
 background:#edf2ff;
 border-radius:999px;
 overflow:hidden;
 margin-bottom:24px;
 }
 
-.progress div{
+.bar div{
 height:100%;
-background:linear-gradient(90deg,#2458ff,#5e87ff);
+background:linear-gradient(90deg,#2458ff,#7aa2ff);
 }
 
-.problem{
-padding:22px;
-border-radius:22px;
-margin-bottom:14px;
-font-size:21px;
-font-weight:700;
-}
-
-.problem.red{
-background:#fef2f2;
-color:#b91c1c;
-}
-
-.problem.orange{
-background:#fff7ed;
-color:#c2410c;
-}
-
-.problem.blue{
-background:#eff6ff;
-color:#1d4ed8;
+.rowItem{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
+font-size:20px;
+font-weight:600;
 }
 
 .upload{
-border:2px dashed #d8e0ef;
+border:2px dashed #d8deec;
 border-radius:28px;
 padding:46px;
 text-align:center;
 background:#f9fbff;
 }
 
+.upload input{
+display:none;
+}
+
 .uploadIcon{
-font-size:68px;
+font-size:64px;
 margin-bottom:18px;
 }
 
 .uploadTitle{
-font-size:28px;
+font-size:26px;
 font-weight:800;
 margin-bottom:8px;
 }
 
-.uploadSub{
-font-size:18px;
-color:var(--muted);
-}
-
-.settingRow{
+.filters{
 display:flex;
-justify-content:space-between;
-align-items:center;
-padding:20px 0;
-border-bottom:1px solid var(--line);
+gap:12px;
+flex-wrap:wrap;
+margin-bottom:24px;
 }
 
-.settingName{
-font-size:24px;
-font-weight:700;
-}
-
-.settingSub{
-font-size:17px;
-color:var(--muted);
-margin-top:4px;
-}
-
-.logout{
-border:none;
-background:#eef3ff;
-padding:16px 24px;
+.filter{
+background:#fff;
+padding:14px 18px;
 border-radius:18px;
-font-size:20px;
+box-shadow:var(--shadow);
 font-weight:700;
-color:var(--blue);
 }
 
 @media(max-width:900px){
 
-.brand{
-font-size:34px;
-}
-
-.title{
-font-size:28px;
-}
-
 .kpiGrid{
-grid-template-columns:1fr;
+grid-template-columns:1fr 1fr;
 }
 
 .kpiValue{
-font-size:42px;
+font-size:32px;
 }
 
-.aiSummaryTitle{
-font-size:30px;
+.logo{
+font-size:34px;
 }
 
-.aiLine{
-font-size:18px;
+.sectionTitle{
+font-size:26px;
 }
 
-.blockTitle{
+.analyticsTitle{
+font-size:24px;
+}
+
+.aiTitle{
 font-size:28px;
 }
 
-.pieWrap{
-flex-direction:column;
-align-items:flex-start;
+.ring{
+width:190px;
+height:190px;
 }
 
-.pie{
-width:210px;
-height:210px;
-}
-
-.legend{
-font-size:16px;
-}
-
-.hotelRow,
-.channelRow,
-.serviceRow{
-font-size:18px;
-}
-
-.bottomNav{
-border-radius:28px;
-}
-
-.navBtn{
-font-size:15px;
-padding:14px 8px;
+.ringBig{
+font-size:32px;
 }
 
 }
@@ -518,17 +404,18 @@ padding:14px 8px;
 
 <div class="wrap">
 
-<div class="top">
+<div class="topbar">
+
 <div>
-<div class="brand">Медвежки</div>
-<div class="sub">AI Dashboard • Май 2026</div>
+<div class="logo">Медвежки</div>
+<div class="sub">AI ERP Dashboard • Май 2026</div>
 </div>
 
-<div class="user">
+<div class="userBadge">
 Владислав
 </div>
-</div>
 
+</div>
 
 <!-- РАСХОД -->
 
@@ -536,34 +423,25 @@ padding:14px 8px;
 
 <div class="card">
 
-<div class="title">
+<div class="sectionTitle">
 Добавить расход
 </div>
 
 <div class="grid2">
 
 <div>
-<div class="sub" style="margin-bottom:10px">Категория</div>
-
 <select>
-<option>🤝 Допы персоналу</option>
-<option>⚡ Коммуналка</option>
 <option>📡 Интернет</option>
 <option>🗑 Вывоз мусора</option>
-<option>📦 Закупки</option>
-<option>👷 Ремонт / обслуживание</option>
-<option>💲 Маркетинг</option>
-<option>💯 Комиссии площадок</option>
-<option>💸 Налоги</option>
 <option>💰 Зарплаты</option>
-<option>🏦 Ипотека</option>
+<option>⚡ Коммуналка</option>
+<option>📦 Закупки</option>
+<option>👷 Ремонт</option>
 <option>📁 Прочее</option>
 </select>
 </div>
 
 <div>
-<div class="sub" style="margin-bottom:10px">Оплатил</div>
-
 <select>
 <option>Владислав</option>
 <option>Даша</option>
@@ -576,21 +454,13 @@ padding:14px 8px;
 
 <div style="height:16px"></div>
 
-<div class="sub" style="margin-bottom:10px">Описание</div>
-
-<textarea placeholder="Например: Starlink за май"></textarea>
+<textarea placeholder="Описание расхода"></textarea>
 
 <div style="height:16px"></div>
 
-<div class="sub" style="margin-bottom:10px">Сумма</div>
+<input placeholder="Сумма ₽">
 
-<input class="input" placeholder="₽" />
-
-<div class="voiceWrap">
-<div class="voiceBtn">
-🎙
-</div>
-</div>
+<div style="height:22px"></div>
 
 <button class="btn">
 Добавить расход
@@ -598,67 +468,7 @@ padding:14px 8px;
 
 </div>
 
-
-<div class="card">
-
-<div class="title">
-История расходов
-</div>
-
-<div class="historyItem">
-
-<div class="historyLeft">
-<div class="historyTitle">
-📡 Интернет Starlink
-</div>
-
-<div class="historyMeta">
-Владислав • Сегодня
-</div>
-</div>
-
-<div class="historyRight">
-<div class="money">
-5 400 ₽
-</div>
-
-<button class="editBtn">
-✏️
-</button>
-</div>
-
-</div>
-
-
-<div class="historyItem">
-
-<div class="historyLeft">
-<div class="historyTitle">
-👷 Обслуживание чана
-</div>
-
-<div class="historyMeta">
-Общий счет • Вчера
-</div>
-</div>
-
-<div class="historyRight">
-<div class="money">
-12 000 ₽
-</div>
-
-<button class="editBtn">
-✏️
-</button>
-</div>
-
-</div>
-
-</div>
-
 </section>
-
-
 
 <!-- ДОХОД -->
 
@@ -666,134 +476,150 @@ padding:14px 8px;
 
 <div class="card">
 
-<div class="title">
+<div class="sectionTitle">
 🫒 Оливковый контейнер
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>🏠 Проживание</div>
-<strong>145 000 ₽</strong>
+<div>145 000 ₽</div>
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>🛁 Баня-бочка</div>
-<strong>32 000 ₽</strong>
+<div>32 000 ₽</div>
 </div>
 
-<div class="serviceRow">
-<div>🔥 Баня-бочка + чан</div>
-<strong>48 000 ₽</strong>
+<div class="rowItem">
+<div>🔥 Баня + чан</div>
+<div>48 000 ₽</div>
 </div>
 
 </div>
-
-
 
 <div class="card">
 
-<div class="title">
+<div class="sectionTitle">
 💎 Бирюзовый A-frame
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>🏠 Проживание</div>
-<strong>192 000 ₽</strong>
+<div>192 000 ₽</div>
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>🧖 Сауна</div>
-<strong>41 000 ₽</strong>
+<div>41 000 ₽</div>
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>♨️ Сауна + чан</div>
-<strong>55 000 ₽</strong>
-</div>
-
-</div>
-
-
-
-<div class="card">
-
-<div class="title">
-🌲 Forest House
-</div>
-
-<div class="serviceRow">
-<div>🏠 Проживание</div>
-<strong>201 000 ₽</strong>
-</div>
-
-<div class="serviceRow">
-<div>🧖 Сауна</div>
-<strong>38 000 ₽</strong>
-</div>
-
-<div class="serviceRow">
-<div>♨️ Сауна + чан</div>
-<strong>47 000 ₽</strong>
+<div>55 000 ₽</div>
 </div>
 
 </div>
 
 </section>
 
-
-
 <!-- АНАЛИТИКА -->
 
 <section id="analyticsTab" class="hide">
 
+<div class="filters">
+
+<div class="filter">
+📅 Май 2026
+</div>
+
+<div class="filter">
+🏠 Все домики
+</div>
+
+<div class="filter">
+📊 Все показатели
+</div>
+
+</div>
+
 <div class="kpiGrid">
 
-<div class="kpiCard">
+<div class="kpi">
+<div class="kpiTop">
 <div class="kpiName">Оборот</div>
-<div class="kpiValue">538 000 ₽</div>
-<div class="kpiGrow green">↑ +12%</div>
+<div class="kpiPercent green">+12%</div>
 </div>
 
-<div class="kpiCard">
-<div class="kpiName">Чистая прибыль</div>
-<div class="kpiValue">291 000 ₽</div>
-<div class="kpiGrow green">↑ +7%</div>
+<div class="kpiValue">
+538k ₽
+</div>
 </div>
 
-<div class="kpiCard">
+<div class="kpi">
+<div class="kpiTop">
+<div class="kpiName">Прибыль</div>
+<div class="kpiPercent green">+7%</div>
+</div>
+
+<div class="kpiValue">
+291k ₽
+</div>
+</div>
+
+<div class="kpi">
+<div class="kpiTop">
 <div class="kpiName">Загрузка</div>
-<div class="kpiValue">78%</div>
-<div class="kpiGrow orange">↓ -2%</div>
+<div class="kpiPercent orange">-2%</div>
 </div>
 
-<div class="kpiCard">
+<div class="kpiValue">
+78%
+</div>
+</div>
+
+<div class="kpi">
+<div class="kpiTop">
 <div class="kpiName">ADR</div>
-<div class="kpiValue">14 900 ₽</div>
-<div class="kpiGrow green">↑ +5%</div>
+<div class="kpiPercent green">+5%</div>
 </div>
 
-<div class="kpiCard">
+<div class="kpiValue">
+14.9k ₽
+</div>
+</div>
+
+<div class="kpi">
+<div class="kpiTop">
 <div class="kpiName">RevPAR</div>
-<div class="kpiValue">11 620 ₽</div>
-<div class="kpiGrow green">↑ +4%</div>
+<div class="kpiPercent green">+4%</div>
 </div>
 
-<div class="kpiCard">
+<div class="kpiValue">
+11.6k ₽
+</div>
+</div>
+
+<div class="kpi">
+<div class="kpiTop">
 <div class="kpiName">Средний чек</div>
-<div class="kpiValue">12 430 ₽</div>
-<div class="kpiGrow green">↑ +9%</div>
+<div class="kpiPercent green">+9%</div>
+</div>
+
+<div class="kpiValue">
+12.4k ₽
+</div>
 </div>
 
 </div>
-
 
 <div class="aiSummary">
 
-<div class="aiSummaryTitle">
-AI Summary
+<div class="aiTitle">
+✨ AI Summary
 </div>
 
 <div class="aiLine">
-✨ Загрузка A-frame выросла на 11%
+✅ A-frame вырос на 11%
 </div>
 
 <div class="aiLine">
@@ -805,72 +631,49 @@ AI Summary
 </div>
 
 <div class="aiLine">
-💡 AI рекомендует повысить цену выходных
+💡 AI рекомендует повысить цены на выходные
 </div>
 
 </div>
 
+<div class="analyticsCard">
 
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Динамика оборота
+<div class="analyticsTitle">
+💰 Структура прибыли
 </div>
 
-<div class="lineChart">
+<div class="ringWrap">
 
-<svg viewBox="0 0 1000 260" preserveAspectRatio="none">
+<div class="ring">
 
-<path d="
-M0,210
-C120,190 170,180 250,150
-C330,120 390,130 470,100
-C550,70 620,80 700,60
-C790,40 850,10 1000,20"
-fill="none"
-stroke="#4f7cff"
-stroke-width="10"
-stroke-linecap="round"/>
-
-</svg>
-
+<div class="ringCenter">
+<div class="ringBig">
+538k
+</div>
 </div>
 
 </div>
-
-
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Структура прибыли
-</div>
-
-<div class="pieWrap">
-
-<div class="pie"></div>
 
 <div class="legend">
 
 <div class="legendRow">
 <div class="dot blue"></div>
-<span>Операционные расходы — 32%</span>
+<div>Операционные — 32%</div>
 </div>
 
 <div class="legendRow">
 <div class="dot green"></div>
-<span>Чистая прибыль — 46%</span>
+<div>Чистая прибыль — 46%</div>
 </div>
 
 <div class="legendRow">
 <div class="dot orange"></div>
-<span>Улучшения объектов — 18%</span>
+<div>Улучшения — 18%</div>
 </div>
 
 <div class="legendRow">
 <div class="dot gray"></div>
-<span>Прочее — 4%</span>
+<div>Прочее — 4%</div>
 </div>
 
 </div>
@@ -879,183 +682,94 @@ stroke-linecap="round"/>
 
 </div>
 
+<div class="analyticsCard">
 
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Доход по объектам
+<div class="analyticsTitle">
+🏠 Доход по объектам
 </div>
 
-<div class="hotelRow">
+<div class="rowItem">
 <div>🫒 Контейнер</div>
-<strong>225 000 ₽</strong>
+<div>225 000 ₽</div>
 </div>
 
-<div class="progress">
+<div class="bar">
 <div style="width:78%"></div>
 </div>
 
-<div class="hotelRow">
+<div class="rowItem">
 <div>💎 A-frame</div>
-<strong>192 000 ₽</strong>
+<div>192 000 ₽</div>
 </div>
 
-<div class="progress">
+<div class="bar">
 <div style="width:83%"></div>
 </div>
 
-<div class="hotelRow">
-<div>🌲 Forest House</div>
-<strong>121 000 ₽</strong>
+<div class="rowItem">
+<div>🧡 Forest House</div>
+<div>121 000 ₽</div>
 </div>
 
-<div class="progress">
+<div class="bar">
 <div style="width:71%"></div>
 </div>
 
 </div>
 
+<div class="analyticsCard">
 
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Допуслуги
+<div class="analyticsTitle">
+🔥 Допуслуги
 </div>
 
-<div class="serviceRow">
+<div class="rowItem">
 <div>🔥 Чан</div>
-<strong>87 000 ₽</strong>
+<div>87 000 ₽</div>
 </div>
 
-<div class="serviceRow">
-<div>🧖 Сауна</div>
-<strong>55 000 ₽</strong>
+<div class="bar">
+<div style="width:82%"></div>
 </div>
 
-<div class="serviceRow">
-<div>🛁 Баня-бочка</div>
-<strong>48 000 ₽</strong>
+<div class="rowItem">
+<div>🧖 Сауна / Баня</div>
+<div>55 000 ₽</div>
 </div>
 
-</div>
-
-
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Каналы бронирования
-</div>
-
-<div class="channelRow">
-<div>🟢 Avito</div>
-<strong>71%</strong>
-</div>
-
-<div class="channelRow">
-<div>🔵 Airbnb</div>
-<strong>14%</strong>
-</div>
-
-<div class="channelRow">
-<div>🟣 Telegram</div>
-<strong>9%</strong>
-</div>
-
-<div class="channelRow">
-<div>⚪️ Сайт</div>
-<strong>6%</strong>
+<div class="bar">
+<div style="width:54%"></div>
 </div>
 
 </div>
 
+<div class="analyticsCard">
 
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-AI Прогноз
+<div class="analyticsTitle">
+📂 Импорт Binov
 </div>
 
-<div style="
-background:linear-gradient(135deg,#eef5ff,#dfeaff);
-padding:30px;
-border-radius:26px;
-">
+<label class="upload">
 
-<div style="
-font-size:68px;
-font-weight:800;
-line-height:1;
-margin-bottom:14px;
-">
-612 000 ₽
-</div>
-
-<div style="
-font-size:22px;
-color:#647089;
-">
-Прогнозируемый оборот на июнь
-</div>
-
-</div>
-
-</div>
-
-
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Проблемные зоны
-</div>
-
-<div class="problem red">
-⚠️ Высокие расходы на обслуживание контейнера
-</div>
-
-<div class="problem orange">
-⚠️ Падение загрузки по будням
-</div>
-
-<div class="problem blue">
-💡 AI рекомендует увеличить стоимость выходных
-</div>
-
-</div>
-
-
-
-<div class="analyticsBlock">
-
-<div class="blockTitle">
-Импорт Binov
-</div>
-
-<div class="upload">
+<input type="file" accept=".xlsx,.xls">
 
 <div class="uploadIcon">
-📂
+📁
 </div>
 
 <div class="uploadTitle">
-Загрузить Excel отчет
+Загрузить Excel
 </div>
 
-<div class="uploadSub">
-AI автоматически распределит показатели
+<div class="sub">
+AI автоматически обработает отчет
 </div>
 
-</div>
+</label>
 
 </div>
 
 </section>
-
-
 
 <!-- AI -->
 
@@ -1063,35 +777,25 @@ AI автоматически распределит показатели
 
 <div class="card">
 
-<div class="title">
+<div class="sectionTitle">
 ✨ AI Центр
 </div>
 
 <div class="aiLine">
-— Контейнер просел из-за слабых будней
+— Telegram даёт лучший средний чек
 </div>
 
 <div class="aiLine">
-— Сауна приносит больше прибыли чем баня-бочка
+— Forest House показывает лучшую маржинальность
 </div>
 
 <div class="aiLine">
-— Лучше всего заходит чан в пятницу и субботу
-</div>
-
-<div class="aiLine">
-— AI рекомендует поднять цены на июнь на 8%
-</div>
-
-<div class="aiLine">
-— Avito приносит 71% всех броней
+— AI рекомендует поднять цены июня
 </div>
 
 </div>
 
 </section>
-
-
 
 <!-- НАСТРОЙКИ -->
 
@@ -1099,77 +803,24 @@ AI автоматически распределит показатели
 
 <div class="card">
 
-<div class="title">
+<div class="sectionTitle">
 Настройки
 </div>
 
-<div class="settingRow">
-<div>
-<div class="settingName">
-👥 Персонал
+<div class="rowItem">
+<div>👥 Персонал</div>
 </div>
 
-<div class="settingSub">
-Управление сотрудниками
-</div>
-</div>
+<div class="rowItem">
+<div>🏠 Домики</div>
 </div>
 
-
-<div class="settingRow">
-<div>
-<div class="settingName">
-🤝 Партнеры
+<div class="rowItem">
+<div>📊 Аналитика</div>
 </div>
 
-<div class="settingSub">
-Добавление партнеров
-</div>
-</div>
-</div>
-
-
-<div class="settingRow">
-<div>
-<div class="settingName">
-📊 Аналитика
-</div>
-
-<div class="settingSub">
-Настройка графиков
-</div>
-</div>
-</div>
-
-
-<div class="settingRow">
-<div>
-<div class="settingName">
-🏠 Домики
-</div>
-
-<div class="settingSub">
-Редактирование объектов
-</div>
-</div>
-</div>
-
-
-<div class="settingRow">
-<div>
-<div class="settingName">
-🔐 Сменить аккаунт
-</div>
-
-<div class="settingSub">
-Выйти из системы
-</div>
-</div>
-
-<button class="logout">
-Выйти
-</button>
-
+<div class="rowItem">
+<div>🤝 Партнеры</div>
 </div>
 
 </div>
@@ -1178,9 +829,7 @@ AI автоматически распределит показатели
 
 </div>
 
-
-
-<!-- НИЖНЕЕ МЕНЮ -->
+<!-- НАВИГАЦИЯ -->
 
 <div class="bottomNav">
 
@@ -1205,8 +854,6 @@ AI автоматически распределит показатели
 </button>
 
 </div>
-
-
 
 <script>
 
