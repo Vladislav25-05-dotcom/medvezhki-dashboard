@@ -2,93 +2,132 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>Медвежки Dashboard</title>
+
 <style>
 :root{
---bg:#f5f7fb;--card:#fff;--text:#0f172a;--muted:#7b8498;--line:#e7edf7;
---blue:#2563ff;--blue2:#07153d;--green:#16a34a;--orange:#f59e0b;--red:#ef4444;
---shadow:0 18px 45px rgba(15,23,42,.07);--r:30px;
+--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#7b8498;--line:#e8edf6;
+--blue:#2563ff;--cyan:#15a8ff;--green:#16a34a;--orange:#f59e0b;--yellow:#f7c948;--red:#ef4444;--dark:#07153d;
+--shadow:0 18px 45px rgba(15,23,42,.07);--r:32px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:linear-gradient(180deg,#f8faff,#eef3fb);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);padding-bottom:125px}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#f9fbff,#eef3fb);color:var(--text);padding-bottom:125px}
 .hide{display:none!important}
 .wrap{max-width:1120px;margin:auto;padding:22px}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:24px}
-.brand{font-size:46px;font-weight:850;letter-spacing:-2px;line-height:1}
-.sub{font-size:16px;color:var(--muted);margin-top:7px}
+.brand{font-size:46px;font-weight:900;letter-spacing:-2px;line-height:1}
+.sub{color:var(--muted);font-size:16px;margin-top:7px}
 .user{background:#fff;padding:13px 20px;border-radius:999px;font-weight:800;box-shadow:var(--shadow)}
-.card{background:#fff;border-radius:var(--r);padding:26px;box-shadow:var(--shadow);margin-bottom:20px}
-.title{font-size:34px;font-weight:850;letter-spacing:-1px;margin-bottom:22px}
+.card,.aCard{background:#fff;border-radius:var(--r);padding:26px;box-shadow:var(--shadow);margin-bottom:20px}
+.title{font-size:34px;font-weight:900;letter-spacing:-1px;margin-bottom:22px}
 .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 input,select,textarea{width:100%;border:0;background:#f2f5fb;padding:17px;border-radius:21px;font-size:18px;outline:none}
 textarea{min-height:105px;resize:none}
 .btn{border:0;background:var(--blue);color:#fff;padding:17px 24px;border-radius:21px;font-size:18px;font-weight:800;cursor:pointer}
 .btnSoft{background:#eef4ff;color:var(--blue)}
-.bottomNav{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(940px,calc(100% - 22px));background:rgba(255,255,255,.94);backdrop-filter:blur(24px);border-radius:32px;display:flex;gap:8px;padding:10px;box-shadow:0 20px 55px rgba(15,23,42,.14);z-index:999}
+.bottomNav{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(940px,calc(100% - 22px));background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border-radius:32px;display:flex;gap:8px;padding:10px;box-shadow:0 20px 55px rgba(15,23,42,.14);z-index:999}
 .navBtn{flex:1;border:0;background:transparent;padding:13px 6px;border-radius:23px;font-size:13px;font-weight:850;color:#6c7488;cursor:pointer}
 .navBtn.active{background:#101b3f;color:#fff}
-.ico{width:22px;height:22px;display:block;margin:0 auto 5px;stroke:currentColor;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.historyItem{display:flex;justify-content:space-between;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
-.historyTitle{font-size:20px;font-weight:800}.historyMeta{font-size:14px;color:var(--muted);margin-top:5px}.money{font-size:22px;font-weight:850;white-space:nowrap}
+.ico{width:22px;height:22px;stroke:currentColor;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 5px}
+.historyItem,.serviceRow,.settingRow{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.historyTitle{font-size:20px;font-weight:800}.historyMeta{font-size:14px;color:var(--muted);margin-top:5px}
+.money{font-size:22px;font-weight:900;white-space:nowrap}
 .editBtn{border:0;background:#eff4ff;color:var(--blue);padding:9px 13px;border-radius:13px;font-weight:800}
 .voiceWrap{display:flex;justify-content:center;margin:24px 0}
 .voiceBtn{width:104px;height:104px;border-radius:50%;border:0;background:linear-gradient(135deg,#2b67ff,#1f46cc);font-size:42px;color:#fff;box-shadow:0 20px 50px rgba(37,88,255,.34)}
 .voiceBtn.recording{animation:pulse .9s infinite}
 @keyframes pulse{50%{transform:scale(1.08)}}
-.serviceRow,.settingRow{display:flex;justify-content:space-between;align-items:center;padding:17px 0;border-bottom:1px solid var(--line);font-size:21px}
+
+/* AUTH */
 .login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
 .loginBox{max-width:460px;width:100%;background:#fff;border-radius:36px;padding:28px;box-shadow:var(--shadow)}
-.userGrid{display:flex;gap:10px;margin:18px 0}.userBtn{flex:1;border:0;padding:14px;border-radius:17px;background:#eef2f8;font-weight:800}.userBtn.active{background:#101b3f;color:white}
+.userGrid{display:flex;gap:10px;margin:18px 0}
+.userBtn{flex:1;border:0;padding:14px;border-radius:17px;background:#eef2f8;font-weight:800}
+.userBtn.active{background:#101b3f;color:white}
 
 /* ANALYTICS */
-.analyticsHero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:22px}
-.analyticsTitle{font-size:52px;font-weight:850;letter-spacing:-2px;line-height:1}.analyticsSub{font-size:15px;color:#8a94a8;margin-bottom:7px}
-.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
-.filterSelect{width:auto;background:#fff;box-shadow:0 10px 35px rgba(15,23,42,.05);font-size:15px;font-weight:750;padding:15px 17px}
+.aHero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:24px}
+.aTitle{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}
+.aSub{font-size:15px;color:#8a94a8;margin-bottom:7px}
+.filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
+.filter{background:#fff;box-shadow:var(--shadow);font-size:15px;font-weight:800;padding:15px 17px;border-radius:21px;border:0}
+.applyFilters{width:100%;margin-bottom:22px;background:#101b3f}
 .kpiGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
 .kpi{background:#fff;border-radius:30px;padding:23px;box-shadow:var(--shadow)}
-.kpiTop{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:14px}
-.kpiName{font-size:14px;color:#8a94a8}.kpiPct{font-size:14px;font-weight:850;white-space:nowrap}
-.kpiVal{font-size:clamp(25px,3.4vw,40px);font-weight:900;letter-spacing:-1.4px;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.kpiBot{font-size:13px;color:#8a94a8;margin-top:10px}.green{color:var(--green)}.orange{color:var(--orange)}.red{color:var(--red)}
+.kpiTop{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
+.kpiName{font-size:14px;color:#8a94a8}
+.kpiPct{font-size:14px;font-weight:900;white-space:nowrap}
+.kpiVal{font-size:clamp(25px,3.4vw,40px);font-weight:950;letter-spacing:-1.4px;line-height:1;white-space:nowrap}
+.kpiBot{font-size:13px;color:#8a94a8;margin-top:10px}
+.green{color:var(--green)}.orange{color:var(--orange)}.red{color:var(--red)}
+.aCardTitle{font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:24px}
+.ringWrap{display:flex;gap:38px;align-items:center;flex-wrap:wrap}
+.ring{width:250px;height:250px;border-radius:50%;background:conic-gradient(from 10deg,#2563ff 0 30%,transparent 30% 34%,#16a34a 34% 74%,transparent 74% 78%,#f7c948 78% 92%,transparent 92% 96%,#d7dce7 96% 100%);position:relative;filter:drop-shadow(0 20px 35px rgba(36,88,255,.12))}
+.ring:before{content:"";position:absolute;inset:48px;background:#fff;border-radius:50%;box-shadow:inset 0 0 20px rgba(15,23,42,.05)}
+.ringCenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2}
+.ringBig{font-size:38px;font-weight:950}.ringSmall{font-size:14px;color:#8a94a8}
+.legend{display:flex;flex-direction:column;gap:14px;font-size:18px}
+.legendItem{display:flex;gap:12px;align-items:center}
+.dot{width:15px;height:15px;border-radius:50%}
+.b{background:#2563ff}.g{background:#16a34a}.y{background:#f7c948}.gr{background:#d7dce7}
+.objectCard{padding:23px;border-radius:28px;margin-bottom:16px}
+.olive{background:#f6fbf2}.cyan{background:#f3fbff}.amber{background:#fff8ef}
+.objectTop,.barRow{display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:900;margin-bottom:16px}
+.objectStats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.objLabel{font-size:13px;color:#8a94a8;margin-bottom:6px}
+.objValue{font-size:20px;font-weight:950}
+.stackedBar{height:16px;background:#e8eef8;border-radius:999px;overflow:hidden;display:flex;margin-bottom:18px}
+.stay{background:linear-gradient(90deg,#2563ff,#74a2ff)}
+.extra{background:linear-gradient(90deg,#f7c948,#f59e0b)}
+.bar{height:12px;background:#e8eef8;border-radius:999px;overflow:hidden;margin-top:10px;margin-bottom:18px}
+.bar div{height:100%;border-radius:999px}
+.c1{background:linear-gradient(90deg,#2563ff,#74a2ff)}.c2{background:linear-gradient(90deg,#16a34a,#7adf9b)}.c3{background:linear-gradient(90deg,#f59e0b,#f7c948)}.c4{background:linear-gradient(90deg,#ef4444,#fb7185)}.c5{background:linear-gradient(90deg,#8b5cf6,#c4b5fd)}
+.channelGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.channelCard{background:#f6f8fd;border-radius:24px;padding:20px}
+.channelName{font-size:15px;margin-bottom:12px}.channelValue{font-size:38px;font-weight:950}
+.chart{height:280px;background:#f4f7fd;border-radius:28px;overflow:hidden;padding:10px;position:relative}
+.chart svg{width:100%;height:100%}
+.chartLabels{display:flex;justify-content:space-between;color:#8a94a8;font-size:13px;margin-top:10px}
+.growthGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.growthRow{background:#f7f9fd;border-radius:22px;padding:16px}
+.growthTop{display:flex;justify-content:space-between;font-weight:900}
+.forecast{background:linear-gradient(135deg,#eef5ff,#dbe7ff);padding:30px;border-radius:28px}
+.forecastVal{font-size:60px;font-weight:950;line-height:1}
+.forecastText{font-size:19px;color:#667085;margin-top:10px}
+.uploadZone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #d8deec;padding:44px;border-radius:30px;background:#f9fbff;text-align:center;cursor:pointer;overflow:hidden}
+.uploadIconSvg{width:64px;height:64px;stroke:#2458ff;stroke-width:1.8;fill:none;margin-bottom:14px}
+.uploadTitle{font-size:27px;font-weight:900}
+.uploadSub{font-size:16px;color:#8a94a8;margin-top:7px}
+.uploadStatus{margin-top:16px;background:#eef4ff;color:#2458ff;padding:14px 16px;border-radius:18px;font-weight:800;display:none}
+.exportGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.exportBtn{border:0;background:#f6f8fd;border-radius:22px;padding:20px;font-weight:850;font-size:16px;color:#101828}
 .aiSummary{background:linear-gradient(135deg,#07153d,#142b63);color:#fff;border-radius:38px;padding:32px;margin-bottom:22px;box-shadow:0 24px 60px rgba(7,21,61,.22)}
-.aiTitle{font-size:36px;font-weight:850;margin-bottom:22px}.aiGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.aiBox{background:rgba(255,255,255,.09);border-radius:24px;padding:20px}.aiLabel{font-size:18px;font-weight:850;margin-bottom:14px}.aiLine{line-height:1.45;margin-bottom:10px}
-.analyticsCard{background:#fff;border-radius:34px;padding:28px;box-shadow:var(--shadow);margin-bottom:20px}
-.analyticsCardTitle{font-size:31px;font-weight:850;letter-spacing:-1px;margin-bottom:24px}
-.chartApple{height:280px;background:#f4f7fd;border-radius:28px;overflow:hidden;padding:10px}.chartApple svg{width:100%;height:100%}
-.growthGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.growthRow{background:#f7f9fd;border-radius:22px;padding:16px}.growthTop{display:flex;justify-content:space-between;font-weight:800}.thinBar{height:10px;background:#e8eef8;border-radius:999px;overflow:hidden;margin-top:12px}.thinBar div{height:100%;border-radius:999px;background:linear-gradient(90deg,#2458ff,#7aa2ff)}
-.ringWrap{display:flex;gap:38px;align-items:center;flex-wrap:wrap}.ring{width:270px;height:270px;border-radius:50%;background:conic-gradient(from -40deg,#2458ff 0 31%,transparent 31% 34%,#16a34a 34% 77%,transparent 77% 80%,#f59e0b 80% 94%,transparent 94% 96%,#d7dce7 96% 100%);position:relative;filter:drop-shadow(0 16px 25px rgba(37,99,255,.12))}.ring:before{content:"";position:absolute;inset:37px;background:#fff;border-radius:50%;box-shadow:inset 0 0 20px rgba(15,23,42,.04)}.ringCenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2}.ringBig{font-size:40px;font-weight:900}.ringSmall{font-size:14px;color:#8a94a8}
-.legend{display:flex;flex-direction:column;gap:14px;font-size:18px}.legendItem{display:flex;gap:12px;align-items:center}.dot{width:15px;height:15px;border-radius:50%}.blueBg{background:#2458ff}.greenBg{background:#16a34a}.orangeBg{background:#f59e0b}.grayBg{background:#d7dce7}
-.objectCard{padding:23px;border-radius:28px;margin-bottom:16px}.olive{background:#f6fbf2}.cyan{background:#f3fbff}.amber{background:#fff8ef}.objectTop,.barRow{display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:850;margin-bottom:16px}.objectBar,.serviceBar{height:14px;background:rgba(0,0,0,.06);border-radius:999px;overflow:hidden;margin-bottom:18px}.objectBar div,.serviceBar div{height:100%;border-radius:999px;background:linear-gradient(90deg,#2458ff,#7aa2ff)}
-.objectStats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.objLabel{font-size:13px;color:#8a94a8;margin-bottom:6px}.objValue{font-size:22px;font-weight:900}
-.channelGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.channelCard{background:#f6f8fd;border-radius:24px;padding:20px}.channelName{font-size:15px;margin-bottom:12px}.channelValue{font-size:38px;font-weight:900}
-.forecast{background:linear-gradient(135deg,#eef5ff,#dbe7ff);padding:30px;border-radius:28px}.forecastVal{font-size:60px;font-weight:900;line-height:1}.forecastText{font-size:19px;color:#667085;margin-top:10px}
-.uploadZone{display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed #d8deec;padding:42px;border-radius:30px;background:#f9fbff;text-align:center;cursor:pointer;overflow:hidden}.uploadIconSvg{width:64px;height:64px;stroke:#2458ff;stroke-width:1.8;fill:none;margin-bottom:14px}.uploadTitle{font-size:27px;font-weight:850;margin-top:8px}.uploadSub{font-size:16px;color:#8a94a8;margin-top:7px}.uploadStatus{margin-top:16px;background:#eef4ff;color:#2458ff;padding:14px 16px;border-radius:18px;font-weight:800;display:none}
-.exportGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.exportBtn{border:0;background:#f6f8fd;border-radius:22px;padding:20px;font-weight:850;font-size:16px;color:#101828}
+.aiTitle{font-size:36px;font-weight:900;margin-bottom:22px}
+.aiGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.aiBox{background:rgba(255,255,255,.09);border-radius:24px;padding:20px}
+.aiLabel{font-size:18px;font-weight:900;margin-bottom:14px}
+.aiLine{line-height:1.45;margin-bottom:10px}
+
 @media(max-width:900px){
-.wrap{padding:16px}.brand,.analyticsTitle{font-size:34px}.title{font-size:28px}.row{grid-template-columns:1fr}.kpiGrid{grid-template-columns:1fr 1fr}.kpi{padding:18px}.kpiVal{font-size:25px}.aiGrid,.growthGrid{grid-template-columns:1fr}.channelGrid{grid-template-columns:1fr 1fr}.objectStats{grid-template-columns:1fr}.analyticsCardTitle{font-size:26px}.ring{width:220px;height:220px}.forecastVal{font-size:42px}.navBtn{font-size:12px}.exportGrid{grid-template-columns:1fr}.filterSelect{width:100%}
+.wrap{padding:16px}.brand,.aTitle{font-size:34px}.title{font-size:28px}.row{grid-template-columns:1fr}
+.filters{grid-template-columns:1fr 1fr}.kpiGrid{grid-template-columns:1fr 1fr}.kpi{padding:18px}.kpiVal{font-size:25px}
+.channelGrid{grid-template-columns:1fr 1fr}.objectStats{grid-template-columns:1fr 1fr}.aiGrid,.growthGrid{grid-template-columns:1fr}
+.aCardTitle{font-size:26px}.ring{width:220px;height:220px}.forecastVal{font-size:42px}.navBtn{font-size:12px}.exportGrid{grid-template-columns:1fr}
 }
 </style>
 </head>
+
 <body>
 
-<div id="loginScreen" class="login">
-<div class="loginBox">
-<div class="brand">Медвежки</div>
-<div class="sub">Вход в AI Dashboard</div>
-<div class="userGrid">
-<button class="userBtn active" onclick="selectUser('Владислав','1111',this)">Владислав</button>
-<button class="userBtn" onclick="selectUser('Даша','2222',this)">Даша</button>
-<button class="userBtn" onclick="selectUser('Юлия','3333',this)">Юлия</button>
-</div>
-<input id="pin" placeholder="Введите пин" inputmode="numeric">
-<div style="height:14px"></div>
-<button class="btn" onclick="login()">Войти</button>
-</div>
-</div>
+<svg width="0" height="0" style="position:absolute">
+<symbol id="i-money" viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="M8 11h.01M16 13h.01"/><path d="M12 10a2 2 0 1 0 0 4a2 2 0 0 0 0-4z"/></symbol>
+<symbol id="i-income" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M17 7H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 17V9"/><path d="M13 17V5"/><path d="M18 17v-6"/></symbol>
+<symbol id="i-ai" viewBox="0 0 24 24"><path d="M12 2l1.7 5.3L19 9l-5.3 1.7L12 16l-1.7-5.3L5 9l5.3-1.7z"/></symbol>
+<symbol id="i-settings" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7a3.5 3.5 0 0 0 0 7z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3a1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.5a1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.5-1a1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.5a1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8a1.7 1.7 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.4 1z"/></symbol>
+</svg>
 
-<div id="app" class="hide">
 <div class="wrap">
 
 <div class="top">
@@ -96,7 +135,7 @@ textarea{min-height:105px;resize:none}
 <div class="brand">Медвежки</div>
 <div class="sub">AI ERP Dashboard • Май 2026</div>
 </div>
-<div class="user" id="userBadge">Владислав</div>
+<div class="user">Владислав</div>
 </div>
 
 <section id="expenseTab">
@@ -106,168 +145,195 @@ textarea{min-height:105px;resize:none}
 <div>
 <div class="sub">Категория</div>
 <select id="expenseCategory">
-<option>🤝 Допы персоналу</option><option>⚡ Коммуналка</option><option>📡 Интернет</option><option>🗑 Вывоз мусора</option><option>📦 Закупки</option><option>👷 Ремонт / обслуживание</option><option>💲 Маркетинг</option><option>💯 Комиссии площадок</option><option>💸 Налоги</option><option>💰 Зарплаты</option><option>🏦 Ипотека</option><option>📁 Прочее</option>
+<option>🤝 Допы персоналу</option>
+<option>⚡ Коммуналка</option>
+<option>📡 Интернет</option>
+<option>🗑 Вывоз мусора</option>
+<option>📦 Закупки</option>
+<option>👷 Ремонт / обслуживание</option>
+<option>💲 Маркетинг</option>
+<option>💯 Комиссии площадок</option>
+<option>💸 Налоги</option>
+<option>💰 Зарплаты</option>
+<option>🏦 Ипотека</option>
+<option>📁 Прочее</option>
 </select>
 </div>
 <div>
 <div class="sub">Оплатил</div>
-<select id="paidBy"><option>Владислав</option><option>Даша</option><option>Юлия</option><option>Общий счет</option></select>
+<select><option>Владислав</option><option>Даша</option><option>Юлия</option><option>Общий счет</option></select>
 </div>
 </div>
 <div style="height:16px"></div>
 <div class="sub">Описание</div>
-<textarea id="expenseName" placeholder="Например: оплатил интернет Starlink"></textarea>
+<textarea placeholder="Например: оплатил интернет Starlink"></textarea>
 <div style="height:16px"></div>
 <div class="sub">Сумма</div>
-<input id="expenseAmount" placeholder="₽" inputmode="numeric">
-<div class="voiceWrap"><button id="voiceBtn" class="voiceBtn" ontouchstart="startVoice()" ontouchend="stopVoice()" onmousedown="startVoice()" onmouseup="stopVoice()">●</button></div>
-<button class="btn" onclick="addExpense()">Добавить расход</button>
+<input placeholder="₽" inputmode="numeric">
+<div class="voiceWrap"><button class="voiceBtn">🎙</button></div>
+<button class="btn">Добавить расход</button>
 </div>
+
 <div class="card">
 <div class="title">История расходов</div>
-<div id="expenseList"></div>
+<div class="historyItem">
+<div>
+<div class="historyTitle">📡 Интернет Starlink</div>
+<div class="historyMeta">Владислав • сегодня</div>
+</div>
+<div class="money">5 400 ₽</div>
+</div>
 </div>
 </section>
 
 <section id="incomeTab" class="hide">
-<div class="card">
-<div class="title">Домик 1 — Оливковый</div>
-<div class="serviceRow"><span>Проживание</span><strong>145 000 ₽</strong></div>
-<div class="serviceRow"><span>Баня-бочка</span><strong>32 000 ₽</strong></div>
-<div class="serviceRow"><span>Баня-бочка + чан</span><strong>48 000 ₽</strong></div>
-</div>
-<div class="card">
-<div class="title">Домик 2 — Бирюзовый</div>
-<div class="serviceRow"><span>Проживание</span><strong>192 000 ₽</strong></div>
-<div class="serviceRow"><span>Сауна</span><strong>41 000 ₽</strong></div>
-<div class="serviceRow"><span>Сауна + чан</span><strong>55 000 ₽</strong></div>
-</div>
-<div class="card">
-<div class="title">Домик 3 — Оранжевый</div>
-<div class="serviceRow"><span>Проживание</span><strong>201 000 ₽</strong></div>
-<div class="serviceRow"><span>Сауна</span><strong>38 000 ₽</strong></div>
-<div class="serviceRow"><span>Сауна + чан</span><strong>47 000 ₽</strong></div>
-</div>
+<div class="card"><div class="title">Домик 1 — Оливковый</div><div class="serviceRow"><span>🏠 Проживание</span><strong>145 000 ₽</strong></div><div class="serviceRow"><span>🛁 Баня-бочка</span><strong>32 000 ₽</strong></div><div class="serviceRow"><span>🔥 Баня-бочка + чан</span><strong>48 000 ₽</strong></div></div>
+<div class="card"><div class="title">Домик 2 — Бирюзовый</div><div class="serviceRow"><span>🏠 Проживание</span><strong>192 000 ₽</strong></div><div class="serviceRow"><span>🧖 Сауна</span><strong>41 000 ₽</strong></div><div class="serviceRow"><span>♨️ Сауна + чан</span><strong>55 000 ₽</strong></div></div>
 </section>
 
 <section id="analyticsTab" class="hide">
-<div class="analyticsHero">
+
+<div class="aHero">
 <div>
-<div class="analyticsSub">AI ERP Dashboard • текущий период</div>
-<div class="analyticsTitle">Аналитика</div>
+<div class="aSub">AI ERP Dashboard • текущий месяц</div>
+<div class="aTitle">Аналитика</div>
 </div>
 </div>
 
 <div class="filters">
-<select id="periodFilter" class="filterSelect" onchange="applyFilters()"><option>Май 2026</option><option>Сегодня</option><option>Неделя</option><option>Квартал</option><option>Год</option><option>Произвольный период</option></select>
-<select id="objectFilter" class="filterSelect" onchange="applyFilters()"><option>Все домики</option><option>Домик 1</option><option>Домик 2</option><option>Домик 3</option></select>
-<select id="typeFilter" class="filterSelect" onchange="applyFilters()"><option>Все показатели</option><option>Доходы</option><option>Расходы</option><option>Допуслуги</option><option>Загрузка</option><option>AI</option></select>
-<select id="channelFilter" class="filterSelect" onchange="applyFilters()"><option>Все каналы</option><option>Avito</option><option>Telegram</option><option>Сайт</option><option>Повторные гости</option></select>
+<select class="filter" id="periodFilter"><option>Май 2026</option><option>Неделя</option><option>Квартал</option><option>Год</option></select>
+<select class="filter" id="houseFilter"><option>Все домики</option><option>Домик 1</option><option>Домик 2</option><option>Домик 3</option></select>
+<select class="filter" id="typeFilter"><option>Все показатели</option><option>Доходы</option><option>Расходы</option><option>Допуслуги</option><option>Загрузка</option></select>
+<select class="filter" id="channelFilter"><option>Все источники</option><option>Avito</option><option>Bnovo</option><option>Telegram</option><option>Сайт</option></select>
 </div>
+<button class="btn applyFilters" onclick="applyFilters()">Показать</button>
 
 <div class="kpiGrid">
-<div class="kpi"><div class="kpiTop"><div class="kpiName">Оборот</div><div class="kpiPct green">+12%</div></div><div class="kpiVal">538 000 ₽</div><div class="kpiBot">к прошлому месяцу</div></div>
-<div class="kpi"><div class="kpiTop"><div class="kpiName">Чистая прибыль</div><div class="kpiPct green">+7%</div></div><div class="kpiVal">291 000 ₽</div><div class="kpiBot">после расходов</div></div>
-<div class="kpi"><div class="kpiTop"><div class="kpiName">Расходы</div><div class="kpiPct red">+9%</div></div><div class="kpiVal">247 000 ₽</div><div class="kpiBot">операционные</div></div>
+<div class="kpi"><div class="kpiTop"><div class="kpiName">Оборот</div><div class="kpiPct green">+12%</div></div><div class="kpiVal">538k ₽</div><div class="kpiBot">доходы + допы</div></div>
+<div class="kpi"><div class="kpiTop"><div class="kpiName">Прибыль</div><div class="kpiPct green">+7%</div></div><div class="kpiVal">291k ₽</div><div class="kpiBot">после расходов</div></div>
+<div class="kpi"><div class="kpiTop"><div class="kpiName">Расходы</div><div class="kpiPct red">+9%</div></div><div class="kpiVal">247k ₽</div><div class="kpiBot">операционные</div></div>
 <div class="kpi"><div class="kpiTop"><div class="kpiName">Загрузка</div><div class="kpiPct orange">-2%</div></div><div class="kpiVal">78%</div><div class="kpiBot">средняя</div></div>
-<div class="kpi"><div class="kpiTop"><div class="kpiName">ADR</div><div class="kpiPct green">+5%</div></div><div class="kpiVal">14 900 ₽</div><div class="kpiBot">средняя ночь</div></div>
-<div class="kpi"><div class="kpiTop"><div class="kpiName">RevPAR</div><div class="kpiPct green">+4%</div></div><div class="kpiVal">11 620 ₽</div><div class="kpiBot">на домик</div></div>
+<div class="kpi"><div class="kpiTop"><div class="kpiName">ADR</div><div class="kpiPct green">+5%</div></div><div class="kpiVal">14.9k ₽</div><div class="kpiBot">средняя ночь</div></div>
+<div class="kpi"><div class="kpiTop"><div class="kpiName">RevPAR</div><div class="kpiPct green">+4%</div></div><div class="kpiVal">11.6k ₽</div><div class="kpiBot">на домик</div></div>
 </div>
 
-<div class="aiSummary">
-<div class="aiTitle">AI Summary</div>
-<div class="aiGrid">
-<div class="aiBox"><div class="aiLabel">Хорошо</div><div class="aiLine">A-frame вырос на 11%</div><div class="aiLine">Чан приносит 28% прибыли</div><div class="aiLine">Telegram даёт лучший средний чек</div></div>
-<div class="aiBox"><div class="aiLabel">Риски</div><div class="aiLine">Контейнер просел по будням</div><div class="aiLine">Расходы на обслуживание выросли</div></div>
-<div class="aiBox"><div class="aiLabel">Рекомендации</div><div class="aiLine">Поднять цены выходных на 8%</div><div class="aiLine">Усилить рекламу будней</div></div>
-</div>
-</div>
-
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Динамика к прошлому периоду</div>
-<div class="growthGrid">
-<div class="growthRow"><div class="growthTop"><span>Оборот</span><span class="green">+12%</span></div><div class="thinBar"><div style="width:72%"></div></div></div>
-<div class="growthRow"><div class="growthTop"><span>Прибыль</span><span class="green">+7%</span></div><div class="thinBar"><div style="width:58%"></div></div></div>
-<div class="growthRow"><div class="growthTop"><span>Расходы</span><span class="red">+9%</span></div><div class="thinBar"><div style="width:66%"></div></div></div>
-<div class="growthRow"><div class="growthTop"><span>Допуслуги</span><span class="green">+18%</span></div><div class="thinBar"><div style="width:82%"></div></div></div>
-</div>
-</div>
-
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Динамика оборота</div>
-<div class="chartApple"><svg viewBox="0 0 1000 300" preserveAspectRatio="none"><defs><linearGradient id="lineBlue"><stop offset="0%" stop-color="#2458ff"/><stop offset="100%" stop-color="#7aa2ff"/></linearGradient></defs><path d="M0,240 C120,220 160,180 240,160 C330,130 380,120 470,100 C560,80 650,60 740,70 C830,80 920,30 1000,40" fill="none" stroke="url(#lineBlue)" stroke-width="10" stroke-linecap="round"/></svg></div>
-</div>
-
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Структура прибыли</div>
+<div class="aCard">
+<div class="aCardTitle">Структура прибыли</div>
 <div class="ringWrap">
 <div class="ring"><div class="ringCenter"><div class="ringBig">538k</div><div class="ringSmall">оборот</div></div></div>
 <div class="legend">
-<div class="legendItem"><div class="dot blueBg"></div><div>Операционные — 32%</div></div>
-<div class="legendItem"><div class="dot greenBg"></div><div>Чистая прибыль — 46%</div></div>
-<div class="legendItem"><div class="dot orangeBg"></div><div>Улучшения — 18%</div></div>
-<div class="legendItem"><div class="dot grayBg"></div><div>Прочее — 4%</div></div>
+<div class="legendItem"><div class="dot b"></div>Операционные — 32%</div>
+<div class="legendItem"><div class="dot g"></div>Чистая прибыль — 46%</div>
+<div class="legendItem"><div class="dot y"></div>Улучшения — 18%</div>
+<div class="legendItem"><div class="dot gr"></div>Прочее — 4%</div>
 </div>
 </div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Доход по объектам</div>
-<div class="objectCard olive"><div class="objectTop"><span>Домик 1</span><strong>225 000 ₽</strong></div><div class="objectBar"><div style="width:78%"></div></div><div class="objectStats"><div><div class="objLabel">Загрузка</div><div class="objValue">78%</div></div><div><div class="objLabel">ADR</div><div class="objValue">11 900 ₽</div></div><div><div class="objLabel">Прибыль</div><div class="objValue">141k</div></div></div></div>
-<div class="objectCard cyan"><div class="objectTop"><span>Домик 2</span><strong>192 000 ₽</strong></div><div class="objectBar"><div style="width:83%"></div></div><div class="objectStats"><div><div class="objLabel">Загрузка</div><div class="objValue">83%</div></div><div><div class="objLabel">ADR</div><div class="objValue">14 800 ₽</div></div><div><div class="objLabel">Прибыль</div><div class="objValue">188k</div></div></div></div>
-<div class="objectCard amber"><div class="objectTop"><span>Домик 3</span><strong>121 000 ₽</strong></div><div class="objectBar"><div style="width:71%"></div></div><div class="objectStats"><div><div class="objLabel">Загрузка</div><div class="objValue">71%</div></div><div><div class="objLabel">ADR</div><div class="objValue">13 400 ₽</div></div><div><div class="objLabel">Прибыль</div><div class="objValue">88k</div></div></div></div>
+<div class="aCard">
+<div class="aCardTitle">Доход по объектам</div>
+
+<div class="objectCard olive">
+<div class="objectTop"><span>Домик 1</span><strong>225 000 ₽</strong></div>
+<div class="stackedBar"><div class="stay" style="width:65%"></div><div class="extra" style="width:22%"></div></div>
+<div class="objectStats"><div><div class="objLabel">Проживание</div><div class="objValue">145k</div></div><div><div class="objLabel">Допы</div><div class="objValue">80k</div></div><div><div class="objLabel">Загрузка</div><div class="objValue">78%</div></div><div><div class="objLabel">ADR</div><div class="objValue">11.9k</div></div></div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Доходы по услугам</div>
-<div class="barRow"><span>Проживание</span><strong>428 000 ₽</strong></div><div class="serviceBar"><div style="width:91%"></div></div>
-<div class="barRow"><span>Чан</span><strong>87 000 ₽</strong></div><div class="serviceBar"><div style="width:62%"></div></div>
-<div class="barRow"><span>Сауна / Баня</span><strong>55 000 ₽</strong></div><div class="serviceBar"><div style="width:48%"></div></div>
-<div class="barRow"><span>Мини-бар</span><strong>14 000 ₽</strong></div><div class="serviceBar"><div style="width:22%"></div></div>
+<div class="objectCard cyan">
+<div class="objectTop"><span>Домик 2</span><strong>192 000 ₽</strong></div>
+<div class="stackedBar"><div class="stay" style="width:60%"></div><div class="extra" style="width:25%"></div></div>
+<div class="objectStats"><div><div class="objLabel">Проживание</div><div class="objValue">132k</div></div><div><div class="objLabel">Допы</div><div class="objValue">60k</div></div><div><div class="objLabel">Загрузка</div><div class="objValue">83%</div></div><div><div class="objLabel">ADR</div><div class="objValue">14.8k</div></div></div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Расходы по категориям</div>
-<div class="barRow"><span>Зарплаты</span><strong>87 000 ₽</strong></div><div class="serviceBar"><div style="width:88%"></div></div>
-<div class="barRow"><span>Ремонт</span><strong>41 000 ₽</strong></div><div class="serviceBar"><div style="width:66%"></div></div>
-<div class="barRow"><span>Маркетинг</span><strong>34 000 ₽</strong></div><div class="serviceBar"><div style="width:55%"></div></div>
-<div class="barRow"><span>Интернет</span><strong>5 400 ₽</strong></div><div class="serviceBar"><div style="width:22%"></div></div>
+<div class="objectCard amber">
+<div class="objectTop"><span>Домик 3</span><strong>121 000 ₽</strong></div>
+<div class="stackedBar"><div class="stay" style="width:52%"></div><div class="extra" style="width:18%"></div></div>
+<div class="objectStats"><div><div class="objLabel">Проживание</div><div class="objValue">91k</div></div><div><div class="objLabel">Допы</div><div class="objValue">30k</div></div><div><div class="objLabel">Загрузка</div><div class="objValue">71%</div></div><div><div class="objLabel">ADR</div><div class="objValue">13.4k</div></div></div>
+</div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Каналы бронирования</div>
+<div class="aCard">
+<div class="aCardTitle">Доходы по услугам</div>
+<div class="barRow"><span>👩‍🚒👨‍🚒 Сауна + чан</span><strong>69 900 ₽</strong></div><div class="bar"><div class="c1" style="width:90%"></div></div>
+<div class="barRow"><span>🔥 Баня-бочка + чан</span><strong>48 000 ₽</strong></div><div class="bar"><div class="c2" style="width:68%"></div></div>
+<div class="barRow"><span>🛁 Чан</span><strong>16 970 ₽</strong></div><div class="bar"><div class="c3" style="width:38%"></div></div>
+<div class="barRow"><span>👩‍🚒 Сауна</span><strong>12 000 ₽</strong></div><div class="bar"><div class="c4" style="width:32%"></div></div>
+<div class="barRow"><span>🍽 Мытьё посуды</span><strong>1 000 ₽</strong></div><div class="bar"><div class="c5" style="width:12%"></div></div>
+<div class="barRow"><span>🕘 Доп. время</span><strong>1 000 ₽</strong></div><div class="bar"><div class="c2" style="width:12%"></div></div>
+<div class="barRow"><span>👩‍🚒 Баня-бочка</span><strong>0 ₽</strong></div><div class="bar"><div class="c3" style="width:4%"></div></div>
+<div class="barRow"><span>🪵 Топка чана</span><strong>0 ₽</strong></div><div class="bar"><div class="c4" style="width:4%"></div></div>
+<div class="barRow"><span>🪵 Топка бани-бочки</span><strong>0 ₽</strong></div><div class="bar"><div class="c5" style="width:4%"></div></div>
+</div>
+
+<div class="aCard">
+<div class="aCardTitle">Расходы по категориям</div>
+<div class="barRow"><span>💰 Зарплаты</span><strong>97 000 ₽</strong></div><div class="bar"><div class="c1" style="width:88%"></div></div>
+<div class="barRow"><span>🏦 Ипотека</span><strong>78 000 ₽</strong></div><div class="bar"><div class="c2" style="width:72%"></div></div>
+<div class="barRow"><span>💯 Комиссии площадок</span><strong>59 000 ₽</strong></div><div class="bar"><div class="c3" style="width:62%"></div></div>
+<div class="barRow"><span>👷 Ремонт / обслуживание</span><strong>41 000 ₽</strong></div><div class="bar"><div class="c4" style="width:48%"></div></div>
+<div class="barRow"><span>📡 Интернет</span><strong>5 400 ₽</strong></div><div class="bar"><div class="c5" style="width:18%"></div></div>
+</div>
+
+<div class="aCard">
+<div class="aCardTitle">Каналы бронирования</div>
 <div class="channelGrid">
 <div class="channelCard"><div class="channelName">Avito</div><div class="channelValue">71%</div></div>
+<div class="channelCard"><div class="channelName">Bnovo</div><div class="channelValue">12%</div></div>
 <div class="channelCard"><div class="channelName">Telegram</div><div class="channelValue">9%</div></div>
-<div class="channelCard"><div class="channelName">Сайт</div><div class="channelValue">6%</div></div>
-<div class="channelCard"><div class="channelName">Повторные</div><div class="channelValue">14%</div></div>
+<div class="channelCard"><div class="channelName">Сайт</div><div class="channelValue">8%</div></div>
 </div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">AI Прогноз</div>
-<div class="forecast"><div class="forecastVal">612 000 ₽</div><div class="forecastText">прогноз оборота на следующий месяц</div></div>
+<div class="aCard">
+<div class="aCardTitle">Динамика оборота</div>
+<div class="chart">
+<svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+<path d="M0,250 C130,230 160,200 250,170 C350,130 420,150 500,110 C600,70 690,90 760,65 C850,40 920,25 1000,35" fill="none" stroke="#2563ff" stroke-width="10" stroke-linecap="round"/>
+<circle cx="0" cy="250" r="8" fill="#2563ff"/><circle cx="250" cy="170" r="8" fill="#2563ff"/><circle cx="500" cy="110" r="8" fill="#2563ff"/><circle cx="760" cy="65" r="8" fill="#2563ff"/><circle cx="1000" cy="35" r="8" fill="#2563ff"/>
+</svg>
+</div>
+<div class="chartLabels"><span>1 мая · 12k</span><span>7 мая · 84k</span><span>14 мая · 186k</span><span>23 мая · 538k</span></div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Импорт Binov</div>
+<div class="aCard">
+<div class="aCardTitle">Динамика к прошлому периоду</div>
+<div class="growthGrid">
+<div class="growthRow"><div class="growthTop"><span>Оборот</span><span class="green">+12%</span></div><div class="bar"><div class="c1" style="width:72%"></div></div></div>
+<div class="growthRow"><div class="growthTop"><span>Допуслуги</span><span class="green">+18%</span></div><div class="bar"><div class="c2" style="width:82%"></div></div></div>
+<div class="growthRow"><div class="growthTop"><span>Расходы</span><span class="red">+9%</span></div><div class="bar"><div class="c4" style="width:66%"></div></div></div>
+<div class="growthRow"><div class="growthTop"><span>Загрузка</span><span class="orange">-2%</span></div><div class="bar"><div class="c3" style="width:48%"></div></div></div>
+</div>
+</div>
+
+<div class="aCard">
+<div class="aCardTitle">Импорт Binov</div>
 <label class="uploadZone">
 <input id="binovFile" type="file" accept=".xlsx,.xls" hidden onchange="handleBinovUpload(event)">
-<svg class="uploadIconSvg" viewBox="0 0 24 24"><path d="M4 7h6l2 2h8v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><path d="M12 13v5"/><path d="m9 16 3-3 3 3"/></svg>
+<svg class="uploadIconSvg" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5l5 5"/><path d="M5 20h14"/></svg>
 <div class="uploadTitle">Загрузить Excel</div>
 <div class="uploadSub">Файл Binov будет подготовлен к разбору</div>
 </label>
 <div id="uploadStatus" class="uploadStatus"></div>
 </div>
 
-<div class="analyticsCard">
-<div class="analyticsCardTitle">Экспорт отчётов</div>
+<div class="aCard">
+<div class="aCardTitle">Экспорт отчётов</div>
 <div class="exportGrid">
-<button class="exportBtn" onclick="fakeExport('PDF')">PDF отчёт</button>
-<button class="exportBtn" onclick="fakeExport('Excel')">Excel отчёт</button>
-<button class="exportBtn" onclick="fakeExport('AI')">AI выводы</button>
+<button class="exportBtn">PDF отчёт</button>
+<button class="exportBtn">Excel отчёт</button>
+<button class="exportBtn">AI выводы</button>
 </div>
 </div>
+
+<div class="aiSummary">
+<div class="aiTitle"><svg class="ico" style="display:inline-block;margin:0 8px -4px 0"><use href="#i-ai"/></svg>AI Summary</div>
+<div class="aiGrid">
+<div class="aiBox"><div class="aiLabel">Хорошо</div><div class="aiLine">A-frame вырос на 11%</div><div class="aiLine">Чан приносит 28% прибыли</div></div>
+<div class="aiBox"><div class="aiLabel">Риски</div><div class="aiLine">Контейнер просел по будням</div><div class="aiLine">Ремонт выше нормы</div></div>
+<div class="aiBox"><div class="aiLabel">Рекомендации</div><div class="aiLine">Поднять цены выходных на 8%</div><div class="aiLine">Усилить рекламу будней</div></div>
+</div>
+</div>
+
 </section>
 
 <section id="aiTab" class="hide">
@@ -275,101 +341,40 @@ textarea{min-height:105px;resize:none}
 </section>
 
 <section id="settingsTab" class="hide">
-<div class="card"><div class="title">Настройки</div><div class="settingRow"><span>Персонал</span></div><div class="settingRow"><span>Домики</span></div><div class="settingRow"><span>Аналитика</span></div><div class="settingRow"><span>Партнеры</span></div><button class="btn btnSoft" onclick="logout()">Выйти</button></div>
+<div class="card"><div class="title">Настройки</div><div class="settingRow"><span>Персонал</span></div><div class="settingRow"><span>Домики</span></div><div class="settingRow"><span>Аналитика</span></div><div class="settingRow"><span>Партнеры</span></div></div>
 </section>
 
 </div>
 
 <div class="bottomNav">
-<button class="navBtn active" onclick="openTab('expenseTab',this)"><svg class="ico" viewBox="0 0 24 24"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"/></svg>Расход</button>
-<button class="navBtn" onclick="openTab('incomeTab',this)"><svg class="ico" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V10"/><path d="M12 21V3"/><path d="M18 21v-7"/></svg>Доход</button>
-<button class="navBtn" onclick="openTab('analyticsTab',this)"><svg class="ico" viewBox="0 0 24 24"><path d="M4 19V9"/><path d="M12 19V5"/><path d="M20 19v-7"/></svg>Аналитика</button>
-<button class="navBtn" onclick="openTab('aiTab',this)"><svg class="ico" viewBox="0 0 24 24"><path d="M12 2l1.8 5.5L19 9.3l-5.2 1.8L12 17l-1.8-5.9L5 9.3l5.2-1.8L12 2Z"/></svg>AI</button>
-<button class="navBtn" onclick="openTab('settingsTab',this)"><svg class="ico" viewBox="0 0 24 24"><path d="M12 15.5A3.5 3.5 0 1 0 12 8a3.5 3.5 0 0 0 0 7.5Z"/><path d="M19.4 15a1.8 1.8 0 0 0 .36 1.98l.05.05a2 2 0 1 1-2.83 2.83l-.05-.05A1.8 1.8 0 0 0 15 19.4a1.8 1.8 0 0 0-1 .6 1.8 1.8 0 0 0-.5 1.3V21a2 2 0 1 1-4 0v-.1A1.8 1.8 0 0 0 8 19.4a1.8 1.8 0 0 0-1.98.36l-.05.05a2 2 0 1 1-2.83-2.83l.05-.05A1.8 1.8 0 0 0 4.6 15a1.8 1.8 0 0 0-.6-1 1.8 1.8 0 0 0-1.3-.5H2.5a2 2 0 1 1 0-4h.2A1.8 1.8 0 0 0 4.6 8a1.8 1.8 0 0 0-.36-1.98l-.05-.05a2 2 0 1 1 2.83-2.83l.05.05A1.8 1.8 0 0 0 9 4.6a1.8 1.8 0 0 0 1-.6 1.8 1.8 0 0 0 .5-1.3V2.5a2 2 0 1 1 4 0v.2A1.8 1.8 0 0 0 16 4.6a1.8 1.8 0 0 0 1.98-.36l.05-.05a2 2 0 1 1 2.83 2.83l-.05.05A1.8 1.8 0 0 0 19.4 9c.3.34.6.67 1 1 .3.33.75.5 1.2.5h.4a2 2 0 1 1 0 4h-.4a1.8 1.8 0 0 0-1.2.5Z"/></svg>Настройки</button>
-</div>
+<button class="navBtn active" onclick="openTab('expenseTab',this)"><svg class="ico"><use href="#i-money"/></svg>Расход</button>
+<button class="navBtn" onclick="openTab('incomeTab',this)"><svg class="ico"><use href="#i-income"/></svg>Доход</button>
+<button class="navBtn" onclick="openTab('analyticsTab',this)"><svg class="ico"><use href="#i-chart"/></svg>Аналитика</button>
+<button class="navBtn" onclick="openTab('aiTab',this)"><svg class="ico"><use href="#i-ai"/></svg>AI</button>
+<button class="navBtn" onclick="openTab('settingsTab',this)"><svg class="ico"><use href="#i-settings"/></svg>Настройки</button>
 </div>
 
 <script>
-let selectedUser='Владислав', selectedPin='1111';
-let expenses=JSON.parse(localStorage.getItem('expenses')||'[]');
-
-function selectUser(name,pin,el){
- selectedUser=name; selectedPin=pin;
- document.querySelectorAll('.userBtn').forEach(b=>b.classList.remove('active'));
- el.classList.add('active');
-}
-function login(){
- if(document.getElementById('pin').value==selectedPin){
-  localStorage.setItem('user',selectedUser);
-  document.getElementById('loginScreen').classList.add('hide');
-  document.getElementById('app').classList.remove('hide');
-  startApp();
- } else alert('Неверный пин');
-}
-function startApp(){
- const u=localStorage.getItem('user')||'Владислав';
- document.getElementById('userBadge').innerText=u;
- const paid=document.getElementById('paidBy');
- if(u==='Юлия') paid.value='Общий счет'; else paid.value=u;
- renderExpenses();
-}
-function logout(){localStorage.removeItem('user');location.reload()}
 function openTab(id,btn){
- document.querySelectorAll('section').forEach(s=>s.classList.add('hide'));
- document.getElementById(id).classList.remove('hide');
- document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));
- btn.classList.add('active');
-}
-function addExpense(){
- const name=document.getElementById('expenseName').value.trim();
- const amount=document.getElementById('expenseAmount').value.trim();
- if(!name||!amount){alert('Заполни описание и сумму');return}
- expenses.unshift({name,amount,cat:document.getElementById('expenseCategory').value,paid:document.getElementById('paidBy').value,date:new Date().toLocaleString('ru-RU')});
- localStorage.setItem('expenses',JSON.stringify(expenses));
- document.getElementById('expenseName').value='';document.getElementById('expenseAmount').value='';
- renderExpenses();
-}
-function renderExpenses(){
- const list=document.getElementById('expenseList'); if(!list)return;
- list.innerHTML=expenses.length?'':'<div class="sub">Пока расходов нет</div>';
- expenses.forEach((e,i)=>list.innerHTML+=`<div class="historyItem"><div><div class="historyTitle">${e.name}</div><div class="historyMeta">${e.cat} • ${e.paid} • ${e.date}</div></div><div><div class="money">${e.amount} ₽</div><button class="editBtn" onclick="editExpense(${i})">Edit</button></div></div>`);
-}
-function editExpense(i){
- const v=prompt('Новая сумма',expenses[i].amount);
- if(v!==null){expenses[i].amount=v;localStorage.setItem('expenses',JSON.stringify(expenses));renderExpenses()}
+document.querySelectorAll('section').forEach(s=>s.classList.add('hide'));
+document.getElementById(id).classList.remove('hide');
+document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));
+btn.classList.add('active');
 }
 function applyFilters(){
- const p=document.getElementById('periodFilter').value;
- const o=document.getElementById('objectFilter').value;
- const t=document.getElementById('typeFilter').value;
- const c=document.getElementById('channelFilter').value;
- document.querySelector('.analyticsSub').innerText=`AI ERP Dashboard • ${p} • ${o} • ${t} • ${c}`;
+const p=document.getElementById('periodFilter').value;
+const h=document.getElementById('houseFilter').value;
+const t=document.getElementById('typeFilter').value;
+const c=document.getElementById('channelFilter').value;
+document.querySelector('.aSub').innerText=`AI ERP Dashboard • ${p} • ${h} • ${t} • ${c}`;
 }
 function handleBinovUpload(e){
- const f=e.target.files[0]; if(!f)return;
- const box=document.getElementById('uploadStatus');
- box.style.display='block';
- box.innerText=`Файл выбран: ${f.name} • ${(f.size/1024).toFixed(1)} KB • готов к разбору`;
-}
-function fakeExport(type){alert(type+' экспорт будет подключён следующим этапом')}
-let recognition;
-if('webkitSpeechRecognition' in window){
- recognition=new webkitSpeechRecognition(); recognition.lang='ru-RU';
- recognition.onresult=e=>{
-  let text=e.results[0][0].transcript.toLowerCase();
-  if(text.includes('интернет')) text='Оплата интернета';
-  if(text.includes('мусор')) text='Вывоз мусора';
-  if(text.includes('ремонт')) text='Ремонт / обслуживание';
-  document.getElementById('expenseName').value=text;
- }
-}
-function startVoice(){document.getElementById('voiceBtn').classList.add('recording'); if(recognition)recognition.start()}
-function stopVoice(){document.getElementById('voiceBtn').classList.remove('recording'); if(recognition)recognition.stop()}
-if(localStorage.getItem('user')){
- document.getElementById('loginScreen').classList.add('hide');
- document.getElementById('app').classList.remove('hide');
- startApp();
+const f=e.target.files[0]; if(!f)return;
+const box=document.getElementById('uploadStatus');
+box.style.display='block';
+box.innerText=`Файл выбран: ${f.name} • ${(f.size/1024).toFixed(1)} KB • готов к разбору`;
 }
 </script>
+
 </body>
 </html>
