@@ -7,21 +7,15 @@
 
 <style>
 :root{
-  --bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#7b8498;--line:#e8edf6;
-  --blue:#2563ff;--yellow:#f7c948;--green:#16a34a;--orange:#f59e0b;--red:#ef4444;
-  --violet:#8b5cf6;--cyan:#06b6d4;--pink:#ec4899;--dark:#07153d;
-  --shadow:0 18px 45px rgba(15,23,42,.07);--r:32px;
+--bg:#f6f8fc;--card:#fff;--text:#0f172a;--muted:#7b8498;--line:#e8edf6;
+--blue:#2563ff;--yellow:#f7c948;--green:#16a34a;--orange:#f59e0b;--red:#ef4444;
+--violet:#8b5cf6;--cyan:#06b6d4;--pink:#ec4899;--dark:#07153d;
+--shadow:0 18px 45px rgba(15,23,42,.07);--r:32px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{
-  margin:0;
-  background:linear-gradient(180deg,#f9fbff,#eef3fb);
-  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  color:var(--text);
-  padding-bottom:230px;
-}
+body{margin:0;background:linear-gradient(180deg,#f9fbff,#eef3fb);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);padding-bottom:125px}
 .hide{display:none!important}
-.wrap{max-width:1120px;margin:auto;padding:22px 22px 140px}
+.wrap{max-width:1120px;margin:auto;padding:22px}
 .top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:24px}
 .brand{font-size:46px;font-weight:900;letter-spacing:-2px;line-height:1}
 .sub{color:var(--muted);font-size:16px;margin-top:7px}
@@ -34,13 +28,7 @@ textarea{min-height:105px;resize:none}
 .btn{border:0;background:var(--blue);color:#fff;padding:17px 24px;border-radius:21px;font-size:18px;font-weight:800;cursor:pointer}
 .btnDark{background:#101b3f}
 .btnSoft{background:#eef4ff;color:var(--blue)}
-.bottomNav{
-  position:fixed;left:50%;bottom:18px;transform:translateX(-50%);
-  width:min(940px,calc(100% - 22px));
-  background:rgba(255,255,255,.92);backdrop-filter:blur(24px);
-  border-radius:32px;display:flex;gap:8px;padding:10px;
-  box-shadow:0 20px 55px rgba(15,23,42,.14);z-index:999
-}
+.bottomNav{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(940px,calc(100% - 22px));background:rgba(255,255,255,.92);backdrop-filter:blur(24px);border-radius:32px;display:flex;gap:8px;padding:10px;box-shadow:0 20px 55px rgba(15,23,42,.14);z-index:999}
 .navBtn{flex:1;border:0;background:transparent;padding:13px 6px;border-radius:23px;font-size:13px;font-weight:850;color:#6c7488;cursor:pointer}
 .navBtn.active{background:#101b3f;color:#fff}
 .ico{width:22px;height:22px;stroke:currentColor;stroke-width:2.3;fill:none;stroke-linecap:round;stroke-linejoin:round;display:block;margin:0 auto 5px}
@@ -50,76 +38,48 @@ textarea{min-height:105px;resize:none}
 .editBtn{border:0;background:#eff4ff;color:var(--blue);padding:9px 13px;border-radius:13px;font-weight:800}
 .voiceWrap{display:flex;justify-content:center;margin:24px 0}
 .voiceBtn{width:104px;height:104px;border-radius:50%;border:0;background:linear-gradient(135deg,#2b67ff,#1f46cc);font-size:42px;color:#fff;box-shadow:0 20px 50px rgba(37,88,255,.34)}
-.voiceBtn.recording{animation:pulse .9s infinite}
-@keyframes pulse{50%{transform:scale(1.08)}}
 
-/* ANALYTICS */
 .aHero{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap;margin-bottom:24px}
 .aTitle{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1}
 .aSub{font-size:15px;color:#8a94a8;margin-bottom:7px}
 .filters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
 .filter{background:#fff;box-shadow:var(--shadow);font-size:15px;font-weight:800;padding:15px 17px;border-radius:21px;border:0}
 .applyFilters{width:100%;margin-bottom:22px}
-.kpiGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-bottom:22px}
-.kpi{background:#fff;border-radius:30px;padding:23px;box-shadow:var(--shadow)}
+.kpiGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:22px}
+.kpi{background:#fff;border-radius:30px;padding:22px;box-shadow:var(--shadow)}
 .kpiTop{display:flex;justify-content:space-between;gap:10px;margin-bottom:14px}
 .kpiName{font-size:14px;color:#8a94a8}
 .kpiPct{font-size:14px;font-weight:900;white-space:nowrap}
-.kpiVal{font-size:clamp(25px,3.4vw,40px);font-weight:950;letter-spacing:-1.4px;line-height:1;white-space:nowrap}
+.kpiVal{font-size:clamp(23px,3vw,36px);font-weight:950;letter-spacing:-1.2px;line-height:1;white-space:nowrap}
 .kpiBot{font-size:13px;color:#8a94a8;margin-top:10px}
 .green{color:var(--green)}.orange{color:var(--orange)}.red{color:var(--red)}
-
-.aCardTitle{
-  font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:24px;
-  display:flex;justify-content:space-between;gap:12px;align-items:center
-}
-.miniEdit{border:0;background:#eef4ff;color:var(--blue);padding:9px 13px;border-radius:14px;font-weight:800;font-size:14px}
+.aCardTitle{font-size:32px;font-weight:900;letter-spacing:-1px;margin-bottom:24px;display:flex;justify-content:space-between;gap:12px;align-items:center}
 .donutWrap{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
-.donut{width:235px;height:235px;position:relative;flex:none}
-.donutSvg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
-.donutTrack{fill:none;stroke:#edf2f7;stroke-width:13}
-.donutSegment{fill:none;stroke-width:13;stroke-linecap:round;transition:.3s}
-.donutCenter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;pointer-events:none}
-.donutBig{font-size:36px;font-weight:950;line-height:1}
-.donutSmall{font-size:14px;color:#8a94a8;margin-top:6px}
+.donut{width:250px;height:250px;position:relative}
+.donut svg{width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.donut circle{fill:none;stroke-width:14;stroke-linecap:round}
+.donutCenter{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.donutBig{font-size:38px;font-weight:950}.donutSmall{font-size:14px;color:#8a94a8}
 .legend{display:flex;flex-direction:column;gap:13px;font-size:17px}
 .legendItem{display:flex;gap:12px;align-items:center}
 .dot{width:15px;height:15px;border-radius:50%;flex:none}
-
 .objectCard{padding:23px;border-radius:28px;margin-bottom:16px}
 .olive{background:#f6fbf2}.cyan{background:#f3fbff}.amber{background:#fff8ef}
-.objectTop{display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:850;margin-bottom:12px}
+.objectTop,.barRow{display:flex;justify-content:space-between;align-items:center;font-size:20px;font-weight:850;margin-bottom:12px}
 .objectStats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 .objLabel{font-size:13px;color:#8a94a8;margin-bottom:6px}
 .objValue{font-size:20px;font-weight:900}
 .stackedBar{height:14px;background:#e8eef8;border-radius:999px;overflow:hidden;display:flex;margin-bottom:18px}
 .stay{background:linear-gradient(90deg,#2563ff,#74a2ff)}
 .extra{background:linear-gradient(90deg,#f7c948,#f59e0b)}
-
-.compactRow{padding:14px 0;border-bottom:1px solid #eef2f7}
-.compactTop{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:18px;font-weight:800}
-.compactTop strong{white-space:nowrap;font-size:18px}
-.compactBar{margin-top:10px;height:8px;background:#edf2f7;border-radius:999px;overflow:hidden}
-.compactBar div{height:100%;border-radius:999px}
-.rowEdit{border:0;background:#eef4ff;color:var(--blue);border-radius:12px;padding:7px 10px;font-weight:800;font-size:13px}
-.rowRight{display:flex;align-items:center;gap:8px}
-
-.c1{background:linear-gradient(90deg,#2563ff,#74a2ff)}
-.c2{background:linear-gradient(90deg,#16a34a,#7adf9b)}
-.c3{background:linear-gradient(90deg,#f59e0b,#f7c948)}
-.c4{background:linear-gradient(90deg,#ef4444,#fb7185)}
-.c5{background:linear-gradient(90deg,#8b5cf6,#c4b5fd)}
-.c6{background:linear-gradient(90deg,#06b6d4,#67e8f9)}
-.c7{background:linear-gradient(90deg,#ec4899,#f9a8d4)}
-
+.bar{height:10px;background:#e8eef8;border-radius:999px;overflow:hidden;margin-top:8px;margin-bottom:16px}
+.bar div{height:100%;border-radius:999px}
+.c1{background:linear-gradient(90deg,#2563ff,#74a2ff)}.c2{background:linear-gradient(90deg,#16a34a,#7adf9b)}.c3{background:linear-gradient(90deg,#f59e0b,#f7c948)}.c4{background:linear-gradient(90deg,#ef4444,#fb7185)}.c5{background:linear-gradient(90deg,#8b5cf6,#c4b5fd)}.c6{background:linear-gradient(90deg,#06b6d4,#67e8f9)}
 .channelGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .channelCard{background:#f6f8fd;border-radius:24px;padding:20px}
-.channelName{font-size:15px;margin-bottom:12px}
-.channelValue{font-size:38px;font-weight:950}
-.channelMeta{margin-top:8px;color:#8a94a8;font-size:14px}
-.chart{height:280px;background:#f4f7fd;border-radius:28px;overflow:hidden;padding:10px;position:relative}
+.channelName{font-size:15px;margin-bottom:12px}.channelValue{font-size:38px;font-weight:950}
+.chart{height:280px;background:#f4f7fd;border-radius:28px;overflow:hidden;padding:10px}
 .chart svg{width:100%;height:100%}
-.chart text{font-size:22px;font-weight:800;fill:#334155}
 .chartLabels{display:flex;justify-content:space-between;color:#8a94a8;font-size:13px;margin-top:10px}
 .growthGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .growthRow{background:#f7f9fd;border-radius:22px;padding:16px}
@@ -131,27 +91,18 @@ textarea{min-height:105px;resize:none}
 .uploadStatus{margin-top:16px;background:#eef4ff;color:#2458ff;padding:14px 16px;border-radius:18px;font-weight:800;display:none}
 .exportGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .exportBtn{border:0;background:#f6f8fd;border-radius:22px;padding:20px;font-weight:850;font-size:16px;color:#101828}
-.aiSummary{background:linear-gradient(135deg,#07153d,#142b63);color:#fff;border-radius:38px;padding:32px;margin-bottom:140px;box-shadow:0 24px 60px rgba(7,21,61,.22)}
+.aiSummary{background:linear-gradient(135deg,#07153d,#142b63);color:#fff;border-radius:38px;padding:32px;margin-bottom:22px;box-shadow:0 24px 60px rgba(7,21,61,.22)}
 .aiTitle{font-size:36px;font-weight:900;margin-bottom:22px}
 .aiGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .aiBox{background:rgba(255,255,255,.09);border-radius:24px;padding:20px}
 .aiLabel{font-size:18px;font-weight:900;margin-bottom:14px}
 .aiLine{line-height:1.45;margin-bottom:10px}
 .toast{position:fixed;top:18px;left:50%;transform:translateX(-50%);background:#111827;color:white;padding:14px 18px;border-radius:18px;z-index:9999;display:none}
-
 @media(max-width:900px){
-  .wrap{padding:16px 16px 150px}
-  .brand,.aTitle{font-size:34px}.title{font-size:28px}.row{grid-template-columns:1fr}
-  .filters{grid-template-columns:1fr 1fr}
-  .kpiGrid{grid-template-columns:1fr 1fr}.kpi{padding:18px}.kpiVal{font-size:25px}
-  .channelGrid{grid-template-columns:1fr 1fr}
-  .objectStats{grid-template-columns:1fr 1fr}
-  .aiGrid,.growthGrid{grid-template-columns:1fr}
-  .aCardTitle{font-size:25px}
-  .donut{width:215px;height:215px}
-  .navBtn{font-size:12px}
-  .exportGrid{grid-template-columns:1fr}
-  .bottomNav{bottom:14px;width:calc(100% - 18px)}
+.wrap{padding:16px}.brand,.aTitle{font-size:34px}.title{font-size:28px}.row{grid-template-columns:1fr}
+.filters{grid-template-columns:1fr 1fr}.kpiGrid{grid-template-columns:1fr 1fr}.kpi{padding:18px}.kpiVal{font-size:25px}
+.channelGrid{grid-template-columns:1fr 1fr}.objectStats{grid-template-columns:1fr 1fr}.aiGrid,.growthGrid{grid-template-columns:1fr}
+.aCardTitle{font-size:25px}.donut{width:220px;height:220px}.navBtn{font-size:12px}.exportGrid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -171,180 +122,190 @@ textarea{min-height:105px;resize:none}
 <div class="wrap">
 
 <div class="top">
-  <div>
-    <div class="brand">Медвежки</div>
-    <div class="sub">AI ERP Dashboard • Май 2026</div>
-  </div>
-  <div class="user">Владислав</div>
+<div>
+<div class="brand">Медвежки</div>
+<div class="sub">AI ERP Dashboard • Май 2026</div>
+</div>
+<div class="user">Владислав</div>
 </div>
 
 <section id="expenseTab">
-  <div class="card">
-    <div class="title">Добавить расход</div>
-    <div class="row">
-      <div>
-        <div class="sub">Категория</div>
-        <select id="expenseCategory"></select>
-      </div>
-      <div>
-        <div class="sub">Оплатил</div>
-        <select><option>Владислав</option><option>Даша</option><option>Юлия</option><option>Общий счет</option></select>
-      </div>
-    </div>
-    <div style="height:16px"></div>
-    <div class="sub">Описание</div>
-    <textarea id="expenseName" placeholder="Например: оплатил интернет Starlink"></textarea>
-    <div style="height:16px"></div>
-    <div class="sub">Сумма</div>
-    <input id="expenseAmount" placeholder="₽" inputmode="numeric">
-    <div class="voiceWrap"><button class="voiceBtn">🎙</button></div>
-    <button class="btn" onclick="addExpense()">Добавить расход</button>
-  </div>
+<div class="card">
+<div class="title">Добавить расход</div>
+<div class="row">
+<div>
+<div class="sub">Категория</div>
+<select id="expenseCategory"></select>
+</div>
+<div>
+<div class="sub">Тип расхода</div>
+<select id="expenseType">
+<option>Операционный расход</option>
+<option>Неотъемлемое улучшение</option>
+</select>
+</div>
+</div>
+<div style="height:16px"></div>
+<div class="sub">Описание</div>
+<textarea id="expenseName" placeholder="Например: оплатил интернет Starlink"></textarea>
+<div style="height:16px"></div>
+<div class="sub">Сумма</div>
+<input id="expenseAmount" placeholder="₽" inputmode="numeric">
+<div class="voiceWrap"><button class="voiceBtn">🎙</button></div>
+<button class="btn" onclick="addExpense()">Добавить расход</button>
+</div>
 
-  <div class="card">
-    <div class="title">История расходов</div>
-    <div id="expenseHistory"></div>
-  </div>
+<div class="card">
+<div class="title">История расходов</div>
+<div id="expenseHistory"></div>
+</div>
 </section>
 
 <section id="incomeTab" class="hide">
-  <div class="card">
-    <div class="title">Домик 1 — Оливковый</div>
-    <div class="serviceRow"><span>🏠 Проживание</span><strong>145 000 ₽</strong></div>
-    <div class="serviceRow"><span>🛁 Баня-бочка</span><strong>32 000 ₽</strong></div>
-    <div class="serviceRow"><span>🛁🔥 Баня-бочка + чан</span><strong>48 000 ₽</strong></div>
-  </div>
-  <div class="card">
-    <div class="title">Домик 2 — Бирюзовый</div>
-    <div class="serviceRow"><span>🏠 Проживание</span><strong>192 000 ₽</strong></div>
-    <div class="serviceRow"><span>🧖‍♀️ Сауна</span><strong>41 000 ₽</strong></div>
-    <div class="serviceRow"><span>🧖‍♀️♨️ Сауна + чан</span><strong>55 000 ₽</strong></div>
-  </div>
+<div class="card">
+<div class="title">Добавить доход</div>
+<div class="row">
+<div>
+<div class="sub">Объект</div>
+<select id="incomeObject">
+<option>🫒 Домик 1</option>
+<option>🩵 Домик 2</option>
+<option>🧡 Домик 3</option>
+</select>
+</div>
+<div>
+<div class="sub">Тип дохода</div>
+<select id="incomeType" onchange="toggleServiceField()">
+<option>Проживание</option>
+<option>Допуслуга</option>
+</select>
+</div>
+</div>
+</div>
+<div style="height:16px"></div>
+<div id="serviceField" class="hide">
+<div class="sub">Допуслуга</div>
+<select id="incomeService"></select>
+<div style="height:16px"></div>
+</div>
+<div class="sub">Канал</div>
+<select id="incomeChannel">
+<option>Avito</option>
+<option>Bnovo</option>
+<option>Telegram</option>
+<option>Сайт</option>
+<option>Повторные гости</option>
+<option>Другое</option>
+</select>
+<div style="height:16px"></div>
+<div class="sub">Сумма</div>
+<input id="incomeAmount" placeholder="₽" inputmode="numeric">
+<div style="height:16px"></div>
+<button class="btn" onclick="addIncome()">Добавить доход</button>
+</div>
+
+<div class="card">
+<div class="title">История доходов</div>
+<div id="incomeHistory"></div>
+</div>
 </section>
 
 <section id="analyticsTab" class="hide">
 
-  <div class="aHero">
-    <div>
-      <div class="aSub" id="analyticsSub">AI ERP Dashboard • текущий месяц</div>
-      <div class="aTitle">Аналитика</div>
-    </div>
-  </div>
+<div class="aHero">
+<div>
+<div class="aSub" id="analyticsSub">AI ERP Dashboard • текущий месяц</div>
+<div class="aTitle">Аналитика</div>
+</div>
+</div>
 
-  <div class="filters">
-    <select class="filter" id="periodFilter"><option>Май 2026</option><option>Неделя</option><option>Квартал</option><option>Год</option></select>
-    <select class="filter" id="houseFilter"><option>Все домики</option><option>Домик 1</option><option>Домик 2</option><option>Домик 3</option></select>
-    <select class="filter" id="typeFilter"><option>Все показатели</option><option>Доходы</option><option>Расходы</option><option>Допуслуги</option><option>Загрузка</option></select>
-    <select class="filter" id="channelFilter"><option>Все источники</option><option>Avito</option><option>Bnovo</option><option>Telegram</option><option>Сайт</option></select>
-  </div>
-  <button class="btn btnDark applyFilters" onclick="applyFilters()">Показать</button>
+<div class="filters">
+<select class="filter" id="periodFilter"><option>Май 2026</option><option>Неделя</option><option>Квартал</option><option>Год</option></select>
+<select class="filter" id="houseFilter"><option>Все домики</option><option>Домик 1</option><option>Домик 2</option><option>Домик 3</option></select>
+<select class="filter" id="typeFilter"><option>Все показатели</option><option>Доходы</option><option>Расходы</option><option>Допуслуги</option><option>Загрузка</option></select>
+<select class="filter" id="channelFilter"><option>Все источники</option><option>Avito</option><option>Bnovo</option><option>Telegram</option><option>Сайт</option></select>
+</div>
+<button class="btn btnDark applyFilters" onclick="applyFilters()">Показать</button>
 
-  <div class="kpiGrid" id="kpiGrid"></div>
+<div class="kpiGrid" id="kpiGrid"></div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Структура оборота <button class="miniEdit" onclick="editTurnover()">Редактировать</button></div>
-    <div class="donutWrap">
-      <div class="donut" id="turnoverDonut"></div>
-      <div class="legend" id="turnoverLegend"></div>
-    </div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Структура оборота</div>
+<div class="donutWrap">
+<div class="donut" id="turnoverDonut"></div>
+<div class="legend" id="turnoverLegend"></div>
+</div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Доход по объектам <button class="miniEdit" onclick="editObjectIncome()">Редактировать</button></div>
-    <div id="objectsBlock"></div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Доход по объектам</div>
+<div id="objectsBlock"></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Доходы по услугам <button class="miniEdit" onclick="editServiceIncome()">Редактировать</button></div>
-    <div class="donutWrap">
-      <div class="donut" id="serviceDonut"></div>
-      <div class="legend" id="serviceLegend"></div>
-    </div>
-    <div style="height:18px"></div>
-    <div id="servicesBlock"></div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Доходы по услугам</div>
+<div class="donutWrap">
+<div class="donut" id="serviceDonut"></div>
+<div class="legend" id="serviceLegend"></div>
+</div>
+<div style="height:20px"></div>
+<div id="servicesBlock"></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Структура расходов <button class="miniEdit" onclick="editExpenses()">Редактировать</button></div>
-    <div class="donutWrap">
-      <div class="donut" id="expenseDonut"></div>
-      <div class="legend" id="expenseLegend"></div>
-    </div>
-    <div style="height:18px"></div>
-    <div id="expenseAnalytics"></div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Структура расходов</div>
+<div class="donutWrap">
+<div class="donut" id="expenseDonut"></div>
+<div class="legend" id="expenseLegend"></div>
+</div>
+<div style="height:20px"></div>
+<div id="expenseAnalytics"></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Каналы бронирования <button class="miniEdit" onclick="editChannels()">Редактировать</button></div>
-    <div class="channelGrid" id="channelsBlock"></div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Каналы бронирования</div>
+<div class="channelGrid" id="channelsBlock"></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Динамика оборота <span class="green">+12%</span></div>
-    <div class="chart">
-      <svg viewBox="0 0 1000 300" preserveAspectRatio="none">
-        <path d="M0,250 C130,230 160,200 250,170 C350,130 420,150 500,110 C600,70 690,90 760,65 C850,40 920,25 1000,35" fill="none" stroke="#2563ff" stroke-width="10" stroke-linecap="round"/>
-        <circle cx="0" cy="250" r="8" fill="#2563ff"/>
-        <circle cx="250" cy="170" r="8" fill="#2563ff"/>
-        <circle cx="500" cy="110" r="8" fill="#2563ff"/>
-        <circle cx="760" cy="65" r="8" fill="#2563ff"/>
-        <circle cx="1000" cy="35" r="8" fill="#2563ff"/>
-        <text x="35" y="238">12k</text>
-        <text x="235" y="150">84k</text>
-        <text x="475" y="92">186k</text>
-        <text x="820" y="46">538k</text>
-      </svg>
-    </div>
-    <div class="chartLabels"><span>1 мая</span><span>7 мая</span><span>14 мая</span><span>23 мая</span></div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Динамика оборота <span class="green">+12%</span></div>
+<div class="chart">
+<svg viewBox="0 0 1000 300" preserveAspectRatio="none">
+<path d="M0,250 C130,230 160,200 250,170 C350,130 420,150 500,110 C600,70 690,90 760,65 C850,40 920,25 1000,35" fill="none" stroke="#2563ff" stroke-width="10" stroke-linecap="round"/>
+<circle cx="0" cy="250" r="8" fill="#2563ff"/><circle cx="250" cy="170" r="8" fill="#2563ff"/><circle cx="500" cy="110" r="8" fill="#2563ff"/><circle cx="760" cy="65" r="8" fill="#2563ff"/><circle cx="1000" cy="35" r="8" fill="#2563ff"/>
+</svg>
+</div>
+<div class="chartLabels"><span>1 мая · 12k</span><span>7 мая · 84k</span><span>14 мая · 186k</span><span>23 мая · 538k</span></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Динамика к прошлому периоду</div>
-    <div class="growthGrid">
-      <div class="growthRow"><div class="growthTop"><span>Оборот</span><span class="green">+12%</span></div><div class="compactBar"><div class="c1" style="width:72%"></div></div></div>
-      <div class="growthRow"><div class="growthTop"><span>Допуслуги</span><span class="green">+18%</span></div><div class="compactBar"><div class="c2" style="width:82%"></div></div></div>
-      <div class="growthRow"><div class="growthTop"><span>Расходы</span><span class="red">+9%</span></div><div class="compactBar"><div class="c4" style="width:66%"></div></div></div>
-      <div class="growthRow"><div class="growthTop"><span>Загрузка</span><span class="orange">-2%</span></div><div class="compactBar"><div class="c3" style="width:48%"></div></div></div>
-    </div>
-  </div>
+<div class="aCard">
+<div class="aCardTitle">Импорт Bnovo</div>
+<label class="uploadZone">
+<input id="bnovoFile" type="file" accept=".xlsx,.xls" hidden onchange="handleBnovoUpload(event)">
+<svg class="uploadIconSvg" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5l5 5"/><path d="M5 20h14"/></svg>
+<div class="uploadTitle">Загрузить Excel</div>
+<div class="uploadSub">Файл Bnovo будет подготовлен к разбору</div>
+</label>
+<div id="uploadStatus" class="uploadStatus"></div>
+</div>
 
-  <div class="aCard">
-    <div class="aCardTitle">Импорт Binov</div>
-    <label class="uploadZone">
-      <input id="binovFile" type="file" accept=".xlsx,.xls" hidden onchange="handleBinovUpload(event)">
-      <svg class="uploadIconSvg" viewBox="0 0 24 24"><path d="M12 16V4"/><path d="M7 9l5-5l5 5"/><path d="M5 20h14"/></svg>
-      <div class="uploadTitle">Загрузить Excel</div>
-      <div class="uploadSub">Файл Binov будет подготовлен к разбору</div>
-    </label>
-    <div id="uploadStatus" class="uploadStatus"></div>
-  </div>
-
-  <div class="aCard">
-    <div class="aCardTitle">Экспорт отчётов</div>
-    <div class="exportGrid">
-      <button class="exportBtn">PDF отчёт</button>
-      <button class="exportBtn">Excel отчёт</button>
-      <button class="exportBtn">AI выводы</button>
-    </div>
-  </div>
-
-  <div class="aiSummary">
-    <div class="aiTitle">AI Summary</div>
-    <div class="aiGrid">
-      <div class="aiBox"><div class="aiLabel">Хорошо</div><div class="aiLine">A-frame вырос на 11%</div><div class="aiLine">Чан приносит 28% прибыли</div></div>
-      <div class="aiBox"><div class="aiLabel">Риски</div><div class="aiLine">Контейнер просел по будням</div><div class="aiLine">Ремонт выше нормы</div></div>
-      <div class="aiBox"><div class="aiLabel">Рекомендации</div><div class="aiLine">Поднять цены выходных на 8%</div><div class="aiLine">Усилить рекламу будней</div></div>
-    </div>
-  </div>
+<div class="aiSummary">
+<div class="aiTitle">AI Summary</div>
+<div class="aiGrid">
+<div class="aiBox"><div class="aiLabel">Хорошо</div><div class="aiLine">A-frame вырос на 11%</div><div class="aiLine">Чан приносит 28% прибыли</div></div>
+<div class="aiBox"><div class="aiLabel">Риски</div><div class="aiLine">Контейнер просел по будням</div><div class="aiLine">Ремонт выше нормы</div></div>
+<div class="aiBox"><div class="aiLabel">Рекомендации</div><div class="aiLine">Поднять цены выходных на 8%</div><div class="aiLine">Усилить рекламу будней</div></div>
+</div>
+</div>
 
 </section>
 
 <section id="aiTab" class="hide">
-  <div class="card"><div class="title">AI Центр</div><div class="serviceRow"><span>Telegram даёт лучший средний чек</span></div><div class="serviceRow"><span>Домик 2 показывает лучшую маржинальность</span></div><div class="serviceRow"><span>AI рекомендует поднять цены июня</span></div></div>
+<div class="card"><div class="title">AI Центр</div><div class="serviceRow"><span>Telegram даёт лучший средний чек</span></div><div class="serviceRow"><span>Домик 2 показывает лучшую маржинальность</span></div><div class="serviceRow"><span>AI рекомендует поднять цены июня</span></div></div>
 </section>
 
 <section id="settingsTab" class="hide">
-  <div class="card"><div class="title">Настройки</div><div class="settingRow"><span>Персонал</span></div><div class="settingRow"><span>Домики</span></div><div class="settingRow"><span>Аналитика</span></div><div class="settingRow"><span>Партнеры</span></div></div>
+<div class="card"><div class="title">Настройки</div><div class="settingRow"><span>Персонал</span></div><div class="settingRow"><span>Домики</span></div><div class="settingRow"><span>Аналитика</span></div><div class="settingRow"><span>Партнеры</span></div></div>
 </section>
 
 </div>
@@ -358,236 +319,187 @@ textarea{min-height:105px;resize:none}
 </div>
 
 <script>
-const expenseCategories=[
-'🤝 Допы персоналу','⚡ Коммуналка','📡 Интернет','🗑 Вывоз мусора','📦 Закупки','👷 Ремонт / обслуживание','💲 Маркетинг','💯 Комиссии площадок','💸 Налоги','💰 Зарплаты','🏦 Ипотека','📁 Прочее'
+const expenseCategories=['🤝 Допы персоналу','⚡ Коммуналка','📡 Интернет','🗑 Вывоз мусора','📦 Закупки','👷 Ремонт / обслуживание','💲 Маркетинг','💯 Комиссии площадок','💸 Налоги','💰 Зарплаты','🏦 Ипотека','📁 Прочее'];
+
+const services=['🧖‍♀️♨️ Сауна + чан','🛁 Чан','🧖‍♀️ Сауна','🍽 Мытьё посуды','🕘 Доп. время','⚠️ Штраф','🛁 Баня-бочка','🪵 Топка чана','🪵 Топка бани-бочки','🛁🔥 Баня-бочка + чан','🥤 Мини-бар','📦 Прочие услуги'];
+
+const demoIncomes=[
+{object:'🫒 Домик 1',type:'Проживание',service:'',channel:'Avito',amount:145000,date:'23.05.2026'},
+{object:'🫒 Домик 1',type:'Допуслуга',service:'🛁🔥 Баня-бочка + чан',channel:'Avito',amount:48000,date:'23.05.2026'},
+{object:'🫒 Домик 1',type:'Допуслуга',service:'🛁 Чан',channel:'Avito',amount:16970,date:'23.05.2026'},
+{object:'🩵 Домик 2',type:'Проживание',service:'',channel:'Bnovo',amount:192000,date:'23.05.2026'},
+{object:'🩵 Домик 2',type:'Допуслуга',service:'🧖‍♀️♨️ Сауна + чан',channel:'Bnovo',amount:69900,date:'23.05.2026'},
+{object:'🩵 Домик 2',type:'Допуслуга',service:'🧖‍♀️ Сауна',channel:'Telegram',amount:12000,date:'23.05.2026'},
+{object:'🧡 Домик 3',type:'Проживание',service:'',channel:'Сайт',amount:121000,date:'23.05.2026'}
 ];
 
-let expenses=JSON.parse(localStorage.getItem('expenses')||'[]');
-
-let serviceData=[
-['🧖‍♀️♨️ Сауна + чан',69900],
-['🛁🔥 Баня-бочка + чан',48000],
-['🛁 Чан',16970],
-['🧖‍♀️ Сауна',12000],
-['🍽 Мытьё посуды',1000],
-['🕘 Доп. время',1000],
-['⚠️ Штраф',0],
-['🛁 Баня-бочка',0],
-['🪵 Топка чана',0],
-['🪵 Топка бани-бочки',0],
-['🥤 Мини-бар',0],
-['📦 Прочие услуги',0]
+const demoExpenses=[
+{cat:'💰 Зарплаты',type:'Операционный расход',name:'Зарплата',amount:97000,date:'23.05.2026'},
+{cat:'🏦 Ипотека',type:'Операционный расход',name:'Ипотека',amount:78000,date:'23.05.2026'},
+{cat:'💯 Комиссии площадок',type:'Операционный расход',name:'Комиссии',amount:59000,date:'23.05.2026'},
+{cat:'👷 Ремонт / обслуживание',type:'Неотъемлемое улучшение',name:'Ремонт',amount:41000,date:'23.05.2026'},
+{cat:'📡 Интернет',type:'Операционный расход',name:'Starlink',amount:5400,date:'23.05.2026'}
 ];
 
-let objectData=[
-{name:'Домик 1',cls:'olive',stay:145000,extra:80000,load:'78%',adr:'11.9k',revpar:'9.2k',profit:'141k'},
-{name:'Домик 2',cls:'cyan',stay:132000,extra:60000,load:'83%',adr:'14.8k',revpar:'12.2k',profit:'188k'},
-{name:'Домик 3',cls:'amber',stay:91000,extra:30000,load:'71%',adr:'13.4k',revpar:'9.5k',profit:'88k'}
-];
-
-let channels=[
-['Avito',71,382000,24],
-['Bnovo',12,64000,5],
-['Telegram',9,48000,4],
-['Сайт',8,44000,3]
-];
-
-const colors=['#2563ff','#16a34a','#f7c948','#ef4444','#8b5cf6','#06b6d4','#f97316','#84cc16','#ec4899','#64748b','#14b8a6','#a855f7'];
+let incomes=JSON.parse(localStorage.getItem('incomes')||'null')||demoIncomes;
+let expenses=JSON.parse(localStorage.getItem('expenses')||'null')||demoExpenses;
+const colors=['#2563ff','#f7c948','#16a34a','#ef4444','#8b5cf6','#06b6d4','#f97316','#84cc16','#ec4899','#64748b','#14b8a6','#a855f7'];
 
 function money(n){return Number(n||0).toLocaleString('ru-RU')+' ₽'}
-
-function openTab(id,btn){
-document.querySelectorAll('section').forEach(s=>s.classList.add('hide'));
-document.getElementById(id).classList.remove('hide');
-document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));
-btn.classList.add('active');
-}
+function sum(arr){return arr.reduce((s,i)=>s+Number(i.amount||0),0)}
+function by(arr,key){let o={};arr.forEach(i=>{let k=i[key]||'Прочее';o[k]=(o[k]||0)+Number(i.amount||0)});return o}
 
 function init(){
 document.getElementById('expenseCategory').innerHTML=expenseCategories.map(c=>`<option>${c}</option>`).join('');
+document.getElementById('incomeService').innerHTML=services.map(c=>`<option>${c}</option>`).join('');
 renderAll();
 }
 
 function renderAll(){
-renderExpenses();
-renderKpi();
-renderTurnover();
+renderExpenseHistory();
+renderIncomeHistory();
+renderAnalytics();
+}
+
+function renderAnalytics(){
+let turnover=sum(incomes);
+let serviceIncome=sum(incomes.filter(i=>i.type==='Допуслуга'));
+let stayIncome=sum(incomes.filter(i=>i.type==='Проживание'));
+let totalExpenses=sum(expenses);
+let improvements=sum(expenses.filter(i=>i.type==='Неотъемлемое улучшение'));
+let operational=totalExpenses-improvements;
+let profitWith=turnover-totalExpenses;
+let profitWithout=turnover-operational;
+let marginWith=turnover?Math.round(profitWith/turnover*100):0;
+let marginWithout=turnover?Math.round(profitWithout/turnover*100):0;
+
+document.getElementById('kpiGrid').innerHTML=[
+['Оборот',short(turnover),'доходы + допы','+12%','green'],
+['Прибыль',short(profitWith),'после всех расходов','+7%','green'],
+['Расходы',short(totalExpenses),'операционные + улучшения','+9%','red'],
+['Загрузка','78%','средняя','-2%','orange'],
+['ADR','14.9k ₽','средняя ночь','+5%','green'],
+['RevPAR','11.6k ₽','на домик','+4%','green'],
+['Рентабельность с улучш.',marginWith+'%','после всех расходов','', marginWith>=0?'green':'red'],
+['Рентабельность без улучш.',marginWithout+'%','без улучшений','', marginWithout>=0?'green':'red']
+].map(i=>`<div class="kpi"><div class="kpiTop"><div class="kpiName">${i[0]}</div><div class="kpiPct ${i[4]}">${i[3]}</div></div><div class="kpiVal">${i[1]}</div><div class="kpiBot">${i[2]}</div></div>`).join('');
+
+donut('turnoverDonut',turnover,short(turnover),[
+{label:'Проживание',value:stayIncome,color:'#2563ff'},
+{label:'Допуслуги',value:serviceIncome,color:'#f7c948'}
+]);
+legend('turnoverLegend',turnover,[
+{label:'Проживание',value:stayIncome,color:'#2563ff'},
+{label:'Допуслуги',value:serviceIncome,color:'#f7c948'}
+]);
+
 renderObjects();
-renderServices();
-renderExpenseAnalytics();
+renderServices(serviceIncome);
+renderExpensesAnalytics(totalExpenses);
 renderChannels();
 }
 
-function renderKpi(){
-document.getElementById('kpiGrid').innerHTML=[
-['Оборот','538k ₽','+12%','доходы + допы','green'],
-['Прибыль','291k ₽','+7%','после расходов','green'],
-['Расходы','247k ₽','+9%','операционные','red'],
-['Загрузка','78%','-2%','средняя','orange'],
-['ADR','14.9k ₽','+5%','средняя ночь','green'],
-['RevPAR','11.6k ₽','+4%','на домик','green']
-].map(i=>`<div class="kpi"><div class="kpiTop"><div class="kpiName">${i[0]}</div><div class="kpiPct ${i[4]}">${i[2]}</div></div><div class="kpiVal">${i[1]}</div><div class="kpiBot">${i[3]}</div></div>`).join('');
-}
-
-function renderDonut(containerId,total,centerValue,centerLabel,items){
-const r=78;
-const c=2*Math.PI*r;
-let offset=0;
-let svg=`<svg viewBox="0 0 220 220" class="donutSvg"><circle class="donutTrack" cx="110" cy="110" r="${r}"></circle>`;
-items.forEach(item=>{
-const length=(item.value/total)*c;
-svg+=`<circle class="donutSegment" cx="110" cy="110" r="${r}" stroke="${item.color}" stroke-dasharray="${length} ${c-length}" stroke-dashoffset="${-offset}"></circle>`;
-offset+=length;
+function donut(id,total,label,data){
+let r=88,c=2*Math.PI*r,start=0,gap=7;
+let svg='<svg viewBox="0 0 220 220">';
+data.filter(d=>d.value>0).forEach(d=>{
+let part=d.value/total*c;
+let dash=Math.max(part-gap,1)+' '+c;
+svg+=`<circle cx="110" cy="110" r="${r}" stroke="${d.color}" stroke-dasharray="${dash}" stroke-dashoffset="${-start}" />`;
+start+=part;
 });
-svg+=`</svg><div class="donutCenter"><div class="donutBig">${centerValue}</div><div class="donutSmall">${centerLabel}</div></div>`;
-document.getElementById(containerId).innerHTML=svg;
+svg+=`</svg><div class="donutCenter"><div class="donutBig">${label}</div><div class="donutSmall">итого</div></div>`;
+document.getElementById(id).innerHTML=svg;
 }
 
-function renderTurnover(){
-let stay=368000, extra=169870, total=stay+extra;
-renderDonut('turnoverDonut',total,'538k','оборот',[
-{value:stay,color:'#2563ff'},
-{value:extra,color:'#f7c948'}
-]);
-document.getElementById('turnoverLegend').innerHTML=`
-<div class="legendItem"><div class="dot" style="background:#2563ff"></div>Проживание — ${money(stay)} / ${Math.round(stay/total*100)}%</div>
-<div class="legendItem"><div class="dot" style="background:#f7c948"></div>Допуслуги — ${money(extra)} / ${Math.round(extra/total*100)}%</div>`;
+function legend(id,total,data){
+document.getElementById(id).innerHTML=data.filter(d=>d.value>0).map(d=>`
+<div class="legendItem"><div class="dot" style="background:${d.color}"></div>${d.label} — ${money(d.value)} / ${Math.round(d.value/total*100)}%</div>`).join('');
 }
 
 function renderObjects(){
-let max=Math.max(...objectData.map(o=>o.stay+o.extra));
-document.getElementById('objectsBlock').innerHTML=objectData.map((o,i)=>{
-let total=o.stay+o.extra;
-return `<div class="objectCard ${o.cls}">
-<div class="objectTop"><span>${o.name}</span><strong>${money(total)}</strong></div>
-<div class="stackedBar"><div class="stay" style="width:${o.stay/max*100}%"></div><div class="extra" style="width:${o.extra/max*100}%"></div></div>
-<div class="objectStats">
-<div><div class="objLabel">Проживание</div><div class="objValue">${Math.round(o.stay/1000)}k</div></div>
-<div><div class="objLabel">Допы</div><div class="objValue">${Math.round(o.extra/1000)}k</div></div>
-<div><div class="objLabel">Загрузка</div><div class="objValue">${o.load}</div></div>
-<div><div class="objLabel">ADR</div><div class="objValue">${o.adr}</div></div>
-</div></div>`;
+let objects=['🫒 Домик 1','🩵 Домик 2','🧡 Домик 3'];
+let cls=['olive','cyan','amber'];
+let max=Math.max(...objects.map(o=>sum(incomes.filter(i=>i.object===o))),1);
+document.getElementById('objectsBlock').innerHTML=objects.map((o,idx)=>{
+let stay=sum(incomes.filter(i=>i.object===o&&i.type==='Проживание'));
+let extra=sum(incomes.filter(i=>i.object===o&&i.type==='Допуслуга'));
+let total=stay+extra;
+return `<div class="objectCard ${cls[idx]}">
+<div class="objectTop"><span>${o}</span><strong>${money(total)}</strong></div>
+<div class="stackedBar"><div class="stay" style="width:${stay/max*100}%"></div><div class="extra" style="width:${extra/max*100}%"></div></div>
+<div class="objectStats"><div><div class="objLabel">Проживание</div><div class="objValue">${short(stay)}</div></div><div><div class="objLabel">Допы</div><div class="objValue">${short(extra)}</div></div><div><div class="objLabel">Загрузка</div><div class="objValue">${idx==0?'78%':idx==1?'83%':'71%'}</div></div><div><div class="objLabel">ADR</div><div class="objValue">${idx==0?'11.9k':idx==1?'14.8k':'13.4k'}</div></div></div>
+</div>`;
 }).join('');
 }
 
-function renderServices(){
-let total=serviceData.reduce((s,i)=>s+Number(i[1]),0)||1;
-renderDonut('serviceDonut',total,Math.round(total/1000)+'k','допы',
-serviceData.filter(i=>i[1]>0).map((i,idx)=>({value:i[1],color:colors[idx%colors.length]})));
-document.getElementById('serviceLegend').innerHTML=serviceData.filter(i=>i[1]>0).map((i,idx)=>`
-<div class="legendItem"><div class="dot" style="background:${colors[idx%colors.length]}"></div>${i[0]} — ${Math.round(i[1]/total*100)}%</div>`).join('');
-let max=Math.max(...serviceData.map(i=>i[1]),1);
-document.getElementById('servicesBlock').innerHTML=serviceData.map((i,idx)=>`
-<div class="compactRow">
-  <div class="compactTop">
-    <span>${i[0]}</span>
-    <div class="rowRight"><strong>${money(i[1])}</strong><button class="rowEdit" onclick="editService(${idx})">Изм.</button></div>
-  </div>
-  <div class="compactBar"><div class="c${(idx%7)+1}" style="width:${Math.max(4,i[1]/max*100)}%"></div></div>
-</div>`).join('');
+function renderServices(total){
+let grouped=by(incomes.filter(i=>i.type==='Допуслуга'),'service');
+let arr=services.map(s=>({label:s,value:grouped[s]||0,color:colors[services.indexOf(s)%colors.length]}));
+donut('serviceDonut',total||1,short(total),arr);
+legend('serviceLegend',total||1,arr);
+let max=Math.max(...arr.map(i=>i.value),1);
+document.getElementById('servicesBlock').innerHTML=arr.map((i,idx)=>`
+<div class="barRow"><span>${i.label}</span><strong>${money(i.value)}</strong></div>
+<div class="bar"><div class="c${idx%6+1}" style="width:${Math.max(4,i.value/max*100)}%"></div></div>`).join('');
 }
 
-function renderExpenseAnalytics(){
-let sums={};
-expenseCategories.forEach(c=>sums[c]=0);
-expenses.forEach(e=>sums[e.cat]=(sums[e.cat]||0)+Number(e.amount||0));
-if(expenses.length===0){
-sums['💰 Зарплаты']=97000;sums['🏦 Ипотека']=78000;sums['💯 Комиссии площадок']=59000;sums['👷 Ремонт / обслуживание']=41000;sums['📡 Интернет']=5400;sums['📦 Закупки']=40159;sums['💲 Маркетинг']=34000;sums['💸 Налоги']=2000;sums['📁 Прочее']=20674;
-}
-let arr=expenseCategories.map(c=>[c,sums[c]||0]);
-let total=arr.reduce((s,i)=>s+i[1],0)||1;
-renderDonut('expenseDonut',total,Math.round(total/1000)+'k','расходы',
-arr.filter(i=>i[1]>0).map((i,idx)=>({value:i[1],color:colors[idx%colors.length]})));
-document.getElementById('expenseLegend').innerHTML=arr.filter(i=>i[1]>0).slice(0,8).map((i,idx)=>`
-<div class="legendItem"><div class="dot" style="background:${colors[idx%colors.length]}"></div>${i[0]} — ${Math.round(i[1]/total*100)}%</div>`).join('');
-let max=Math.max(...arr.map(i=>i[1]),1);
+function renderExpensesAnalytics(total){
+let grouped=by(expenses,'cat');
+let arr=expenseCategories.map((s,idx)=>({label:s,value:grouped[s]||0,color:colors[idx%colors.length]}));
+donut('expenseDonut',total||1,short(total),arr);
+legend('expenseLegend',total||1,arr);
+let max=Math.max(...arr.map(i=>i.value),1);
 document.getElementById('expenseAnalytics').innerHTML=arr.map((i,idx)=>`
-<div class="compactRow">
-  <div class="compactTop">
-    <span>${i[0]}</span>
-    <div class="rowRight"><strong>${money(i[1])}</strong><button class="rowEdit" onclick="editExpenseCategory(${idx})">Изм.</button></div>
-  </div>
-  <div class="compactBar"><div class="c${(idx%7)+1}" style="width:${Math.max(4,i[1]/max*100)}%"></div></div>
-</div>`).join('');
+<div class="barRow"><span>${i.label}</span><strong>${money(i.value)}</strong></div>
+<div class="bar"><div class="c${idx%6+1}" style="width:${Math.max(4,i.value/max*100)}%"></div></div>`).join('');
 }
 
 function renderChannels(){
-document.getElementById('channelsBlock').innerHTML=channels.map((c,i)=>`
-<div class="channelCard" onclick="editChannel(${i})">
-  <div class="channelName">${c[0]}</div>
-  <div class="channelValue">${c[1]}%</div>
-  <div class="channelMeta">${money(c[2])} · ${c[3]} брони</div>
-</div>`).join('');
+let grouped=by(incomes,'channel');
+let total=sum(incomes)||1;
+document.getElementById('channelsBlock').innerHTML=Object.keys(grouped).map(k=>`
+<div class="channelCard"><div class="channelName">${k}</div><div class="channelValue">${Math.round(grouped[k]/total*100)}%</div></div>`).join('');
 }
+
+function short(n){n=Number(n||0);return n>=1000?Math.round(n/1000)+'k ₽':n+' ₽'}
 
 function addExpense(){
 let name=document.getElementById('expenseName').value.trim();
 let amount=Number(document.getElementById('expenseAmount').value);
-let cat=document.getElementById('expenseCategory').value;
 if(!name||!amount){toast('Заполни описание и сумму');return}
-expenses.unshift({name,amount,cat,date:new Date().toLocaleDateString('ru-RU')});
+expenses.unshift({name,amount,cat:document.getElementById('expenseCategory').value,type:document.getElementById('expenseType').value,date:new Date().toLocaleDateString('ru-RU')});
 localStorage.setItem('expenses',JSON.stringify(expenses));
-document.getElementById('expenseName').value='';
-document.getElementById('expenseAmount').value='';
-renderAll();
-toast('Расход добавлен');
+document.getElementById('expenseName').value='';document.getElementById('expenseAmount').value='';
+renderAll();toast('Расход добавлен');
 }
 
-function renderExpenses(){
-document.getElementById('expenseHistory').innerHTML=expenses.length?expenses.map((e,i)=>`
-<div class="historyItem">
-  <div><div class="historyTitle">${e.name}</div><div class="historyMeta">${e.cat} • ${e.date}</div></div>
-  <div><div class="money">${money(e.amount)}</div><button class="editBtn" onclick="editExpenseItem(${i})">Edit</button></div>
-</div>`).join(''):'<div class="sub">Пока расходов нет</div>';
+function addIncome(){
+let amount=Number(document.getElementById('incomeAmount').value);
+if(!amount){toast('Укажи сумму');return}
+let type=document.getElementById('incomeType').value;
+incomes.unshift({object:document.getElementById('incomeObject').value,type,service:type==='Допуслуга'?document.getElementById('incomeService').value:'',channel:document.getElementById('incomeChannel').value,amount,date:new Date().toLocaleDateString('ru-RU')});
+localStorage.setItem('incomes',JSON.stringify(incomes));
+document.getElementById('incomeAmount').value='';
+renderAll();toast('Доход добавлен');
 }
 
-function editExpenseItem(i){
-let v=prompt('Новая сумма',expenses[i].amount);
-if(v!==null){expenses[i].amount=Number(v)||0;localStorage.setItem('expenses',JSON.stringify(expenses));renderAll();}
+function renderExpenseHistory(){
+document.getElementById('expenseHistory').innerHTML=expenses.map((e,i)=>`<div class="historyItem"><div><div class="historyTitle">${e.name}</div><div class="historyMeta">${e.cat} • ${e.type} • ${e.date}</div></div><div><div class="money">${money(e.amount)}</div><button class="editBtn" onclick="editExpense(${i})">Edit</button></div></div>`).join('');
 }
 
-function editService(index){
-let v=prompt('Новая сумма',serviceData[index][1]);
-if(v!==null){serviceData[index][1]=Number(v)||0;renderAll();}
+function renderIncomeHistory(){
+document.getElementById('incomeHistory').innerHTML=incomes.map((e,i)=>`<div class="historyItem"><div><div class="historyTitle">${e.type}${e.service?' • '+e.service:''}</div><div class="historyMeta">${e.object} • ${e.channel} • ${e.date}</div></div><div><div class="money">${money(e.amount)}</div><button class="editBtn" onclick="editIncome(${i})">Edit</button></div></div>`).join('');
 }
 
-function editExpenseCategory(index){
-toast('Категории расходов редактируются через вкладку Расход');
-}
+function editExpense(i){let v=prompt('Новая сумма',expenses[i].amount);if(v!==null){expenses[i].amount=Number(v)||0;localStorage.setItem('expenses',JSON.stringify(expenses));renderAll();}}
+function editIncome(i){let v=prompt('Новая сумма',incomes[i].amount);if(v!==null){incomes[i].amount=Number(v)||0;localStorage.setItem('incomes',JSON.stringify(incomes));renderAll();}}
 
-function editChannel(index){
-let v=prompt('Новый процент',channels[index][1]);
-if(v!==null){channels[index][1]=Number(v)||0;renderAll();}
-}
-
-function editServiceIncome(){toast('Меняй суммы через кнопки Изм. в строках услуг')}
-function editExpenses(){toast('Расходы связаны с вкладкой Расход')}
-function editTurnover(){toast('Оборот считается из проживания и допуслуг')}
-function editObjectIncome(){toast('Редактирование объектов подключим отдельной формой')}
-function editChannels(){toast('Нажми на карточку канала для изменения')}
-
-function applyFilters(){
-let p=document.getElementById('periodFilter').value;
-let h=document.getElementById('houseFilter').value;
-let t=document.getElementById('typeFilter').value;
-let c=document.getElementById('channelFilter').value;
-document.getElementById('analyticsSub').innerText=`AI ERP Dashboard • ${p} • ${h} • ${t} • ${c}`;
-toast('Фильтр применён');
-}
-
-function handleBinovUpload(e){
-let f=e.target.files[0]; if(!f)return;
-let box=document.getElementById('uploadStatus');
-box.style.display='block';
-box.innerText=`Файл выбран: ${f.name} • ${(f.size/1024).toFixed(1)} KB • готов к разбору`;
-}
-
-function toast(text){
-let t=document.getElementById('toast');
-t.innerText=text;t.style.display='block';
-setTimeout(()=>t.style.display='none',1800);
-}
-
+function toggleServiceField(){document.getElementById('serviceField').classList.toggle('hide',document.getElementById('incomeType').value!=='Допуслуга');}
+function applyFilters(){document.getElementById('analyticsSub').innerText=`AI ERP Dashboard • ${periodFilter.value} • ${houseFilter.value} • ${typeFilter.value} • ${channelFilter.value}`;toast('Фильтр применён');}
+function handleBnovoUpload(e){let f=e.target.files[0];if(!f)return;uploadStatus.style.display='block';uploadStatus.innerText=`Файл выбран: ${f.name} • ${(f.size/1024).toFixed(1)} KB • файл Bnovo готов к разбору`;}
+function toast(text){let t=document.getElementById('toast');t.innerText=text;t.style.display='block';setTimeout(()=>t.style.display='none',1800);}
+function openTab(id,btn){document.querySelectorAll('section').forEach(s=>s.classList.add('hide'));document.getElementById(id).classList.remove('hide');document.querySelectorAll('.navBtn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
 init();
 </script>
 
