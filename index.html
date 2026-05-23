@@ -1,129 +1,884 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Медвежки Dashboard</title>
+
 <style>
-:root{--bg:#f5f5f7;--card:#fff;--text:#111827;--muted:#6b7280;--line:#e5e7eb;--blue:#2563eb;--green:#16a34a;--red:#dc2626;--orange:#f97316;--shadow:0 12px 35px rgba(15,23,42,.08);--radius:24px}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#fbfbfd,#f2f4f8);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:var(--text);padding-bottom:92px}.wrap{max-width:980px;margin:0 auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}.brand{font-size:24px;font-weight:800;letter-spacing:-.04em}.sub{color:var(--muted);font-size:13px;margin-top:2px}.pill{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 12px;font-size:13px;box-shadow:var(--shadow)}.card{background:rgba(255,255,255,.92);border:1px solid rgba(229,231,235,.9);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;margin:12px 0}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.metric{padding:14px;border-radius:20px;background:#f9fafb;border:1px solid var(--line)}.metric .n{font-size:22px;font-weight:800;letter-spacing:-.04em}.metric .l{font-size:12px;color:var(--muted);margin-top:3px}.h{font-size:18px;font-weight:800;margin:0 0 12px}.row{display:flex;gap:10px;align-items:center}.col{display:flex;flex-direction:column;gap:8px}label{font-size:12px;color:var(--muted);font-weight:650}input,select,textarea,button{font:inherit}input,select,textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:16px;padding:13px 14px;outline:none}textarea{min-height:76px;resize:vertical}.btn{border:0;border-radius:16px;padding:13px 16px;font-weight:800;background:#111827;color:#fff;cursor:pointer}.btn:active{transform:scale(.98)}.btn2{background:#fff;color:#111827;border:1px solid var(--line)}.btnBlue{background:var(--blue)}.btnGreen{background:var(--green)}.btnRed{background:var(--red)}.tabs{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom));display:grid;grid-template-columns:repeat(5,1fr);gap:6px;z-index:10}.tab{border:0;background:transparent;border-radius:16px;padding:8px 4px;color:#64748b;font-size:11px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:3px}.tab svg{width:22px;height:22px}.tab.active{background:#eef2ff;color:#1d4ed8}.screen{display:none}.screen.active{display:block}.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}.loginBox{width:min(420px,100%);background:#fff;border-radius:30px;padding:22px;border:1px solid var(--line);box-shadow:var(--shadow)}.users{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.userBtn{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 8px;font-weight:800}.userBtn.active{border-color:#2563eb;background:#eff6ff;color:#1d4ed8}.list{display:flex;flex-direction:column;gap:8px}.item{border:1px solid var(--line);border-radius:18px;background:#fff;padding:12px;display:flex;justify-content:space-between;gap:10px}.small{font-size:12px;color:var(--muted)}.tag{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:999px;padding:5px 9px;background:#fff;font-size:12px}.house{border-radius:18px;padding:12px;border:1px solid var(--line);background:#fff;margin:8px 0}.houseHead{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:800}.service{display:grid;grid-template-columns:1.5fr .65fr .9fr;gap:8px;margin-top:8px}.hide{display:none!important}.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);background:#111827;color:white;padding:10px 14px;border-radius:999px;z-index:99;font-size:13px;opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1}@media(max-width:700px){.grid,.grid3{grid-template-columns:1fr}.service{grid-template-columns:1fr}.brand{font-size:21px}.wrap{padding:14px}.card{border-radius:22px}.top{align-items:flex-start}.pill{font-size:12px}}
+:root{
+--bg:#f4f6fb;
+--card:#ffffff;
+--text:#101828;
+--muted:#667085;
+--blue:#2458ff;
+--line:#e8edf5;
+--green:#1ea672;
+--red:#ff4d4f;
+--orange:#ff9f1a;
+--shadow:0 12px 35px rgba(20,20,43,.08);
+--radius:24px;
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+background:linear-gradient(180deg,#f7f8fc,#eef3fa);
+color:var(--text);
+padding-bottom:120px;
+}
+
+.hide{display:none!important}
+
+.wrap{
+max-width:900px;
+margin:auto;
+padding:18px;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:18px;
+}
+
+.brand{
+font-size:28px;
+font-weight:800;
+}
+
+.sub{
+color:var(--muted);
+font-size:14px;
+}
+
+.card{
+background:var(--card);
+border-radius:var(--radius);
+padding:18px;
+box-shadow:var(--shadow);
+margin-bottom:16px;
+}
+
+.row{
+display:flex;
+gap:12px;
+}
+
+.row>*{
+flex:1;
+}
+
+input,select,textarea{
+width:100%;
+border:none;
+background:#f3f6fb;
+padding:16px;
+border-radius:18px;
+font-size:16px;
+outline:none;
+}
+
+textarea{
+min-height:90px;
+resize:none;
+}
+
+.btn{
+border:none;
+border-radius:18px;
+padding:16px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+}
+
+.btnBlue{
+background:var(--blue);
+color:#fff;
+}
+
+.sectionTitle{
+font-size:22px;
+font-weight:800;
+margin-bottom:16px;
+}
+
+.bottomNav{
+position:fixed;
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:700px;
+background:#fff;
+border-radius:30px;
+padding:10px;
+display:flex;
+justify-content:space-between;
+box-shadow:0 15px 40px rgba(0,0,0,.12);
+z-index:100;
+}
+
+.navBtn{
+flex:1;
+border:none;
+background:transparent;
+padding:12px;
+border-radius:22px;
+font-weight:700;
+color:#667085;
+font-size:13px;
+cursor:pointer;
+}
+
+.navBtn.active{
+background:#0d1b3d;
+color:#fff;
+}
+
+.expenseItem{
+padding:14px;
+border-radius:20px;
+background:#f8faff;
+margin-bottom:12px;
+border:1px solid #edf1f7;
+}
+
+.expenseTop{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:8px;
+}
+
+.expenseName{
+font-weight:700;
+font-size:17px;
+}
+
+.badge{
+background:#eef3ff;
+color:#355cff;
+padding:6px 10px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+display:inline-block;
+}
+
+.small{
+font-size:13px;
+color:var(--muted);
+}
+
+.login{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.loginBox{
+width:100%;
+max-width:420px;
+background:#fff;
+padding:24px;
+border-radius:32px;
+box-shadow:var(--shadow);
+}
+
+.users{
+display:flex;
+gap:8px;
+margin-top:12px;
+}
+
+.userBtn{
+flex:1;
+padding:12px;
+border:none;
+border-radius:14px;
+background:#eef2f8;
+font-weight:700;
+cursor:pointer;
+}
+
+.userBtn.active{
+background:#0d1b3d;
+color:#fff;
+}
+
+.voiceWrap{
+display:flex;
+justify-content:center;
+margin-top:12px;
+}
+
+.voiceBtn{
+width:88px;
+height:88px;
+border-radius:50%;
+border:none;
+background:#2458ff;
+color:#fff;
+font-size:32px;
+cursor:pointer;
+position:relative;
+overflow:hidden;
+}
+
+.voiceBtn.recording{
+animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1)}
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+}
+
+.metric{
+background:#fff;
+padding:18px;
+border-radius:22px;
+box-shadow:var(--shadow);
+}
+
+.metric h3{
+margin:0;
+font-size:14px;
+color:var(--muted);
+}
+
+.metric strong{
+display:block;
+margin-top:10px;
+font-size:28px;
+}
+
+.houseCard{
+padding:18px;
+border-radius:24px;
+background:#fff;
+box-shadow:var(--shadow);
+margin-bottom:16px;
+}
+
+.houseTitle{
+font-size:20px;
+font-weight:800;
+margin-bottom:12px;
+}
+
+.incomeRow{
+display:flex;
+justify-content:space-between;
+padding:12px 0;
+border-bottom:1px solid #edf1f7;
+}
+
+.settingRow{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:16px 0;
+border-bottom:1px solid #edf1f7;
+}
+
+.toast{
+position:fixed;
+top:18px;
+left:50%;
+transform:translateX(-50%);
+background:#111827;
+color:#fff;
+padding:14px 18px;
+border-radius:18px;
+z-index:999;
+display:none;
+}
+
+.chart{
+height:220px;
+border-radius:24px;
+background:conic-gradient(
+#2458ff 0 40%,
+#1ea672 40% 68%,
+#ff9f1a 68% 85%,
+#d0d5dd 85% 100%
+);
+margin-top:14px;
+}
+
+.editBtn{
+margin-top:10px;
+background:#eef3ff;
+border:none;
+padding:10px 14px;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+}
 </style>
 </head>
+
 <body>
+
 <div id="toast" class="toast"></div>
-<div id="login" class="login">
-  <div class="loginBox">
-    <div class="brand">Медвежки Dashboard</div>
-    <div class="sub">Вход один раз. Потом приложение запомнит пользователя.</div>
-    <div class="card" style="box-shadow:none;margin:16px 0;padding:12px">
-      <label>Кто входит</label>
-      <div class="users" id="userButtons"></div>
-      <div style="height:10px"></div>
-      <label>Пин-код</label>
-      <input id="pinInput" inputmode="numeric" placeholder="Введите пин" />
-      <div style="height:10px"></div>
-      <button id="loginBtn" class="btn btnBlue" style="width:100%">Войти</button>
-      <div class="small" style="margin-top:10px">Пины: Владислав 1111, Дарья 2222, Юлия 3333</div>
-    </div>
-  </div>
+
+<div id="loginScreen" class="login">
+<div class="loginBox">
+
+<div class="brand">Медвежки Dashboard</div>
+<div class="sub">Вход выполняется один раз</div>
+
+<div style="height:20px"></div>
+
+<label>Кто входит</label>
+<div class="users">
+<button class="userBtn active" onclick="selectUser('Владислав',1111,this)">Владислав</button>
+<button class="userBtn" onclick="selectUser('Даша',2222,this)">Даша</button>
+<button class="userBtn" onclick="selectUser('Юлия',3333,this)">Юлия</button>
+</div>
+
+<div style="height:16px"></div>
+
+<label>Пин-код</label>
+<input id="pinInput" placeholder="Введите пин" inputmode="numeric" />
+
+<div style="height:16px"></div>
+
+<button class="btn btnBlue" onclick="login()">Войти</button>
+
+<div style="height:12px"></div>
+
+<div class="small">
+Пины: Владислав 1111 · Даша 2222 · Юлия 3333
+</div>
+
+</div>
 </div>
 
 <div id="app" class="hide">
-  <div class="wrap">
-    <div class="top">
-      <div><div class="brand">Медвежки</div><div class="sub" id="todayText"></div></div>
-      <div class="pill"><span id="currentUser"></span> · <button id="logoutBtn" style="border:0;background:transparent;color:#2563eb;font-weight:800">выйти</button></div>
-    </div>
 
-    <section id="s-expenses" class="screen active">
-      <div class="card">
-        <div class="h">➕ Быстро записать расход</div>
-        <div class="grid">
-          <div><label>Сумма</label><input id="exAmount" inputmode="decimal" placeholder="Например 2000" /></div>
-          <div><label>Категория</label><select id="exCategory"></select></div>
-        </div>
-        <div style="height:10px"></div>
-        <div class="grid">
-          <div><label>Тип</label><select id="exType"><option value="Операционка">Операционка</option><option value="Неотъемлемые улучшения">Неотъемлемые улучшения</option></select></div>
-          <div><label>Оплатил</label><input id="paidBy" disabled /></div>
-        </div>
-        <div style="height:10px"></div>
-        <label>Комментарий / голосовой текст</label>
-        <textarea id="exComment" placeholder="Например: интернет за май"></textarea>
-        <div class="row" style="margin-top:10px;flex-wrap:wrap">
-          <button id="voiceBtn" class="btn btn2">🎙️ Голос</button>
-          <button id="saveExpense" class="btn btnBlue">Сохранить расход</button>
-        </div>
-        <div class="small" style="margin-top:8px">Дата ставится автоматически. Расход распределяется поровну на 3 домика.</div>
-      </div>
-      <div class="card"><div class="h">Последние расходы</div><div id="expenseList" class="list"></div></div>
-    </section>
+<div class="wrap">
 
-    <section id="s-income" class="screen">
-      <div class="card"><div class="h">💰 Доходы по домикам</div><div id="incomeHouses"></div></div>
-    </section>
-
-    <section id="s-analytics" class="screen">
-      <div class="card">
-        <div class="h">📊 Дашборд</div>
-        <div class="grid3">
-          <div class="metric"><div class="n" id="mRevenue">0 ₽</div><div class="l">Доход всего</div></div>
-          <div class="metric"><div class="n" id="mOpEx">0 ₽</div><div class="l">Операционные расходы</div></div>
-          <div class="metric"><div class="n" id="mProfit">0 ₽</div><div class="l">Прибыль до улучшений</div></div>
-          <div class="metric"><div class="n" id="mImprove">0 ₽</div><div class="l">Неотъемлемые улучшения</div></div>
-          <div class="metric"><div class="n" id="mAvgWith">0 ₽</div><div class="l">Средний чек с допами</div></div>
-          <div class="metric"><div class="n" id="mAvgStay">0 ₽</div><div class="l">Средний чек проживания</div></div>
-        </div>
-      </div>
-      <div class="card"><div class="h">🏠 Конкуренция домиков</div><div id="houseCompetition"></div></div>
-      <div class="card"><div class="h">📈 Загрузка, % — редактируется вручную</div><div class="grid3" id="occupancyInputs"></div></div>
-      <div class="card"><div class="h">🧾 Доп. услуги по домикам</div><div id="addonsCompetition"></div></div>
-    </section>
-
-    <section id="s-ai" class="screen">
-      <div class="card"><div class="h">🤖 AI-отчёт</div><button id="makeReport" class="btn btnBlue">Получить отчёт</button><textarea id="aiReport" style="margin-top:12px;min-height:260px" readonly></textarea><div class="small">Сейчас это локальный автоотчёт без OpenAI API. Реальный AI подключается позже через сервер/Vercel.</div></div>
-    </section>
-
-    <section id="s-settings" class="screen">
-      <div class="card"><div class="h">⚙️ Настройки</div><button id="resetDemo" class="btn btnRed">Очистить все данные</button><div class="small" style="margin-top:10px">Категории и услуги заложены внутри файла. Позже можно вынести в редактируемые настройки.</div></div>
-      <div class="card"><div class="h">Категории расходов</div><div id="settingsCats"></div></div>
-    </section>
-  </div>
-  <nav class="tabs">
-    <button class="tab active" data-screen="expenses"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Расход</button>
-    <button class="tab" data-screen="income"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 17V9M12 17V7M16 17v-5"/></svg>Доход</button>
-    <button class="tab" data-screen="analytics"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/></svg>Аналитика</button>
-    <button class="tab" data-screen="ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l2 6 6 2-6 2-2 6-2-6-6-2 6-2z"/></svg>AI</button>
-    <button class="tab" data-screen="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/><path d="M19.4 15a1.7 1.7 0 00.34 1.88l.06.06a2 2 0 01-2.83 2.83l-.06-.06A1.7 1.7 0 0015 19.4a1.7 1.7 0 00-1 .6 1.7 1.7 0 00-.4 1.1V21a2 2 0 01-4 0v-.1a1.7 1.7 0 00-.4-1.1 1.7 1.7 0 00-1-.6 1.7 1.7 0 00-1.88.34l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.7 1.7 0 004.6 15a1.7 1.7 0 00-.6-1 1.7 1.7 0 00-1.1-.4H3a2 2 0 010-4h.1a1.7 1.7 0 001.1-.4 1.7 1.7 0 00.6-1 1.7 1.7 0 00-.34-1.88l-.06-.06a2 2 0 012.83-2.83l.06.06A1.7 1.7 0 009 4.6a1.7 1.7 0 001-.6 1.7 1.7 0 00.4-1.1V3a2 2 0 014 0v.1a1.7 1.7 0 00.4 1.1 1.7 1.7 0 001 .6 1.7 1.7 0 001.88-.34l.06-.06a2 2 0 012.83 2.83l-.06.06A1.7 1.7 0 0019.4 9c.22.36.36.73.6 1 .3.3.7.4 1.1.4h.1a2 2 0 010 4h-.1a1.7 1.7 0 00-1.1.4 1.7 1.7 0 00-.6 1z"/></svg>Настройки</button>
-  </nav>
+<div class="top">
+<div>
+<div class="brand">Медвежки</div>
+<div class="sub" id="todayText"></div>
 </div>
+
+<div class="badge" id="currentUser"></div>
+</div>
+
+<!-- РАСХОДЫ -->
+
+<div id="expensesPage">
+
+<div class="card">
+
+<div class="sectionTitle">Добавить расход</div>
+
+<div class="row">
+<div>
+<label>Категория</label>
+
+<select id="category">
+<option>🤝 Допы персоналу</option>
+<option>⚡ Коммуналка</option>
+<option>📡 Интернет</option>
+<option>🗑 Вывоз мусора</option>
+<option>📦 Закупки</option>
+<option>👷 Ремонт / обслуживание</option>
+<option>💲 Маркетинг</option>
+<option>💯 Комиссии площадок</option>
+<option>💵 Налоги</option>
+<option>💰 Зарплаты</option>
+<option>🏦 Ипотека</option>
+<option>📁 Прочее</option>
+</select>
+</div>
+
+<div>
+<label>Оплатил</label>
+
+<select id="paidBy">
+<option>Владислав</option>
+<option>Даша</option>
+<option>Юлия</option>
+<option>Общий счет</option>
+</select>
+</div>
+</div>
+
+<div style="height:12px"></div>
+
+<label>Описание</label>
+<textarea id="expenseName" placeholder="Например: Интернет Starlink"></textarea>
+
+<div style="height:12px"></div>
+
+<label>Сумма</label>
+<input id="expenseAmount" type="number" placeholder="₽" />
+
+<div class="voiceWrap">
+<button
+class="voiceBtn"
+id="voiceBtn"
+ontouchstart="startVoice()"
+ontouchend="stopVoice()"
+onmousedown="startVoice()"
+onmouseup="stopVoice()"
+>
+🎙
+</button>
+</div>
+
+<div style="height:16px"></div>
+
+<button class="btn btnBlue" onclick="addExpense()">Добавить расход</button>
+
+</div>
+
+<div class="card">
+
+<div class="sectionTitle">История расходов</div>
+
+<div id="expensesList"></div>
+
+</div>
+
+</div>
+
+<!-- ДОХОДЫ -->
+
+<div id="incomePage" class="hide">
+
+<div class="houseCard">
+<div class="houseTitle">🫒 Оливковый контейнер</div>
+
+<div class="incomeRow">
+<span>🏠 Проживание</span>
+<strong>145 000 ₽</strong>
+</div>
+
+<div class="incomeRow">
+<span>🛁 Баня-бочка</span>
+<strong>32 000 ₽</strong>
+</div>
+
+<div class="incomeRow">
+<span>🔥 Баня-бочка + чан</span>
+<strong>48 000 ₽</strong>
+</div>
+
+</div>
+
+<div class="houseCard">
+<div class="houseTitle">💎 Бирюзовый A-frame</div>
+
+<div class="incomeRow">
+<span>🏠 Проживание</span>
+<strong>192 000 ₽</strong>
+</div>
+
+<div class="incomeRow">
+<span>🧖 Сауна</span>
+<strong>41 000 ₽</strong>
+</div>
+
+<div class="incomeRow">
+<span>♨️ Сауна + чан</span>
+<strong>55 000 ₽</strong>
+</div>
+
+</div>
+
+</div>
+
+<!-- АНАЛИТИКА -->
+
+<div id="analyticsPage" class="hide">
+
+<div class="grid">
+
+<div class="metric">
+<h3>Оборот</h3>
+<strong>538 000 ₽</strong>
+</div>
+
+<div class="metric">
+<h3>Чистая прибыль</h3>
+<strong>291 000 ₽</strong>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="sectionTitle">Структура оборота</div>
+
+<div class="chart"></div>
+
+<div style="height:14px"></div>
+
+<div class="small">
+🔵 Операционные расходы<br>
+🟢 Чистая прибыль<br>
+🟠 Улучшения объектов<br>
+⚪ Прочее
+</div>
+
+</div>
+
+<div class="card">
+<div class="sectionTitle">Загрузка домиков</div>
+
+<div class="incomeRow">
+<span>🫒 Контейнер</span>
+<strong>78%</strong>
+</div>
+
+<div class="incomeRow">
+<span>💎 A-frame</span>
+<strong>83%</strong>
+</div>
+
+<div class="incomeRow">
+<span>🌲 Forest House</span>
+<strong>71%</strong>
+</div>
+
+</div>
+
+</div>
+
+<!-- НАСТРОЙКИ -->
+
+<div id="settingsPage" class="hide">
+
+<div class="card">
+
+<div class="sectionTitle">Настройки</div>
+
+<div class="settingRow">
+<div>
+<div><strong>👥 Персонал</strong></div>
+<div class="small">Управление сотрудниками</div>
+</div>
+</div>
+
+<div class="settingRow">
+<div>
+<div><strong>🤝 Партнеры</strong></div>
+<div class="small">Добавление партнеров</div>
+</div>
+</div>
+
+<div class="settingRow">
+<div>
+<div><strong>📊 Аналитика</strong></div>
+<div class="small">Настройка графиков</div>
+</div>
+</div>
+
+<div class="settingRow">
+<div>
+<div><strong>🏠 Домики</strong></div>
+<div class="small">Редактирование объектов</div>
+</div>
+</div>
+
+<div class="settingRow">
+<div>
+<div><strong>🔐 Сменить аккаунт</strong></div>
+<div class="small">Выйти из системы</div>
+</div>
+
+<button class="btn" onclick="logout()">Выйти</button>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="bottomNav">
+
+<button class="navBtn active" onclick="openPage('expensesPage',this)">
+💸<br>Расход
+</button>
+
+<button class="navBtn" onclick="openPage('incomePage',this)">
+💰<br>Доход
+</button>
+
+<button class="navBtn" onclick="openPage('analyticsPage',this)">
+📊<br>Аналитика
+</button>
+
+<button class="navBtn" onclick="openPage('settingsPage',this)">
+⚙️<br>Настройки
+</button>
+
+</div>
+
+</div>
+
 <script>
-(function(){
-'use strict';
-var USERS={"Владислав":"1111","Дарья":"2222","Юлия":"3333"};
-var cats=['🗑️ Выброс мусора','🌐 Интернет','⚡ Электричество','💧 Вода / канализация','🧼 Уборка','🧺 Прачка / бельё','🧰 Ремонт / расходники','🪵 Дрова / топка','🧴 Хозтовары','📣 Реклама','🚕 Транспорт','📦 Прочее'];
-var houses=[{id:'h1',name:'Домик 1',icon:'🫒'},{id:'h2',name:'Домик 2',icon:'🩵'},{id:'h3',name:'Домик 3',icon:'🧡'}];
-var services=[['Проживание',0],['Баня-бочка',4990],['Чан',4990],['Сауна',3000],['Сауна + чан',7990],['Сауна + баня-бочка',8990],['Топка чана',1000],['Топка бани-бочки',1000],['Мытьё посуды',1000],['Доп. время / час',500],['Мини-бар',0],['Прочие услуги',0]];
-var state={user:null,expenses:[],income:[],occupancy:{h1:0,h2:0,h3:0}};
-function $(id){return document.getElementById(id)}
-function money(n){n=Number(n)||0;return new Intl.NumberFormat('ru-RU').format(Math.round(n))+' ₽'}
-function todayISO(){return new Date().toISOString().slice(0,10)}
-function toast(t){var el=$('toast');el.textContent=t;el.className='toast show';setTimeout(function(){el.className='toast'},1800)}
-function save(){try{localStorage.setItem('medv_dash_state_v1',JSON.stringify(state));}catch(e){}}
-function load(){try{var s=JSON.parse(localStorage.getItem('medv_dash_state_v1')||'null');if(s){state=Object.assign(state,s)}}catch(e){}}
-function initLogin(){var box=$('userButtons');box.innerHTML='';Object.keys(USERS).forEach(function(u,i){var b=document.createElement('button');b.className='userBtn'+(i===0?' active':'');b.textContent=u;b.dataset.user=u;b.onclick=function(){document.querySelectorAll('.userBtn').forEach(function(x){x.classList.remove('active')});b.classList.add('active')};box.appendChild(b)});$('loginBtn').onclick=function(){var u=document.querySelector('.userBtn.active').dataset.user;var pin=$('pinInput').value.trim();if(USERS[u]===pin){state.user=u;save();showApp()}else{toast('Неверный пин')}};$('pinInput').addEventListener('keydown',function(e){if(e.key==='Enter')$('loginBtn').click()})}
-function showApp(){ $('login').classList.add('hide'); $('app').classList.remove('hide'); $('currentUser').textContent=state.user; $('paidBy').value=state.user; $('todayText').textContent='Сегодня: '+new Date().toLocaleDateString('ru-RU'); renderAll(); }
-function bindNav(){document.querySelectorAll('.tab').forEach(function(b){b.onclick=function(){var s=b.dataset.screen;document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('active')});b.classList.add('active');document.querySelectorAll('.screen').forEach(function(x){x.classList.remove('active')});$('s-'+s).classList.add('active');renderAll();}});$('logoutBtn').onclick=function(){state.user=null;save();$('app').classList.add('hide');$('login').classList.remove('hide')};}
-function renderCats(){var sel=$('exCategory');sel.innerHTML='';cats.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;sel.appendChild(o)});$('settingsCats').innerHTML=cats.map(function(c){return '<span class="tag">'+c+'</span>'}).join(' ')}
-function bindExpenses(){$('saveExpense').onclick=function(){var a=Number(String($('exAmount').value).replace(',','.'));if(!a||a<=0){toast('Введи сумму');return}state.expenses.unshift({id:Date.now(),date:todayISO(),amount:a,cat:$('exCategory').value,type:$('exType').value,by:state.user,comment:$('exComment').value});$('exAmount').value='';$('exComment').value='';save();renderAll();toast('Расход сохранён')};$('voiceBtn').onclick=function(){var SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){toast('Голос не поддерживается');return}try{var r=new SR();r.lang='ru-RU';r.interimResults=false;r.onresult=function(e){$('exComment').value=(e.results[0][0].transcript||'')};r.onerror=function(){toast('Ошибка микрофона. Нужен Safari/HTTPS')};r.start();toast('Говорите...')}catch(e){toast('Микрофон не запустился')}}}
-function renderExpenses(){var box=$('expenseList');if(!state.expenses.length){box.innerHTML='<div class="small">Пока расходов нет</div>';return}box.innerHTML=state.expenses.slice(0,20).map(function(x){return '<div class="item"><div><b>'+x.cat+'</b><div class="small">'+x.date+' · '+x.by+' · '+x.type+'</div><div class="small">'+(x.comment||'')+'</div></div><div><b>'+money(x.amount)+'</b><div class="small">по '+money(x.amount/3)+' / домик</div></div></div>'}).join('')}
-function renderIncome(){var root=$('incomeHouses');root.innerHTML='';houses.forEach(function(h){var div=document.createElement('div');div.className='house';div.innerHTML='<div class="houseHead"><span>'+h.icon+' '+h.name+'</span><span>развернуть</span></div><div class="houseBody hide"></div>';var body=div.querySelector('.houseBody');services.forEach(function(s){var row=document.createElement('div');row.className='service';row.innerHTML='<input value="'+s[0]+'" disabled><input type="number" min="0" placeholder="кол-во"><input type="number" min="0" value="'+s[1]+'" placeholder="цена"><button class="btn btnGreen" style="grid-column:1/-1">Добавить</button>';row.querySelector('button').onclick=function(){var qty=Number(row.children[1].value)||0;var price=Number(row.children[2].value)||0;if(!qty){toast('Укажи количество');return}state.income.unshift({id:Date.now(),date:todayISO(),house:h.id,service:s[0],qty:qty,price:price,total:qty*price});row.children[1].value='';save();renderAll();toast('Доход добавлен')};body.appendChild(row)});div.querySelector('.houseHead').onclick=function(){body.classList.toggle('hide')};root.appendChild(div)})}
-function sums(){var revenue=state.income.reduce(function(a,x){return a+(Number(x.total)||0)},0);var stayRevenue=state.income.filter(function(x){return x.service==='Проживание'}).reduce(function(a,x){return a+x.total},0);var nights=state.income.filter(function(x){return x.service==='Проживание'}).reduce(function(a,x){return a+(Number(x.qty)||0)},0);var op=state.expenses.filter(function(x){return x.type==='Операционка'}).reduce(function(a,x){return a+x.amount},0);var imp=state.expenses.filter(function(x){return x.type==='Неотъемлемые улучшения'}).reduce(function(a,x){return a+x.amount},0);return {revenue:revenue,stayRevenue:stayRevenue,nights:nights,op:op,imp:imp,profit:revenue-op,avgWith:nights?revenue/nights:0,avgStay:nights?stayRevenue/nights:0}}
-function renderAnalytics(){var s=sums();$('mRevenue').textContent=money(s.revenue);$('mOpEx').textContent=money(s.op);$('mProfit').textContent=money(s.profit);$('mImprove').textContent=money(s.imp);$('mAvgWith').textContent=money(s.avgWith);$('mAvgStay').textContent=money(s.avgStay);$('houseCompetition').innerHTML=houses.map(function(h){var rev=state.income.filter(function(x){return x.house===h.id}).reduce(function(a,x){return a+x.total},0);var stay=state.income.filter(function(x){return x.house===h.id&&x.service==='Проживание'}).reduce(function(a,x){return a+x.total},0);return '<div class="item"><div><b>'+h.icon+' '+h.name+'</b><div class="small">Проживание: '+money(stay)+'</div></div><b>'+money(rev)+'</b></div>'}).join('');$('occupancyInputs').innerHTML=houses.map(function(h){return '<div><label>'+h.icon+' '+h.name+'</label><input data-occ="'+h.id+'" inputmode="decimal" value="'+(state.occupancy[h.id]||0)+'" placeholder="% загрузки"></div>'}).join('');document.querySelectorAll('[data-occ]').forEach(function(i){i.onchange=function(){state.occupancy[i.dataset.occ]=Number(i.value)||0;save();toast('Загрузка обновлена')}});var addonHtml='';services.filter(function(s){return s[0]!=='Проживание'}).forEach(function(svc){addonHtml+='<div class="item"><div><b>'+svc[0]+'</b><div class="small">';houses.forEach(function(h){var total=state.income.filter(function(x){return x.house===h.id&&x.service===svc[0]}).reduce(function(a,x){return a+x.total},0);addonHtml+=h.icon+' '+money(total)+' · '});addonHtml+='</div></div></div>'});$('addonsCompetition').innerHTML=addonHtml||'<div class="small">Пока нет услуг</div>'}
-function bindAI(){ $('makeReport').onclick=function(){var s=sums();var best=houses.map(function(h){return {h:h,rev:state.income.filter(function(x){return x.house===h.id}).reduce(function(a,x){return a+x.total},0)}}).sort(function(a,b){return b.rev-a.rev})[0];$('aiReport').value='Отчёт за текущий период\n\nДоход: '+money(s.revenue)+'\nОперационные расходы: '+money(s.op)+'\nПрибыль до улучшений: '+money(s.profit)+'\nНеотъемлемые улучшения: '+money(s.imp)+'\nСредний чек с допами: '+money(s.avgWith)+'\nСредний чек проживания: '+money(s.avgStay)+'\n\nЛучший домик по выручке: '+(best?best.h.icon+' '+best.h.name+' — '+money(best.rev):'нет данных')+'\n\nЧто смотреть:\n1. Если операционка растёт быстрее дохода — искать категории расходов, которые раздулись.\n2. Если допы слабо продаются в одном домике — сравнить оформление, фото и скрипт продажи.\n3. Неотъемлемые улучшения не считать как обычную операционку, но контролировать их долю от всех расходов.'}}
-function renderAll(){renderCats();renderExpenses();renderIncome();renderAnalytics()}
-function boot(){load();initLogin();bindNav();bindExpenses();bindAI();$('resetDemo').onclick=function(){if(confirm('Точно очистить все данные?')){state={user:state.user,expenses:[],income:[],occupancy:{h1:0,h2:0,h3:0}};save();renderAll();toast('Данные очищены')}};if(state.user){showApp()}else{renderCats()}}
-if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot)}else{boot()}
-})();
+
+let selectedUser = "Владислав";
+let selectedPin = 1111;
+
+const expenses = [];
+
+function selectUser(name,pin,el){
+selectedUser=name;
+selectedPin=pin;
+
+document.querySelectorAll(".userBtn").forEach(btn=>{
+btn.classList.remove("active");
+});
+
+el.classList.add("active");
+}
+
+function login(){
+
+const pin = document.getElementById("pinInput").value;
+
+if(pin == selectedPin){
+
+localStorage.setItem("medvezhkiUser",selectedUser);
+
+document.getElementById("loginScreen").classList.add("hide");
+document.getElementById("app").classList.remove("hide");
+
+startApp();
+
+}else{
+showToast("Неверный пин");
+}
+
+}
+
+function logout(){
+localStorage.removeItem("medvezhkiUser");
+location.reload();
+}
+
+function startApp(){
+
+const user = localStorage.getItem("medvezhkiUser");
+
+document.getElementById("currentUser").innerText=user;
+
+document.getElementById("todayText").innerText=
+new Date().toLocaleDateString("ru-RU",{
+day:"numeric",
+month:"long",
+year:"numeric"
+});
+
+const paidBy = document.getElementById("paidBy");
+
+if(user==="Владислав"){
+paidBy.value="Владислав";
+}
+
+if(user==="Даша"){
+paidBy.value="Даша";
+}
+
+if(user==="Юлия"){
+paidBy.value="Общий счет";
+}
+
+renderExpenses();
+}
+
+function openPage(id,btn){
+
+document.querySelectorAll("#expensesPage,#incomePage,#analyticsPage,#settingsPage")
+.forEach(el=>el.classList.add("hide"));
+
+document.getElementById(id).classList.remove("hide");
+
+document.querySelectorAll(".navBtn")
+.forEach(el=>el.classList.remove("active"));
+
+btn.classList.add("active");
+}
+
+function addExpense(){
+
+const category=document.getElementById("category").value;
+const name=document.getElementById("expenseName").value;
+const amount=document.getElementById("expenseAmount").value;
+const paidBy=document.getElementById("paidBy").value;
+
+if(!name || !amount){
+showToast("Заполните поля");
+return;
+}
+
+expenses.unshift({
+category,
+name,
+amount,
+paidBy,
+date:new Date().toLocaleString("ru-RU")
+});
+
+renderExpenses();
+
+document.getElementById("expenseName").value="";
+document.getElementById("expenseAmount").value="";
+
+showToast("Расход добавлен");
+}
+
+function renderExpenses(){
+
+const list=document.getElementById("expensesList");
+
+list.innerHTML="";
+
+expenses.forEach((item,index)=>{
+
+list.innerHTML += `
+<div class="expenseItem">
+
+<div class="expenseTop">
+<div class="expenseName">${item.name}</div>
+<div><strong>${item.amount} ₽</strong></div>
+</div>
+
+<div class="badge">${item.category}</div>
+
+<div style="height:8px"></div>
+
+<div class="small">
+${item.date} · Оплатил: ${item.paidBy}
+</div>
+
+<button class="editBtn" onclick="editExpense(${index})">
+✏️ Редактировать
+</button>
+
+</div>
+`;
+
+});
+
+}
+
+function editExpense(index){
+
+const item = expenses[index];
+
+const newName = prompt("Редактировать описание",item.name);
+
+if(newName!==null){
+item.name=newName;
+renderExpenses();
+showToast("Расход обновлен");
+}
+
+}
+
+function showToast(text){
+
+const toast=document.getElementById("toast");
+
+toast.innerText=text;
+toast.style.display="block";
+
+setTimeout(()=>{
+toast.style.display="none";
+},2000);
+
+}
+
+let recognition;
+
+if('webkitSpeechRecognition' in window){
+
+recognition = new webkitSpeechRecognition();
+
+recognition.lang = 'ru-RU';
+recognition.continuous = false;
+recognition.interimResults = false;
+
+recognition.onresult = function(event){
+
+let text = event.results[0][0].transcript.toLowerCase();
+
+if(text.includes("интернет")){
+text="Оплата интернета";
+}
+
+if(text.includes("коммун")){
+text="Коммунальные услуги";
+}
+
+if(text.includes("зарплат")){
+text="Зарплата персоналу";
+}
+
+document.getElementById("expenseName").value=text;
+
+};
+
+}
+
+function startVoice(){
+
+const btn=document.getElementById("voiceBtn");
+
+btn.classList.add("recording");
+
+if(recognition){
+recognition.start();
+}
+
+}
+
+function stopVoice(){
+
+const btn=document.getElementById("voiceBtn");
+
+btn.classList.remove("recording");
+
+if(recognition){
+recognition.stop();
+}
+
+}
+
+if(localStorage.getItem("medvezhkiUser")){
+
+document.getElementById("loginScreen").classList.add("hide");
+document.getElementById("app").classList.remove("hide");
+
+startApp();
+
+}
+
 </script>
+
 </body>
 </html>
