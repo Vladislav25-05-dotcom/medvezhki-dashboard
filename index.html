@@ -1,1062 +1,628 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<!-- ========================================= -->
+<!-- НОВЫЙ БЛОК АНАЛИТИКИ — ВСТАВИТЬ ВМЕСТО -->
+<!-- <section id="analyticsTab"> -->
+<!-- ========================================= -->
 
-<title>Medvezhki Dashboard</title>
+<section id="analyticsTab" class="tabPage">
+
+<div class="heroAnalytics">
+  <div>
+    <div class="heroLabel">AI Dashboard • Май 2026</div>
+    <div class="heroTitle">Медвежки</div>
+  </div>
+
+  <div class="heroUser">
+    Владислав
+  </div>
+</div>
+
+<div class="kpiGrid">
+
+  <div class="kpiCard">
+    <div class="kpiName">Оборот</div>
+    <div class="kpiValue">538 000 ₽</div>
+    <div class="kpiGrow green">↑ +12%</div>
+  </div>
+
+  <div class="kpiCard">
+    <div class="kpiName">Чистая прибыль</div>
+    <div class="kpiValue">291 000 ₽</div>
+    <div class="kpiGrow green">↑ +7%</div>
+  </div>
+
+  <div class="kpiCard">
+    <div class="kpiName">Загрузка</div>
+    <div class="kpiValue">78%</div>
+    <div class="kpiGrow orange">↓ -2%</div>
+  </div>
+
+  <div class="kpiCard">
+    <div class="kpiName">ADR</div>
+    <div class="kpiValue">14 900 ₽</div>
+    <div class="kpiGrow green">↑ +5%</div>
+  </div>
+
+  <div class="kpiCard">
+    <div class="kpiName">RevPAR</div>
+    <div class="kpiValue">11 620 ₽</div>
+    <div class="kpiGrow green">↑ +4%</div>
+  </div>
+
+  <div class="kpiCard">
+    <div class="kpiName">Средний чек</div>
+    <div class="kpiValue">12 430 ₽</div>
+    <div class="kpiGrow green">↑ +9%</div>
+  </div>
+
+</div>
+
+
+<div class="aiSummary">
+  <div class="aiTitle">AI Summary</div>
+
+  <div class="aiLine">
+    ✨ Загрузка A-frame выросла на 11%
+  </div>
+
+  <div class="aiLine">
+    ⚠️ Контейнер просел по будням
+  </div>
+
+  <div class="aiLine">
+    🔥 Чан приносит 28% прибыли
+  </div>
+
+  <div class="aiLine">
+    🧾 Расходы на обслуживание выше нормы
+  </div>
+
+  <div class="aiLine">
+    💡 AI рекомендует поднять цену Forest House на выходные
+  </div>
+</div>
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Динамика оборота
+  </div>
+
+  <div class="lineChart">
+    <svg viewBox="0 0 1000 260" preserveAspectRatio="none">
+      <path d="
+      M0,210
+      C120,190 170,180 250,150
+      C330,120 390,130 470,100
+      C550,70 620,80 700,60
+      C790,40 850,10 1000,20"
+      fill="none"
+      stroke="#4f7cff"
+      stroke-width="10"
+      stroke-linecap="round"/>
+    </svg>
+  </div>
+
+</div>
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Структура прибыли
+  </div>
+
+  <div class="pieWrap">
+
+    <div class="pieChart"></div>
+
+    <div class="pieLegend">
+
+      <div class="legendRow">
+        <div class="dot blue"></div>
+        <span>Операционные расходы — 32%</span>
+      </div>
+
+      <div class="legendRow">
+        <div class="dot green"></div>
+        <span>Чистая прибыль — 46%</span>
+      </div>
+
+      <div class="legendRow">
+        <div class="dot orange"></div>
+        <span>Улучшения объектов — 18%</span>
+      </div>
+
+      <div class="legendRow">
+        <div class="dot gray"></div>
+        <span>Прочее — 4%</span>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Доход по объектам
+  </div>
+
+  <div class="hotelRow">
+    <div>
+      🫒 Контейнер
+    </div>
+    <strong>225 000 ₽</strong>
+  </div>
+
+  <div class="progress">
+    <div style="width:78%"></div>
+  </div>
+
+  <div class="hotelRow">
+    <div>
+      💎 A-frame
+    </div>
+    <strong>192 000 ₽</strong>
+  </div>
+
+  <div class="progress">
+    <div style="width:83%"></div>
+  </div>
+
+  <div class="hotelRow">
+    <div>
+      🌲 Forest House
+    </div>
+    <strong>121 000 ₽</strong>
+  </div>
+
+  <div class="progress">
+    <div style="width:71%"></div>
+  </div>
+
+</div>
+
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Допуслуги
+  </div>
+
+  <div class="serviceCard">
+    <div>
+      🔥 Чан
+    </div>
+
+    <strong>
+      87 000 ₽
+    </strong>
+  </div>
+
+  <div class="serviceCard">
+    <div>
+      🧖‍♂️ Сауна
+    </div>
+
+    <strong>
+      55 000 ₽
+    </strong>
+  </div>
+
+  <div class="serviceCard">
+    <div>
+      🛁 Баня-бочка
+    </div>
+
+    <strong>
+      48 000 ₽
+    </strong>
+  </div>
+
+</div>
+
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Каналы бронирования
+  </div>
+
+  <div class="channelRow">
+    <span>🟢 Avito</span>
+    <strong>71%</strong>
+  </div>
+
+  <div class="channelRow">
+    <span>🔵 Airbnb</span>
+    <strong>14%</strong>
+  </div>
+
+  <div class="channelRow">
+    <span>🟣 Telegram</span>
+    <strong>9%</strong>
+  </div>
+
+  <div class="channelRow">
+    <span>⚪️ Сайт</span>
+    <strong>6%</strong>
+  </div>
+
+</div>
+
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    AI Прогноз
+  </div>
+
+  <div class="forecastCard">
+    <div class="forecastBig">
+      612 000 ₽
+    </div>
+
+    <div class="forecastText">
+      Прогнозируемый оборот на июнь
+    </div>
+  </div>
+
+</div>
+
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Проблемные зоны
+  </div>
+
+  <div class="problemCard red">
+    ⚠️ Высокие расходы на обслуживание контейнера
+  </div>
+
+  <div class="problemCard orange2">
+    ⚠️ Падение загрузки по будням
+  </div>
+
+  <div class="problemCard blue2">
+    💡 AI рекомендует увеличить стоимость выходных
+  </div>
+
+</div>
+
+
+
+<div class="analyticsBlock">
+
+  <div class="blockTitle">
+    Binov Import
+  </div>
+
+  <div class="binovUpload">
+    <div class="binovIcon">
+      📂
+    </div>
+
+    <div class="binovText">
+      Загрузить Excel отчет из Binov
+    </div>
+
+    <div class="binovSub">
+      AI автоматически распределит показатели
+    </div>
+  </div>
+
+</div>
+
+</section>
 
 <style>
 
-:root{
---bg:#f3f5fb;
---card:rgba(255,255,255,.72);
---text:#101828;
---sub:#667085;
---line:#e9eef6;
---blue:#2563ff;
---green:#16b364;
---orange:#f79009;
---red:#f04438;
---shadow:0 10px 40px rgba(15,23,42,.08);
-}
-
-*{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
-
-body{
-margin:0;
-background:
-linear-gradient(180deg,#f8faff,#eef3fb);
-font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif;
-color:var(--text);
-padding-bottom:120px;
-}
-
-.hide{
-display:none!important;
-}
-
-.wrap{
-max-width:1100px;
-margin:auto;
-padding:22px;
-}
-
-.glass{
-background:var(--card);
-backdrop-filter:blur(30px);
--webkit-backdrop-filter:blur(30px);
-border-radius:32px;
-padding:24px;
-box-shadow:var(--shadow);
-border:1px solid rgba(255,255,255,.6);
-}
-
-.topbar{
+.heroAnalytics{
 display:flex;
 justify-content:space-between;
-align-items:center;
-margin-bottom:26px;
+align-items:flex-start;
+margin-bottom:24px;
 }
 
-.title{
-font-size:38px;
-font-weight:800;
-letter-spacing:-1.5px;
-}
-
-.subtitle{
+.heroLabel{
 font-size:15px;
-color:var(--sub);
-margin-top:4px;
+color:#8d94a8;
+margin-bottom:6px;
 }
 
-.badge{
-padding:10px 16px;
-background:#fff;
-border-radius:18px;
-font-weight:700;
-box-shadow:0 4px 20px rgba(0,0,0,.05);
-}
-
-.bottomNav{
-position:fixed;
-left:50%;
-transform:translateX(-50%);
-bottom:18px;
-width:92%;
-max-width:900px;
-display:flex;
-justify-content:space-between;
-gap:10px;
-background:rgba(255,255,255,.85);
-backdrop-filter:blur(30px);
-padding:10px;
-border-radius:28px;
-box-shadow:0 15px 50px rgba(0,0,0,.12);
-z-index:999;
-}
-
-.navBtn{
-flex:1;
-border:none;
-background:transparent;
-padding:14px 8px;
-border-radius:22px;
-font-size:13px;
-font-weight:700;
-color:#667085;
-cursor:pointer;
-transition:.25s;
-}
-
-.navBtn.active{
-background:#111827;
-color:white;
-}
-
-input,select,textarea{
-width:100%;
-border:none;
-background:#f4f7fc;
-padding:18px;
-border-radius:20px;
-font-size:16px;
-outline:none;
-margin-top:8px;
-}
-
-textarea{
-resize:none;
-min-height:90px;
-}
-
-.btn{
-border:none;
-border-radius:22px;
-padding:18px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
-}
-
-.btnBlue{
-background:linear-gradient(135deg,#2563ff,#5b8dff);
-color:white;
-}
-
-.row{
-display:flex;
-gap:16px;
-}
-
-.row>*{
-flex:1;
-}
-
-.section{
-margin-bottom:20px;
-}
-
-.sectionTitle{
-font-size:28px;
+.heroTitle{
+font-size:58px;
 font-weight:800;
-margin-bottom:18px;
-letter-spacing:-1px;
+letter-spacing:-2px;
+line-height:1;
+color:#0f172a;
 }
 
-.loginScreen{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-padding:20px;
-}
-
-.loginBox{
-width:100%;
-max-width:450px;
-padding:28px;
-border-radius:38px;
-background:rgba(255,255,255,.82);
-backdrop-filter:blur(30px);
-box-shadow:0 20px 60px rgba(0,0,0,.08);
-}
-
-.userGrid{
-display:flex;
-gap:10px;
-margin-top:16px;
-}
-
-.userBtn{
-flex:1;
-border:none;
-padding:14px;
-border-radius:18px;
-background:#eef2f8;
+.heroUser{
+background:#fff;
+padding:14px 22px;
+border-radius:999px;
 font-weight:700;
-cursor:pointer;
-}
-
-.userBtn.active{
-background:#111827;
-color:white;
+box-shadow:0 8px 30px rgba(15,23,42,.06);
 }
 
 .kpiGrid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:16px;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+margin-bottom:22px;
 }
 
 .kpiCard{
-padding:24px;
-border-radius:30px;
-background:var(--card);
-backdrop-filter:blur(30px);
-box-shadow:var(--shadow);
-}
-
-.kpiLabel{
-font-size:14px;
-color:var(--sub);
-margin-bottom:10px;
-}
-
-.kpiValue{
-font-size:34px;
-font-weight:800;
-letter-spacing:-1px;
-}
-
-.kpiTrend{
-margin-top:8px;
-font-weight:700;
-font-size:14px;
-}
-
-.green{
-color:var(--green);
-}
-
-.orange{
-color:var(--orange);
-}
-
-.red{
-color:var(--red);
-}
-
-.aiCard{
-margin-top:24px;
-background:linear-gradient(135deg,#0f172a,#182748);
-color:white;
-padding:28px;
+background:#fff;
 border-radius:34px;
-box-shadow:0 25px 70px rgba(15,23,42,.25);
+padding:28px;
+box-shadow:0 15px 40px rgba(15,23,42,.06);
 }
 
-.aiTitle{
-font-size:28px;
-font-weight:800;
-margin-bottom:18px;
-}
-
-.aiItem{
-display:flex;
-gap:12px;
-margin-bottom:14px;
-line-height:1.45;
-}
-
-.dot{
-width:10px;
-height:10px;
-border-radius:50%;
-margin-top:8px;
-}
-
-.chartCard{
-margin-top:24px;
-}
-
-.chartFake{
-height:260px;
-border-radius:30px;
-background:
-linear-gradient(180deg,#f7faff,#edf4ff);
-position:relative;
-overflow:hidden;
-}
-
-.line{
-position:absolute;
-left:0;
-top:0;
-width:100%;
-height:100%;
-}
-
-.expenseHistory{
-margin-top:18px;
-}
-
-.expenseItem{
-background:#f8fbff;
-border:1px solid #edf2f7;
-padding:18px;
-border-radius:24px;
+.kpiName{
+font-size:16px;
+color:#7b8498;
 margin-bottom:12px;
 }
 
-.expenseTop{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:10px;
+.kpiValue{
+font-size:56px;
+font-weight:800;
+letter-spacing:-2px;
+line-height:1;
+color:#0f172a;
 }
 
-.expenseName{
-font-size:18px;
+.kpiGrow{
+margin-top:16px;
 font-weight:700;
+font-size:18px;
 }
 
-.small{
-font-size:13px;
-color:var(--sub);
+.green{
+color:#16a34a;
 }
 
-.voiceWrap{
-display:flex;
-justify-content:center;
-margin-top:18px;
+.orange{
+color:#f59e0b;
 }
 
-.voiceBtn{
-width:92px;
-height:92px;
-border:none;
-border-radius:50%;
-background:linear-gradient(135deg,#2563ff,#5b8dff);
-color:white;
-font-size:34px;
-cursor:pointer;
-box-shadow:0 15px 40px rgba(37,99,255,.28);
+.aiSummary{
+background:linear-gradient(135deg,#08153f,#13255f);
+border-radius:38px;
+padding:38px;
+color:#fff;
+margin-bottom:22px;
 }
 
-.voiceBtn.recording{
-animation:pulse 1s infinite;
+.aiTitle{
+font-size:42px;
+font-weight:800;
+margin-bottom:26px;
 }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.08)}
-100%{transform:scale(1)}
-}
-
-.houseCard{
-padding:24px;
-border-radius:30px;
-background:var(--card);
-box-shadow:var(--shadow);
+.aiLine{
+font-size:24px;
 margin-bottom:18px;
+opacity:.96;
 }
 
-.houseTop{
+.analyticsBlock{
+background:#fff;
+border-radius:38px;
+padding:34px;
+margin-bottom:22px;
+box-shadow:0 15px 40px rgba(15,23,42,.05);
+}
+
+.blockTitle{
+font-size:42px;
+font-weight:800;
+margin-bottom:28px;
+color:#0f172a;
+}
+
+.lineChart{
+height:280px;
+background:#f4f7fd;
+border-radius:28px;
+overflow:hidden;
+padding:20px;
+}
+
+.pieWrap{
 display:flex;
-justify-content:space-between;
 align-items:center;
-margin-bottom:20px;
+gap:40px;
 }
 
-.houseName{
-font-size:24px;
-font-weight:800;
+.pieChart{
+width:280px;
+height:280px;
+border-radius:50%;
+background:
+conic-gradient(
+#3b82f6 0% 32%,
+#22c55e 32% 78%,
+#f59e0b 78% 96%,
+#d1d5db 96% 100%
+);
 }
 
-.housePercent{
-font-size:24px;
-font-weight:800;
-color:#2563ff;
-}
-
-.houseGrid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
+.pieLegend{
+display:flex;
+flex-direction:column;
 gap:16px;
 }
 
-.metricLabel{
-font-size:13px;
-color:var(--sub);
-margin-bottom:6px;
-}
-
-.metricValue{
+.legendRow{
+display:flex;
+align-items:center;
+gap:12px;
 font-size:22px;
-font-weight:800;
 }
 
-.settingRow{
+.dot{
+width:18px;
+height:18px;
+border-radius:50%;
+}
+
+.blue{background:#3b82f6}
+.green{background:#22c55e}
+.orange{background:#f59e0b}
+.gray{background:#d1d5db}
+
+.hotelRow,
+.serviceCard,
+.channelRow{
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:16px 0;
-border-bottom:1px solid #edf2f7;
+font-size:26px;
+padding:18px 0;
+}
+
+.progress{
+height:16px;
+background:#edf2ff;
+border-radius:999px;
+overflow:hidden;
+margin-bottom:26px;
+}
+
+.progress div{
+height:100%;
+background:linear-gradient(90deg,#2563eb,#60a5fa);
+border-radius:999px;
+}
+
+.forecastCard{
+background:linear-gradient(135deg,#eff6ff,#dbeafe);
+border-radius:28px;
+padding:30px;
+}
+
+.forecastBig{
+font-size:72px;
+font-weight:800;
+color:#0f172a;
+line-height:1;
+margin-bottom:14px;
+}
+
+.forecastText{
+font-size:24px;
+color:#5b6479;
+}
+
+.problemCard{
+padding:22px;
+border-radius:24px;
+font-size:22px;
+font-weight:600;
+margin-bottom:16px;
+}
+
+.red{
+background:#fef2f2;
+color:#b91c1c;
+}
+
+.orange2{
+background:#fff7ed;
+color:#c2410c;
+}
+
+.blue2{
+background:#eff6ff;
+color:#1d4ed8;
+}
+
+.binovUpload{
+background:#f8fafc;
+border:2px dashed #d7deed;
+border-radius:28px;
+padding:50px;
+text-align:center;
+}
+
+.binovIcon{
+font-size:70px;
+margin-bottom:18px;
+}
+
+.binovText{
+font-size:28px;
+font-weight:700;
+margin-bottom:8px;
+}
+
+.binovSub{
+font-size:18px;
+color:#7b8498;
+}
+
+@media(max-width:900px){
+
+.heroTitle{
+font-size:34px;
+}
+
+.kpiGrid{
+grid-template-columns:1fr;
+}
+
+.kpiValue{
+font-size:42px;
+}
+
+.blockTitle{
+font-size:28px;
+}
+
+.aiTitle{
+font-size:30px;
+}
+
+.aiLine{
+font-size:18px;
+}
+
+.pieWrap{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.pieChart{
+width:220px;
+height:220px;
+}
+
+.legendRow{
+font-size:17px;
+}
+
+.hotelRow,
+.serviceCard,
+.channelRow{
+font-size:18px;
+}
+
+.forecastBig{
+font-size:46px;
+}
+
 }
 
 </style>
-</head>
-
-<body>
-
-<!-- LOGIN -->
-
-<div id="loginScreen" class="loginScreen">
-
-<div class="loginBox">
-
-<div class="title">Medvezhki</div>
-<div class="subtitle">Dashboard • AI ERP</div>
-
-<div class="userGrid">
-
-<button class="userBtn active" onclick="selectUser('Владислав',1111,this)">
-Владислав
-</button>
-
-<button class="userBtn" onclick="selectUser('Даша',2222,this)">
-Даша
-</button>
-
-<button class="userBtn" onclick="selectUser('Юлия',3333,this)">
-Юлия
-</button>
-
-</div>
-
-<div style="height:18px"></div>
-
-<input id="pinInput" placeholder="Введите пин">
-
-<div style="height:18px"></div>
-
-<button class="btn btnBlue" onclick="login()">
-Войти
-</button>
-
-</div>
-
-</div>
-
-<!-- APP -->
-
-<div id="app" class="hide">
-
-<div class="wrap">
-
-<div class="topbar">
-
-<div>
-<div class="title">Медвежки</div>
-<div class="subtitle">AI Dashboard • Май 2026</div>
-</div>
-
-<div class="badge" id="currentUser"></div>
-
-</div>
-
-<!-- EXPENSES -->
-
-<div id="expensesPage">
-
-<div class="glass">
-
-<div class="sectionTitle">
-Расходы
-</div>
-
-<div class="row">
-
-<div>
-<label>Категория</label>
-
-<select id="category">
-
-<option>📡 Интернет</option>
-<option>🗑 Вывоз мусора</option>
-<option>💰 Зарплаты</option>
-<option>⚡ Коммуналка</option>
-<option>📦 Закупки</option>
-<option>👷 Ремонт</option>
-<option>💲 Маркетинг</option>
-<option>💯 Комиссии</option>
-<option>🏦 Ипотека</option>
-<option>📁 Прочее</option>
-
-</select>
-
-</div>
-
-<div>
-<label>Оплатил</label>
-
-<select id="paidBy">
-<option>Владислав</option>
-<option>Даша</option>
-<option>Юлия</option>
-<option>Общий счет</option>
-</select>
-
-</div>
-
-</div>
-
-<div style="height:14px"></div>
-
-<label>Описание</label>
-<textarea id="expenseName"></textarea>
-
-<div style="height:14px"></div>
-
-<label>Сумма</label>
-<input id="expenseAmount" type="number">
-
-<div class="voiceWrap">
-
-<button
-class="voiceBtn"
-id="voiceBtn"
-ontouchstart="startVoice()"
-ontouchend="stopVoice()"
->
-🎙
-</button>
-
-</div>
-
-<div style="height:20px"></div>
-
-<button class="btn btnBlue" onclick="addExpense()">
-Добавить расход
-</button>
-
-</div>
-
-<div class="expenseHistory">
-
-<div class="sectionTitle">
-История расходов
-</div>
-
-<div id="expenseList"></div>
-
-</div>
-
-</div>
-
-<!-- INCOME -->
-
-<div id="incomePage" class="hide">
-
-<div class="houseCard">
-
-<div class="houseTop">
-
-<div class="houseName">
-🫒 Оливковый контейнер
-</div>
-
-<div class="housePercent">
-78%
-</div>
-
-</div>
-
-<div class="houseGrid">
-
-<div>
-<div class="metricLabel">Оборот</div>
-<div class="metricValue">225 000 ₽</div>
-</div>
-
-<div>
-<div class="metricLabel">Прибыль</div>
-<div class="metricValue">141 000 ₽</div>
-</div>
-
-<div>
-<div class="metricLabel">ADR</div>
-<div class="metricValue">11 900 ₽</div>
-</div>
-
-</div>
-
-</div>
-
-<div class="houseCard">
-
-<div class="houseTop">
-
-<div class="houseName">
-💎 Бирюзовый A-frame
-</div>
-
-<div class="housePercent">
-83%
-</div>
-
-</div>
-
-<div class="houseGrid">
-
-<div>
-<div class="metricLabel">Оборот</div>
-<div class="metricValue">313 000 ₽</div>
-</div>
-
-<div>
-<div class="metricLabel">Прибыль</div>
-<div class="metricValue">188 000 ₽</div>
-</div>
-
-<div>
-<div class="metricLabel">ADR</div>
-<div class="metricValue">14 800 ₽</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- ANALYTICS -->
-
-<div id="analyticsPage" class="hide">
-
-<div class="kpiGrid">
-
-<div class="kpiCard">
-<div class="kpiLabel">Оборот</div>
-<div class="kpiValue">538 000 ₽</div>
-<div class="kpiTrend green">↑ +12%</div>
-</div>
-
-<div class="kpiCard">
-<div class="kpiLabel">Чистая прибыль</div>
-<div class="kpiValue">291 000 ₽</div>
-<div class="kpiTrend green">↑ +7%</div>
-</div>
-
-<div class="kpiCard">
-<div class="kpiLabel">Загрузка</div>
-<div class="kpiValue">78%</div>
-<div class="kpiTrend orange">↓ -2%</div>
-</div>
-
-<div class="kpiCard">
-<div class="kpiLabel">Средний чек</div>
-<div class="kpiValue">12 430 ₽</div>
-<div class="kpiTrend green">↑ +9%</div>
-</div>
-
-<div class="kpiCard">
-<div class="kpiLabel">ADR</div>
-<div class="kpiValue">14 900 ₽</div>
-<div class="kpiTrend green">↑ +5%</div>
-</div>
-
-<div class="kpiCard">
-<div class="kpiLabel">RevPAR</div>
-<div class="kpiValue">11 620 ₽</div>
-<div class="kpiTrend green">↑ +4%</div>
-</div>
-
-</div>
-
-<div class="aiCard">
-
-<div class="aiTitle">
-AI Summary
-</div>
-
-<div class="aiItem">
-<div class="dot green"></div>
-<div>Загрузка A-frame выросла на 11%</div>
-</div>
-
-<div class="aiItem">
-<div class="dot orange"></div>
-<div>Контейнер просел по будням</div>
-</div>
-
-<div class="aiItem">
-<div class="dot" style="background:#2563ff"></div>
-<div>Чан приносит 28% прибыли</div>
-</div>
-
-<div class="aiItem">
-<div class="dot red"></div>
-<div>Расходы на обслуживание выше нормы</div>
-</div>
-
-</div>
-
-<div class="glass chartCard">
-
-<div class="sectionTitle">
-Динамика оборота
-</div>
-
-<div class="chartFake">
-
-<svg class="line" viewBox="0 0 100 100" preserveAspectRatio="none">
-
-<defs>
-<linearGradient id="g1">
-<stop offset="0%" stop-color="#2563ff"/>
-<stop offset="100%" stop-color="#74a2ff"/>
-</linearGradient>
-</defs>
-
-<path
-d="M0 85 C10 70,20 55,30 60 S50 45,60 50 S80 20,100 25"
-fill="none"
-stroke="url(#g1)"
-stroke-width="3"
-stroke-linecap="round"
-/>
-
-</svg>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- AI -->
-
-<div id="aiPage" class="hide">
-
-<div class="aiCard">
-
-<div class="aiTitle">
-AI Финансовый директор
-</div>
-
-<div class="aiItem">
-<div class="dot green"></div>
-<div>
-Forest House показывает лучшую прибыльность
-</div>
-</div>
-
-<div class="aiItem">
-<div class="dot orange"></div>
-<div>
-Рекомендуется поднять цену A-frame на выходные
-</div>
-</div>
-
-<div class="aiItem">
-<div class="dot red"></div>
-<div>
-Маркетинговые расходы выросли выше нормы
-</div>
-</div>
-
-<div class="aiItem">
-<div class="dot" style="background:#2563ff"></div>
-<div>
-Telegram даёт самый высокий средний чек
-</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- SETTINGS -->
-
-<div id="settingsPage" class="hide">
-
-<div class="glass">
-
-<div class="sectionTitle">
-Настройки
-</div>
-
-<div class="settingRow">
-<div>👥 Персонал</div>
-</div>
-
-<div class="settingRow">
-<div>🤝 Партнеры</div>
-</div>
-
-<div class="settingRow">
-<div>📊 Аналитика</div>
-</div>
-
-<div class="settingRow">
-<div>🏠 Домики</div>
-</div>
-
-<div class="settingRow">
-<div>📁 Импорт Binov</div>
-</div>
-
-<div style="height:18px"></div>
-
-<button class="btn btnBlue" onclick="logout()">
-Выйти
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- NAV -->
-
-<div class="bottomNav">
-
-<button class="navBtn active" onclick="openPage('expensesPage',this)">
-💸<br>Расход
-</button>
-
-<button class="navBtn" onclick="openPage('incomePage',this)">
-💰<br>Доход
-</button>
-
-<button class="navBtn" onclick="openPage('analyticsPage',this)">
-📊<br>Аналитика
-</button>
-
-<button class="navBtn" onclick="openPage('aiPage',this)">
-✨<br>AI
-</button>
-
-<button class="navBtn" onclick="openPage('settingsPage',this)">
-⚙️<br>Настройки
-</button>
-
-</div>
-
-</div>
-
-<script>
-
-let selectedUser="Владислав";
-let selectedPin=1111;
-
-let expenses=[];
-
-function selectUser(name,pin,el){
-
-selectedUser=name;
-selectedPin=pin;
-
-document.querySelectorAll(".userBtn").forEach(btn=>{
-btn.classList.remove("active");
-});
-
-el.classList.add("active");
-
-}
-
-function login(){
-
-const pin=document.getElementById("pinInput").value;
-
-if(pin==selectedPin){
-
-localStorage.setItem("medvezhkiUser",selectedUser);
-
-document.getElementById("loginScreen").classList.add("hide");
-document.getElementById("app").classList.remove("hide");
-
-startApp();
-
-}else{
-alert("Неверный пин");
-}
-
-}
-
-function startApp(){
-
-const user=localStorage.getItem("medvezhkiUser");
-
-document.getElementById("currentUser").innerText=user;
-
-const paidBy=document.getElementById("paidBy");
-
-if(user==="Владислав"){
-paidBy.value="Владислав";
-}
-
-if(user==="Даша"){
-paidBy.value="Даша";
-}
-
-if(user==="Юлия"){
-paidBy.value="Общий счет";
-}
-
-renderExpenses();
-
-}
-
-function logout(){
-localStorage.removeItem("medvezhkiUser");
-location.reload();
-}
-
-function openPage(id,btn){
-
-document.querySelectorAll(
-"#expensesPage,#incomePage,#analyticsPage,#aiPage,#settingsPage"
-).forEach(el=>{
-el.classList.add("hide");
-});
-
-document.getElementById(id).classList.remove("hide");
-
-document.querySelectorAll(".navBtn").forEach(el=>{
-el.classList.remove("active");
-});
-
-btn.classList.add("active");
-
-}
-
-function addExpense(){
-
-const category=document.getElementById("category").value;
-const name=document.getElementById("expenseName").value;
-const amount=document.getElementById("expenseAmount").value;
-const paidBy=document.getElementById("paidBy").value;
-
-if(!name || !amount){
-alert("Заполните поля");
-return;
-}
-
-expenses.unshift({
-category,
-name,
-amount,
-paidBy,
-date:new Date().toLocaleString("ru-RU")
-});
-
-renderExpenses();
-
-document.getElementById("expenseName").value="";
-document.getElementById("expenseAmount").value="";
-
-}
-
-function renderExpenses(){
-
-const list=document.getElementById("expenseList");
-
-list.innerHTML="";
-
-expenses.forEach((item,index)=>{
-
-list.innerHTML+=`
-
-<div class="expenseItem">
-
-<div class="expenseTop">
-
-<div class="expenseName">
-${item.name}
-</div>
-
-<div>
-<strong>${item.amount} ₽</strong>
-</div>
-
-</div>
-
-<div class="small">
-${item.category}
-</div>
-
-<div class="small" style="margin-top:8px">
-${item.date} • ${item.paidBy}
-</div>
-
-</div>
-
-`;
-
-});
-
-}
-
-let recognition;
-
-if('webkitSpeechRecognition' in window){
-
-recognition=new webkitSpeechRecognition();
-
-recognition.lang='ru-RU';
-
-recognition.onresult=function(event){
-
-let text=event.results[0][0].transcript;
-
-document.getElementById("expenseName").value=text;
-
-};
-
-}
-
-function startVoice(){
-
-const btn=document.getElementById("voiceBtn");
-
-btn.classList.add("recording");
-
-if(recognition){
-recognition.start();
-}
-
-}
-
-function stopVoice(){
-
-const btn=document.getElementById("voiceBtn");
-
-btn.classList.remove("recording");
-
-if(recognition){
-recognition.stop();
-}
-
-}
-
-if(localStorage.getItem("medvezhkiUser")){
-
-document.getElementById("loginScreen").classList.add("hide");
-document.getElementById("app").classList.remove("hide");
-
-startApp();
-
-}
-
-</script>
-
-</body>
-</html>
